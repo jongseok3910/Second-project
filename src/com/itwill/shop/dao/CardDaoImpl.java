@@ -15,8 +15,19 @@ import com.itwill.shop.domain.Card;
 public class CardDaoImpl implements CardDao {
 	private SqlSessionFactory sqlSessionFactory;
 	
+	public CardDaoImpl() throws Exception{
+		try {
+			InputStream mybatisConfigInputStream = 
+					Resources.getResourceAsStream("mybatis-config.xml");
+			SqlSessionFactoryBuilder sqlSessionFactoryBuilder=new SqlSessionFactoryBuilder();
+			this.sqlSessionFactory = 
+					sqlSessionFactoryBuilder.build(mybatisConfigInputStream);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
-	public Card findCardByNo(Integer cardNo) throws Exception {
+	public Card findCardByNo(int cardNo) throws Exception {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlsession.getMapper(CardMapper.class);
 		Card card = cardMapper.findCardByNo(cardNo);

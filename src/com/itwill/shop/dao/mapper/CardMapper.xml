@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.itwill.shop.dao.mapper.cardMapper">
+<mapper namespace="com.itwill.shop.dao.mapper.CardMapper">
 	
 	<resultMap type="com.itwill.shop.domain.Card" id="cardResultMap" autoMapping="true">
-		<result column="CARD_NO" property="card_no"/>
+		<result column="CARD_NO" property="card_no" />
 		<result column="CARD_NUMBER" property="card_number"/>
 		<result column="CARD_NAME" property="card_name"/>
 		<result column="CARD_TYPE" property="card_type"/>
