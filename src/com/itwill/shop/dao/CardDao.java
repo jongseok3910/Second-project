@@ -6,8 +6,9 @@ import com.itwill.shop.domain.Address;
 import com.itwill.shop.domain.Card;
 
 public interface CardDao {
+	
 	Card findCardByNo(Integer cardNo);
-	public List<Card> findcardAll();
+	public List<Card> findCardAll();
 	public int insertCard(Card card);
 	public int updateCardByNo(Card card);
 	public int deleteCardByNo(Integer cardNo);

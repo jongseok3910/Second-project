@@ -1,5 +1,6 @@
 package com.itwill.shop.dao;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.shop.dao.mapper.CardMapper;
+import com.itwill.shop.dao.mapper.CartMapper;
 import com.itwill.shop.domain.Card;
 
 public class CardDaoImpl implements CardDao {
@@ -29,15 +31,15 @@ public class CardDaoImpl implements CardDao {
 	@Override
 	public Card findCardByNo(Integer CardNo) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlsession.getMapper(cardMapper.class);
-		Card card = cardMapper.findCardByNo(cardNo);
+		CartMapper cardMapper = sqlsession.getMapper(CartMapper.class);
+		Card card = cardMapper.findCardByNo(CardNo);
 		return card;
 	}
 
 	@Override
 	public List<Card> findCardAll() {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		CartMapper cardMapper = sqlSession.getMapper(CartMapper.class);
 		List<Card> cardList = cardMapper.findCardAll();
 		return cardList;
 	}
@@ -45,24 +47,24 @@ public class CardDaoImpl implements CardDao {
 	@Override
 	public int insertCard(Card Card) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
-		int insertRow = cardMapper.insertCard(card);
+		CartMapper cardMapper = sqlSession.getMapper(CartMapper.class);
+		int insertRow = cardMapper.insertCard(Card);
 		return insertRow;
 	}
 
 	@Override
 	public int updateCardByNo(Card Card) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
-		int updateRow = cardMapper.updateCardByNo(card);
+		CartMapper cardMapper = sqlSession.getMapper(CartMapper.class);
+		int updateRow = cardMapper.updateCardByNo(Card);
 		return updateRow;
 	}
 
 	@Override
 	public int deleteCardByNo(Integer CardNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
-		int deleteRow = cardMapper.deleteCardByNo(cardNo);
+		CartMapper cardMapper = sqlSession.getMapper(CartMapper.class);
+		int deleteRow = cardMapper.deleteCardByNo(CardNo);
 		return deleteRow;
 	}
 }
