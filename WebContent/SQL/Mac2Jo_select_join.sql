@@ -11,7 +11,9 @@ select * from category;
 select * from food;
 
 select * from cart;
-select * from cart c join food f on c.food_no=f.food_no;
+select * from cart c join food f on c.food_no=f.food_no where f.food_no = 302;
+select * from cart c join members m on c.members_no=m.members_no where m.members_no = 302;
+
 
 select * from orders;
 select * from orders_detail;

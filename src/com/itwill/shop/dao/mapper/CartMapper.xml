@@ -21,7 +21,11 @@
 	</select>
 	
 	<select id="findCartByFoodNo" resultMap="cartWithMemberAndFoodResultMap" parameterType="int">
-		select * from cart c join food f on f.food_no=#{foodNo.foodNo}
+		select * from cart c join food f on c.food_no=f.food_no where f.food_no=#{foodNo.foodNo}
+	</select>
+	
+	<select id="findCartByMembersNo" resultMap="cartWithMemberAndFoodResultMap" parameterType="int">
+		select * from cart c join members m on c.members_no=m.members_no where m.members_no =#{memberNo}
 	</select>
 	
 	<update id="updateCartByNo" parameterType="com.itwill.shop.domain.Cart" >
@@ -29,12 +33,12 @@
 	</update>
 	
 	<insert id="insertCart" parameterType="com.itwill.shop.domain.Cart">
-		insert into cart(CART_NO, CART_QTY,MEMBERS_NO, FOOD_NO) 
-		values(CART_NO_SEQ.nextval,#{cartQty},#{membersNo.membersNo},#{foodNo.foodNo})
+		insert into cart(CART_NO, CART_QTY,MEMBERS_NO,FOOD_NO) 
+		values(CART_NO_SEQ.nextval,#{cartQty},#{membersNo},#{foodNo.foodNo})
 	</insert>
 	
 	<delete id="deleteCartByNo" parameterType="int">
-		delete from cart where members_no=#{membersNo.membersNo}
+		delete from cart where members_no=#{membersNo}
 	</delete>
 
 </mapper>

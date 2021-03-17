@@ -24,7 +24,6 @@ public Address() {
 
 
 public Address(Integer addressNo, String addressName, String addressDetail, Integer addressType, Integer membersNo) {
-	super();
 	this.addressNo = addressNo;
 	this.addressName = addressName;
 	this.addressDetail = addressDetail;

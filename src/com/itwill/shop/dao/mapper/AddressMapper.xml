@@ -23,13 +23,13 @@
 	<!-- insert -->
 	<insert id="insertAddress" parameterType="com.itwill.shop.domain.Address">
 		insert into address(address_no,address_name,address_detail,address_type,members_No)
-		values(#{addressNo},#{addressName},#{addressDetail},#{addressType},#{membersNo})
+		values(Address_no_SEQ.nextval,#{addressName},#{addressDetail},#{addressType},#{membersNo})
 	</insert>
 	
 	<!-- update -->
 	
 	<update id="updateAddressByNo" parameterType="com.itwill.shop.domain.Address">
-	update address set address_name=#{addressName},address_detail=#{addressDetail},address_type=#{addressType} where members_no =#{membersNo}
+	update address set address_name=#{addressName},address_detail=#{addressDetail},address_type=#{addressType} where members_no =#{membersNo} and address_no=#{addressNo}
 	</update>
 	
 	<!-- delete -->
