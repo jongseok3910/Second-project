@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@ include file="../include/head.jsp"%>
 
 <script type="text/javascript">
 </script>
 
 <body style="">
-	<%@ include file="../include/top.jsp"%>
 	<div id="content">
 
 		<style>
@@ -18,7 +16,6 @@
 		<div class="atit">
 			<p>고객후기</p>
 			<span class="path">
-				<img src="./res/ico_home.gif" alt="HOME" style="cursor: pointer;"> <b>고객센터</b> &gt; 고객후기</span>
 		</div>
 
 
@@ -30,21 +27,7 @@
 				<input type="hidden" name="sort" value="1"> <input
 					type="hidden" name="page_num" value="10">
 
-				<!-- 검색 : Start -->
-				<div
-					style="border: 1px solid #ccc; text-align: center; padding: 20px 0;">
-					<div></div>
-					<div style="margin-top: 20px;">
-						<span>검색어</span> 
-						<select name="searchTitle" class="select" style="background: #fff; height: 28px; font-size: 14px;">
-							<option value="title">제목</option>
-							<option value="memberId">작성자</option>
-						</select> 
-						<input type="text" name="keyword" value=""style="width: 230px; padding-left: 10px; border: 1px solid #ccc; height: 26px; line-height: 26px;">
-						<input type="image" src="./res/btn_search.gif" onclick="searchKeyword(this)" align="absmiddle">
-					</div>
-				</div>
-				<!-- 검색 : End -->
+				
 
 				
 
@@ -54,7 +37,7 @@
 						<tr>
 							<th width="50">번호</th>
 							<th width="100">이미지</th>
-							<th>상품명/후기</th>
+							<th>제목</th>
 							<th width="80">작성자</th>
 							<th width="80">작성일</th>
 							<th width="80">평점</th>
@@ -141,12 +124,25 @@
 				<a href="boardListView.do?boardNo=<%= i+1 %>" class="navi">[<%=i+1 %>]</a>
 			<% } %>
 
-			<a href="boardWriteView.do"><img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;"></a>
+			<a href="" onclick=""><img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;"></a>
 			</div>
 		</div>
 		<!-- End indiv -->
+		<!-- 검색 : Start -->
+				<div
+					style="border: 1px solid #ccc; text-align: center; padding: 20px 0;">
+					<div></div>
+					<div style="margin-top: 20px;">
+						<span>검색어</span> 
+						<select name="searchTitle" class="select" style="background: #fff; height: 28px; font-size: 14px;">
+							<option value="title">제목</option>
+							<option value="memberId">작성자</option>
+						</select> 
+						<input type="text" name="keyword" value=""style="width: 230px; padding-left: 10px; border: 1px solid #ccc; height: 26px; line-height: 26px;">
+						<input type="image" src="./res/btn_search.gif" onclick="searchKeyword(this)" align="absmiddle">
+					</div>
+				</div>
+				<!-- 검색 : End -->
 	</div>
-
-	<%@ include file="../include/bottom.jsp"%>
 </body>
 </html>
