@@ -8,10 +8,15 @@ public class CardDaoTestMain {
 
 		CardDaoImpl cardDaoImpl = new CardDaoImpl();
 		
+		System.out.println(cardDaoImpl.findCardAll());
+		//System.out.println(cardDaoImpl.findCardByNo(1531313131315153));
+		//System.out.println(addressDaoImpl.insertAddress(address));
+		//System.out.println(addressDaoImpl.updateAddressByNo(address));
+		//System.out.println(addressDaoImpl.deleteAddressByNo(3));
 		
-		System.out.println(cardDaoImpl.findCardByNo(1531313131315153));
 		
-
+		
+		
 	}
 
 }
