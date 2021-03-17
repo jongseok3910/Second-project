@@ -43,6 +43,14 @@ public class MembersService {
 		}
 		return memberDao.createMembers(members);
 	}
+	
+	public int deleteMembers(int members_no) throws Exception {
+		return memberDao.deleteMembers(members_no);
+	}
+	
+	public int updateMembers(Members members) throws Exception {
+		return memberDao.updateMembers(members);
+	}
 //	/*
 //	 * 회원가입
 //	 */

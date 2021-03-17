@@ -81,4 +81,38 @@ public class MembersDaoImpl implements MembersDao {
 		return -1;
 	}
 	
+	@Override
+	public int deleteMembers(int members_no) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		try {
+			int rowCount = membersMapper.deleteMembers(members_no);
+			return rowCount;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			sqlSession.close();
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		return -1;
+	}
+	
+	@Override
+	public int updateMembers(Members members) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		try {
+			int rowCount = membersMapper.updateMembers(members);
+			return rowCount;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			sqlSession.close();
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		return -1;
+	}
+	
 }

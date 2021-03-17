@@ -14,5 +14,7 @@ public interface MembersDao {
 	public Members findMembersByNo(int no) throws Exception;
 	public Members findMembersById(String members_email) throws Exception;
 	public int createMembers(Members members) throws Exception;
+	public int updateMembers(Members members) throws Exception;
+	public int deleteMembers(int members_no) throws Exception;
 	
 }

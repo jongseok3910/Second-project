@@ -1,18 +1,15 @@
 package com.itwill.shop.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.domain.Cart;
 
 public interface CartDao {
 
-	int insertCart(Cart cart) throws Exception;
-
-	Cart selectByNo(int no) throws Exception;
-
-	ArrayList<Cart> selectAll() throws Exception;
-
-	int updateCart(Cart cart) throws Exception;
-
-	int deleteCart(int no) throws Exception;
+	public List<Cart> findCartAll();
+	public Cart findCartByFoodNo(Integer foodNo);
+	public int updateCartByNo(Cart cart);
+	public int insertCart(Cart cart);
+	public int deleteCartByNo(Integer memberNo);
 }
