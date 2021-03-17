@@ -29,9 +29,9 @@
 	
 	
 	<update id="updateCardByNo" parameterType="com.itwill.shop.domain.Card">
-		update members set card_number=#{card_number},
+		update card set card_number=#{card_number},
 		card_name=#{card_name},
-		card_type=#{card_type},
+		card_type=#{card_type}
         where card_no=#{card_no}
 	</update>
 	
