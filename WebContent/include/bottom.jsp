@@ -210,9 +210,9 @@
 	<div id="footer_wrap" style="clear: both;">
 		<div class="footer_top">
 			<div class="float wrap1">
-				<b>고객센터</b> <strong>1588-3754</strong>
+				<b>고객센터</b> <strong>1588-1004</strong>
 				<p>
-					평일 : 09:00 ~ 18:00 / 점심시간 : 12:00 ~ 13:00<br> 토,일요일 및 공휴일은
+					평일 : 10:00 ~ 17:00 / 점심시간 : 11:00 ~ 14:00<br> 금,토,일요일 및 공휴일은
 					휴무입니다.
 				</p>
 			</div>
@@ -244,7 +244,7 @@
 			<div class="float wrap3">
 				<b><br></b><b class="sub">맥 딜리버리</b>
 				<p>생산자 / 공급업체 / 봉사단체 / 구직자</p>
-				<p class="mail">zipbanchan@sannamchon.co.kr</p>
+				<p class="mail">test@email.com</p>
 			</div>
 		</div>
 
@@ -281,17 +281,17 @@
 
 			<div class="inner2">
 				<p>
-					주소:인천광역시 남구 방축로206번길 36 집반찬연구소 <span>｜</span> 상호:(주)산너머남촌 <span>｜</span>
-					대표:이승희 <span>｜</span> 사업자등록번호:121-86-17743 <span>｜</span>
-					통신판매업신고번호:제 2016-인천남구-0674 호
+					주소:서울특별시 강남구 테헤란로 124 <span>｜</span> 상호:맥이자 <span>｜</span>
+					대표:도널드 <span>｜</span> 사업자등록번호:121-88-100443 <span>｜</span>
+					통신판매업신고번호:제 2021-서울강남-1004 호
 				</p>
 				<p>
-					개인정보 정책 및 담당:정문채<span>｜</span> 대표번호:1588-3754 <span>｜</span>
-					팩스번호:032-424-3088 <span>｜</span> 이메일:<a
-						href="javascript:popup(&#39;../proc/popup_email.php?to=zipbanchan@sannamchon.co.kr&amp;hidden=1&#39;,650,600)">zipbanchan@sannamchon.co.kr</a>
+					개인정보 정책 및 담당:테스형<span>｜</span> 대표번호:1588-1004 <span>｜</span>
+					팩스번호:02-2424-2244 <span>｜</span> 이메일:<a
+						href="javascript:popup(&#39;../proc/popup_email.php?to=zipbanchan@sannamchon.co.kr&amp;hidden=1&#39;,650,600)">help@mac2ja.co.kr</a>
 				</p>
 				<p>
-					Copyright ⓒ <strong>sannamchon</strong> All right reserved
+					Copyright ⓒ <strong>맥이자</strong> All right reserved
 				</p>
 				<div class="escrow">
 					<img src="./res/inipay_60x60_gray.png" border="0"

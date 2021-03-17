@@ -4,6 +4,8 @@ insert into Members values(MEMBERS_NO_SEQ.nextval,'김대감','mac321@google.com
 insert into Members values(MEMBERS_NO_SEQ.nextval,'춘향이','jo123@google.com','3333',01048521364);
 insert into Members values(MEMBERS_NO_SEQ.nextval,'옥자','jo321@google.com','4444',01077789865);
 insert into Members values(MEMBERS_NO_SEQ.nextval,'테스형','test@email.com','1111',01080081004);
+insert into Members values(MEMBERS_NO_SEQ.nextval,'테스트','test@mail.com','1111',01077771004);
+
 
 
 --CARD
@@ -17,6 +19,9 @@ insert into address values(ADDRESS_NO_SEQ.nextval,'우리집','서울특별시 �
 insert into address values(ADDRESS_NO_SEQ.nextval,'부모님집','서울특별시 강동구 상암로 효심빌라',1,'1');
 insert into address values(ADDRESS_NO_SEQ.nextval,'서울집','서울특별시 강남구 테헤란로 124 4층',0,'5');
 insert into address values(ADDRESS_NO_SEQ.nextval,'부산집','부산광역시 부산진구 동천로 109 삼한골든게이트빌딩 7층',1,'5');
+insert into address values(ADDRESS_NO_SEQ.nextval,'서울집','서울특별시 강남구 테헤란로 124 4층',0,'6');
+insert into address values(ADDRESS_NO_SEQ.nextval,'부산집','부산광역시 부산진구 동천로 109 삼한골든게이트빌딩 7층',1,'6');
+
 
 
 -------------category와 food를 먼저 insert 하세요.-----------

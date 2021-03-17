@@ -1,7 +1,13 @@
-
+<%@ page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+	String sEmail=(String)session.getAttribute("sEmail");
+	Members sMember=(Members)session.getAttribute("sMember");
+	if(sEmail==null){
+		response.sendRedirect("mac_main.jsp");
+		return;
+	}
 
 %>	
 <html>
