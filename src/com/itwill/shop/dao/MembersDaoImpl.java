@@ -2,6 +2,7 @@ package com.itwill.shop.dao;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -20,8 +21,9 @@ MEMBERS_EMAIL             VARCHAR2(100)
 MEMBERS_PASSWORD          VARCHAR2(100) 
 MEMBERS_PHONE             NUMBER(10)
  */
-public abstract class MembersDaoImpl implements MembersDao {
+public class MembersDaoImpl implements MembersDao {
 	private SqlSessionFactory sqlSessionFactory;
+	
 	public MembersDaoImpl() throws Exception{
 		try {
 			InputStream membersConInputStream=Resources.getResourceAsStream("mybatis-config.xml");
@@ -31,18 +33,9 @@ public abstract class MembersDaoImpl implements MembersDao {
 			e.printStackTrace();
 		}
 	}
+
 	@Override
-	public int create(Members member) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public ArrayList<Members> findMembersByNo(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<Members> findMembersList() throws Exception {
+	public List<Members> selectAll() throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
 		ArrayList<Members> membersList=(ArrayList<Members>)membersMapper.selectAll();
@@ -50,23 +43,42 @@ public abstract class MembersDaoImpl implements MembersDao {
 		sqlSession.close();
 		return membersList;
 	}
-	@Override
-	public int update(Members member) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public int delete(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int remove(String email) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	
 
+	@Override
+	public Members findMembersByNo(int no) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		Members members = membersMapper.findMembersByNo(no);
+		sqlSession.commit();
+		sqlSession.close();
+		return members;
+	}
+	
+	@Override
+	public Members findMembersById(String members_email) throws Exception{
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		Members members = membersMapper.findMembersById(members_email);
+		sqlSession.commit();
+		sqlSession.close();
+		return members;
+	}
+	
+	@Override
+	public int createMembers(Members members) throws Exception{
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		try {
+			int rowCount = membersMapper.createMembers(members);
+			return rowCount;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			sqlSession.close();
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		return -1;
+	}
+	
 }

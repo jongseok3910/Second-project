@@ -1,6 +1,5 @@
 <%@page import="com.itwill.shop.domain.Category"%>
 <%@page import="com.itwill.shop.domain.Food"%>
-<%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.FoodService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

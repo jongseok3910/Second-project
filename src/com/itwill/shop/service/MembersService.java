@@ -1,6 +1,7 @@
 package com.itwill.shop.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.dao.MembersDao;
 import com.itwill.shop.dao.MembersDaoImpl;
@@ -21,67 +22,81 @@ public class MembersService {
 	
 	
 	public MembersService() throws Exception{
-		memberDao=new MembersDaoImpl() {
-			
-			@Override
-			public Members findMember(String email) throws Exception {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
-		//System.out.println("MembersService()생성자 : " + this);
+		memberDao = new MembersDaoImpl();
+	}
+		
+	public List<Members> selectAll() throws Exception{
+		return memberDao.selectAll();
 	}
 	
-	
-	/*
-	 * 회원가입
-	 */
-	public int create(Members member) throws Exception, ExistedMembersException {		
-		// 1.이메일중복체크
-		if (memberDao.existedMember(member.getMembers_email())) {
-			throw new ExistedMembersException(member.getMembers_email()+ " 는 이미 존재하는 이메일입니다.");
-			
-		}
-		return memberDao.create(member);
-	}
-	/*
-	 * 회원로그인
-	 */
-	public Members login(String email,String password) throws Exception{
-		Members member=memberDao.findMember(email);
-		if (member==null) {
-			throw new MembersNotFoundException(email+" 은 존재하지 않는 이메일입니다.");			
-		}
-		//2.패스워드 일치여부
-		if (!member.isMatchPassword(password)) {
-			throw new PaswordMismatchException("비밀번호가 일치하지않습니다.");
-		}		
-		return member;
-	}
-	/*
-	 * 회원전체리스트
-	 */
-	public ArrayList<Members> findMembers() throws Exception{
-		return memberDao.findMembersList();
-	}/*
-	 * 회원1명보기
-	 */
-	public Members findMember(String email) throws Exception{
-		Members findMember=memberDao.findMember(email);
-		return findMember;		
-	}
-	/*
-	 * 회원수정
-	 */
-	public int update(Members member) throws Exception{
-		return memberDao.update(member);
-	}
-	/*
-	  * 회원탈퇴
-	  */
-	public int remove(String email) throws Exception{
-		return memberDao.remove(email);
+	public Members findMembersByNo(int no) throws Exception {
+		return memberDao.findMembersByNo(no);
 	}
 	
+	public Members findMembersById(String members_email) throws Exception{
+		return memberDao.findMembersById(members_email);
+	}
+	
+	public int createMembers(Members members) throws Exception{
+//		if(memberDao.findMembersById(members.getMembers_email())!=null) {
+//			return 0;
+//		}
+		return createMembers(members);
+	}
+//	/*
+//	 * 회원가입
+//	 */
+//	public int create(Members member) throws Exception, ExistedMembersException {		
+//		// 1.이메일중복체크
+//		if (memberDao.existedMember(member.getMembers_email())) {
+//			throw new ExistedMembersException(member.getMembers_email()+ " 는 이미 존재하는 이메일입니다.");
+//			
+//		}
+//		return memberDao.create(member);
+//	}
+//	
+//	/*
+//	 * 회원로그인
+//	 */
+//	public Members login(String email,String password) throws Exception{
+//		Members member=memberDao.findMember(email);
+//		if (member==null) {
+//			throw new MembersNotFoundException(email+" 은 존재하지 않는 이메일입니다.");			
+//		}
+//		//2.패스워드 일치여부
+//		if (!member.isMatchPassword(password)) {
+//			throw new PaswordMismatchException("비밀번호가 일치하지않습니다.");
+//		}		
+//		return member;
+//	}
+//	
+//	/*
+//	 * 회원전체리스트
+//	 */
+//	public ArrayList<Members> findMembers() throws Exception{
+//		return memberDao.findMembersList();
+//	}
+//	
+//	/*
+//	 * 회원1명보기
+//	 */
+//	public Members findMember(String email) throws Exception{
+//		Members findMember=memberDao.findMember(email);
+//		return findMember;		
+//	}
+//	
+//	/*
+//	 * 회원수정
+//	 */
+//	public int update(Members member) throws Exception{
+//		return memberDao.update(member);
+//	}
+//	
+//	/*
+//	  * 회원탈퇴
+//	  */
+//	public int remove(String email) throws Exception{
+//		return memberDao.remove(email);
+//	}
 
 }

@@ -16,7 +16,7 @@ CREATE TABLE Members(
 		Members_name VARCHAR2(100),
 		Members_email VARCHAR2(100),
 		Members_password VARCHAR2(100),
-		Members_phone NUMBER(10)
+		Members_phone VARCHAR2(30)
 );
 
 DROP SEQUENCE Members_no_SEQ;

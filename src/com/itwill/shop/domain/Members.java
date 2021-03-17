@@ -14,14 +14,14 @@ public class Members {
 	private String members_name;
 	private String members_email;
 	private String members_password;
-	private int members_phone;
+	private String members_phone;
 	
 	public Members() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Members(int members_no, String members_name, String members_email, String members_password,
-			int members_phone) {
+			String members_phone) {
 		super();
 		this.members_no = members_no;
 		this.members_name = members_name;
@@ -62,11 +62,11 @@ public class Members {
 		this.members_password = members_password;
 	}
 
-	public int getMembers_phone() {
+	public String getMembers_phone() {
 		return members_phone;
 	}
 
-	public void setMembers_phone(int members_phone) {
+	public void setMembers_phone(String members_phone) {
 		this.members_phone = members_phone;
 	}
 

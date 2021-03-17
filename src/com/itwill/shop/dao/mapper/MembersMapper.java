@@ -13,12 +13,9 @@ public interface MembersMapper {
 	 * 메쏘드리턴타입은 StudentMapper.xml 파일의 resultType 와일치(ResultSet이 한 개 이상일 경우 반환타입이 List이다)
 	 */
 
-	public List<Members> selectAll();
-	/*
-	 <select id="selectAll" resultType="com.itwill.shop.domain.Members">
-		select * from members
-	</select>
-	 */
-
-	public ArrayList<Members> findMembersByNo(int no);
+	public List<Members> selectAll() throws Exception;
+	public Members findMembersByNo(int members_no) throws Exception;
+	public Members findMembersById(String members_email) throws Exception;
+	public int createMembers(Members members) throws Exception;
+	
 }
