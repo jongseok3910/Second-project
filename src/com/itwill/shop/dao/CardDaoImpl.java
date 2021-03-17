@@ -1,5 +1,6 @@
 package com.itwill.shop.dao;
 
+import java.io.InputStream;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -65,4 +66,5 @@ public class CardDaoImpl implements CardDao {
 		int deleteRow = cardMapper.deleteCardByNo(cardNo);
 		return deleteRow;
 	}
+	
 }
