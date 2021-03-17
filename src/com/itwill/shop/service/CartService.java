@@ -1,6 +1,7 @@
 package com.itwill.shop.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.shop.dao.CartDao;
 import com.itwill.shop.dao.CartDaoImpl;
@@ -12,31 +13,25 @@ public class CartService {
 		//cartDao=new CartDaoImpl();
 		cartDao=new CartDaoImpl();
 	}
-	/*
-	 * Create
-	 */
-	public int insertCart(Cart cart) throws Exception{
+	
+	public List<Cart> findCartAll() {
+		return cartDao.findCartAll();
+	}
+	
+	public Cart findCartByFoodNo(Integer foodNo) {
+		return cartDao.findCartByFoodNo(foodNo);
+	}
+	
+	public int updateCartByNo(Cart cart) {
+		return cartDao.updateCartByNo(cart);
+	}
+	
+	public int insertCart(Cart cart) {
 		return cartDao.insertCart(cart);
 	}
-	/*
-	 * Read
-	 */
-	public Cart selectByNo(int no) throws Exception{
-		return cartDao.selectByNo(no);
+	
+	public int deleteCartByNo(Integer memberNo) {
+		return cartDao.deleteCartByNo(memberNo);
 	}
-	public ArrayList<Cart> selectAll() throws Exception{
-		return cartDao.selectAll();
-	}
-	/*
-	 * Update
-	 */
-	public int updateCart(Cart cart) throws Exception{
-		return cartDao.updateCart(cart);
-	}
-	/*
-	 * Delete
-	 */
-	public int deleteCart(int no) throws Exception{
-		return cartDao.deleteCart(no);
-	}
+
 }

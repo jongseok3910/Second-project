@@ -5,7 +5,8 @@ import com.itwill.shop.dao.CartDaoImpl;
 
 public class CartDaoTestMain {
 	public static void main(String[] args)throws Exception {
-		CartDao cartDao=new CartDaoImpl();
+		
+		
 		
 	}
 

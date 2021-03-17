@@ -1,5 +1,7 @@
 package com.itwill.shop.domain;
 
+import java.util.List;
+
 public class Cart {
 	
 /*
@@ -10,49 +12,50 @@ CART_QTY            NUMBER(10)
 MEMBERS_NO          NUMBER(10) 
 MENU_NO             NUMBER(10) 
  */
-	private int cart_no;
-	private int cart_qty;
-	private int members_no;
-	private int menu_no;
+	private Integer cartNo;
+	private Integer cartQty;
+	private Members membersNo;
+	private List<Food> foodNo;
 	public Cart() {
 	}
-	public Cart(int cart_no, int cart_qty, int members_no, int menu_no) {
+	public Cart(Integer cartNo, Integer cartQty, Members membersNo, List<Food> foodNo) {
 		super();
-		this.cart_no = cart_no;
-		this.cart_qty = cart_qty;
-		this.members_no = members_no;
-		this.menu_no = menu_no;
-	}
-	public int getCart_no() {
-		return cart_no;
-	}
-	public void setCart_no(int cart_no) {
-		this.cart_no = cart_no;
-	}
-	public int getCart_qty() {
-		return cart_qty;
-	}
-	public void setCart_qty(int cart_qty) {
-		this.cart_qty = cart_qty;
-	}
-	public int getMembers_no() {
-		return members_no;
-	}
-	public void setMembers_no(int members_no) {
-		this.members_no = members_no;
-	}
-	public int getMenu_no() {
-		return menu_no;
-	}
-	public void setMenu_no(int menu_no) {
-		this.menu_no = menu_no;
+		this.cartNo = cartNo;
+		this.cartQty = cartQty;
+		this.membersNo = membersNo;
+		this.foodNo = foodNo;
 	}
 	@Override
 	public String toString() {
-		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", members_no=" + members_no + ", menu_no="
-				+ menu_no + "]";
+		return "Cart [cartNo=" + cartNo + ", cartQty=" + cartQty + ", membersNo=" + membersNo + ", foodNo=" + foodNo
+				+ "]";
+	}
+	public Integer getCartNo() {
+		return cartNo;
+	}
+	public void setCartNo(Integer cartNo) {
+		this.cartNo = cartNo;
+	}
+	public Integer getCartQty() {
+		return cartQty;
+	}
+	public void setCartQty(Integer cartQty) {
+		this.cartQty = cartQty;
+	}
+	public Members getMembersNo() {
+		return membersNo;
+	}
+	public void setMembersNo(Members membersNo) {
+		this.membersNo = membersNo;
+	}
+	public List<Food> getFoodNo() {
+		return foodNo;
+	}
+	public void setFoodNo(List<Food> foodNo) {
+		this.foodNo = foodNo;
 	}
 	
-
+	
+	
 
 }
