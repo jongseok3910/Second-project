@@ -37,8 +37,20 @@
 		select * from members
 	</select>
 	
-	<insert id="createMembers" parameterType="com.itwill.shop.domain.Members">
+	<insert id="createMembers" parameterType="Members">
 		insert into members(members_no,members_name,members_email,members_password,members_phone) 
 		values(members_no_seq.nextval,#{members_name},#{members_email},#{members_password},#{members_phone})
 	</insert>
+	
+	<update id="updateMembers" parameterType="Members">
+		update members set Members_name=#{members_name},
+		Members_email=#{members_email},
+		Members_password=#{members_password},
+		Members_phone=#{members_phone}
+        where members_no=#{members_no}
+	</update>
+	
+	<delete id="deleteMembers" parameterType="int">
+		delete from members where members_no=#{members_no}
+	</delete>
 </mapper>
