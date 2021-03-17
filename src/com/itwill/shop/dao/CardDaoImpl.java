@@ -13,50 +13,46 @@ import com.itwill.shop.dao.mapper.CartMapper;
 import com.itwill.shop.domain.Card;
 
 public class CardDaoImpl implements CardDao {
+	private SqlSessionFactory sqlSessionFactory;
 	
-	
-<<<<<<< HEAD
-
 	@Override
-	public Card findCardByNo(Integer CardNo) {
+	public Card findCardByNo(Integer cardNo) throws Exception {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlsession.getMapper(cardMapper.class);
+		CardMapper cardMapper = sqlsession.getMapper(CardMapper.class);
 		Card card = cardMapper.findCardByNo(cardNo);
 		return card;
 	}
 
 	@Override
-	public List<Card> findCardAll() {
+	public List<Card> findCardAll() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		List<Card> cardList = cardMapper.findCardAll();
 		return cardList;
 	}
 
 	@Override
-	public int insertCard(Card Card) {
+	public int insertCard(Card card) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int insertRow = cardMapper.insertCard(card);
 		return insertRow;
 	}
 
 	@Override
-	public int updateCardByNo(Card Card) {
+	public int updateCardByNo(Card card) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int updateRow = cardMapper.updateCardByNo(card);
 		return updateRow;
 	}
 
 	@Override
-	public int deleteCardByNo(Integer CardNo) {
+	public int deleteCardByNo(Integer cardNo) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int deleteRow = cardMapper.deleteCardByNo(cardNo);
 		return deleteRow;
 	}
-	
-=======
->>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
+
 }

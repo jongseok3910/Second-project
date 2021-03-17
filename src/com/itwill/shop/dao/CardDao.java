@@ -7,10 +7,10 @@ import com.itwill.shop.domain.Card;
 
 public interface CardDao {
 	
-	Card findCardByNo(Integer cardNo);
-	public List<Card> findCardAll();
-	public int insertCard(Card card);
-	public int updateCardByNo(Card card);
-	public int deleteCardByNo(Integer cardNo);
+	Card findCardByNo(Integer cardNo) throws Exception;
+	public List<Card> findCardAll() throws Exception;
+	public int insertCard(Card card) throws Exception;
+	public int updateCardByNo(Card card) throws Exception;
+	public int deleteCardByNo(Integer cardNo) throws Exception;
 
 }
