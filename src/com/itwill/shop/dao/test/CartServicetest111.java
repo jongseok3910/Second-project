@@ -9,7 +9,8 @@ public class CartServicetest111 {
 		
 		CartService cartService = new CartService();
 		
-		System.out.println(cartService.findCartAll());
+		//System.out.println(cartService.findCartAll());
+		System.out.println(cartService.findCartByFoodNo(302));
 
 	}
 
