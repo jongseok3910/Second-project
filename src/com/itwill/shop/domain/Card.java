@@ -36,7 +36,7 @@ MEMBERS_NO           NUMBER(10)
 		
 		
 
-		public void setCard_no(long card_no) {
+		public void setCard_no(int card_no) {
 			this.card_no = card_no;
 		}
 		public long getCard_number() {
