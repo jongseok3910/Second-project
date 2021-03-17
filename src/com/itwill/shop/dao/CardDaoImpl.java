@@ -9,23 +9,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.shop.dao.mapper.CardMapper;
+import com.itwill.shop.dao.mapper.CartMapper;
 import com.itwill.shop.domain.Card;
 
 public class CardDaoImpl implements CardDao {
 	
-	private SqlSessionFactory sqlSessionFactory;
-	public CardDaoImpl() throws Exception{
-		try {
-			InputStream mybatisConfigInputStream=
-					Resources.getResourceAsStream("mybatis-config.xml");
-			SqlSessionFactoryBuilder sqlSessionFactoryBuilder=new SqlSessionFactoryBuilder();
-		this.sqlSessionFactory=
-				sqlSessionFactoryBuilder.build(mybatisConfigInputStream);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
+<<<<<<< HEAD
 
 	@Override
 	public Card findCardByNo(Integer CardNo) {
@@ -67,4 +57,6 @@ public class CardDaoImpl implements CardDao {
 		return deleteRow;
 	}
 	
+=======
+>>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
 }
