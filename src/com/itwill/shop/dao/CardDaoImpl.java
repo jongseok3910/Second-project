@@ -66,7 +66,7 @@ public class CardDaoImpl implements CardDao {
 		} finally {
 			sqlSession.commit();
 			sqlSession.close();
-		}
+		}	
 		return -1;
 	}
 
