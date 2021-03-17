@@ -12,16 +12,25 @@ MEMBERS_NO           NUMBER(10)
  */
 	
 		private int card_no;
-		private long	card_number;
+		private String card_number;
 		private String card_name;
 		private int card_type;
 		private int members_no;
 		public Card() {
 			// TODO Auto-generated constructor stub
 		}
-		public Card(int card_no,int	card_number,String card_name,int card_type,int members_no) {
+		public Card(int card_no,String	card_number,String card_name,int card_type,int members_no) {
 			super();
 			this.card_no=card_no;
+			this.card_number=card_number;
+			this.card_name=card_name;
+			this.card_type=card_type;
+			this.members_no=members_no;
+			
+		}
+		
+		public Card(String	card_number,String card_name,int card_type,int members_no) {
+			super();
 			this.card_number=card_number;
 			this.card_name=card_name;
 			this.card_type=card_type;
@@ -39,10 +48,10 @@ MEMBERS_NO           NUMBER(10)
 		public void setCard_no(int card_no) {
 			this.card_no = card_no;
 		}
-		public long getCard_number() {
+		public String getCard_number() {
 			return card_number;
 		}
-		public void setCard_number(long card_number) {
+		public void setCard_number(String card_number) {
 			this.card_number = card_number;
 		}
 		public String getCard_name() {

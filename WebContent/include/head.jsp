@@ -321,6 +321,7 @@
 			left: 0;
 			z-index: 100;
 		}
+		
 	</style>
 
 	<title>Mac2Jo Delivery</title>
