@@ -18,11 +18,12 @@ public class CartServicetest111 {
 		//System.out.println(cartService.findCartAll());
 		//System.out.println(cartService.findCartByFoodNo(302));
 		//System.out.println(cartService.findCartByMembersNo(8));
-		List<Food> food = new ArrayList<>();
-		food.add(new Food(305));
-		Cart cart = new Cart(null, 4, 11, food);
-		//System.out.println(food);
-		System.out.println(cartService.insertCart(cart));
+
+		//Cart cart = new Cart(6, 8, 11, 305);
+		
+		//System.out.println(cartService.insertCart(cart));
+		//System.out.println(cartService.updateCartByNo(cart));
+		System.out.println(cartService.deleteCartByNo(11));
 		
 
 	}

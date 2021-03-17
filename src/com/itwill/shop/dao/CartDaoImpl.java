@@ -66,7 +66,7 @@ public class CartDaoImpl implements CartDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
 		int deleteRow = cartMapper.deleteCartByNo(memberNo);
-		return 0;
+		return deleteRow;
 	}
 	@Override
 	public List<Cart> findCartByMembersNo(Integer membersNo) {
