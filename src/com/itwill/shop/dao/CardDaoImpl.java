@@ -2,37 +2,67 @@ package com.itwill.shop.dao;
 
 import java.util.List;
 
-import com.itwill.shop.domain.Address;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.itwill.shop.dao.mapper.CardMapper;
 import com.itwill.shop.domain.Card;
 
 public class CardDaoImpl implements CardDao {
-	@Override
-	public int deleteCardByNo(Integer cardNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	private SqlSessionFactory sqlSessionFactory;
+	public CardDaoImpl() throws Exception{
+		try {
+			InputStream mybatisConfigInputStream=
+					Resources.getResourceAsStream("mybatis-config.xml");
+			SqlSessionFactoryBuilder sqlSessionFactoryBuilder=new SqlSessionFactoryBuilder();
+		this.sqlSessionFactory=
+				sqlSessionFactoryBuilder.build(mybatisConfigInputStream);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
+
 	@Override
-	public List<Card> findcardAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Card findCardByNo(Integer CardNo) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlsession.getMapper(cardMapper.class);
+		Card card = cardMapper.findCardByNo(cardNo);
+		return card;
 	}
-	
+
 	@Override
-	public Address findCardByNo(Integer cardNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Card> findCardAll() {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		List<Card> cardList = cardMapper.findCardAll();
+		return cardList;
 	}
-	
+
 	@Override
-	public int insertCard(Address card) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertCard(Card Card) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		int insertRow = cardMapper.insertCard(card);
+		return insertRow;
 	}
-	
+
 	@Override
-	public int updateCardByNo(Address card) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateCardByNo(Card Card) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		int updateRow = cardMapper.updateCardByNo(card);
+		return updateRow;
+	}
+
+	@Override
+	public int deleteCardByNo(Integer CardNo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlSession.getMapper(cardMapper.class);
+		int deleteRow = cardMapper.deleteCardByNo(cardNo);
+		return deleteRow;
 	}
 }
