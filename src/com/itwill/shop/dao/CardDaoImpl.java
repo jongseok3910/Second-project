@@ -10,7 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.shop.dao.mapper.CardMapper;
 import com.itwill.shop.dao.mapper.CartMapper;
+import com.itwill.shop.dao.mapper.MembersMapper;
 import com.itwill.shop.domain.Card;
+import com.itwill.shop.domain.Members;
 
 public class CardDaoImpl implements CardDao {
 	private SqlSessionFactory sqlSessionFactory;
@@ -26,8 +28,9 @@ public class CardDaoImpl implements CardDao {
 			e.printStackTrace();
 		}
 	}
+	
 	@Override
-	public Card findCardByNo(int cardNo) throws Exception {
+	public Card findCardByNo(Integer cardNo){
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlsession.getMapper(CardMapper.class);
 		Card card = cardMapper.findCardByNo(cardNo);
@@ -35,7 +38,7 @@ public class CardDaoImpl implements CardDao {
 	}
 
 	@Override
-	public List<Card> findCardAll() throws Exception {
+	public List<Card> findCardAll(){
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		List<Card> cardList = cardMapper.findCardAll();
@@ -43,7 +46,7 @@ public class CardDaoImpl implements CardDao {
 	}
 
 	@Override
-	public int insertCard(Card card) throws Exception {
+	public int insertCard(Card card){
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int insertRow = cardMapper.insertCard(card);
@@ -52,14 +55,23 @@ public class CardDaoImpl implements CardDao {
 
 	@Override
 	public int updateCardByNo(Card card) throws Exception {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
-		int updateRow = cardMapper.updateCardByNo(card);
-		return updateRow;
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		CardMapper cardMapper=sqlSession.getMapper(CardMapper.class);
+		try {
+			int rowCount = cardMapper.updateCardByNo(card);
+			return rowCount;
+		} catch (Exception e) {
+			sqlSession.rollback();
+			sqlSession.close();
+		} finally {
+			sqlSession.commit();
+			sqlSession.close();
+		}
+		return -1;
 	}
 
 	@Override
-	public int deleteCardByNo(Integer cardNo) throws Exception {
+	public int deleteCardByNo(Integer cardNo){
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int deleteRow = cardMapper.deleteCardByNo(cardNo);
