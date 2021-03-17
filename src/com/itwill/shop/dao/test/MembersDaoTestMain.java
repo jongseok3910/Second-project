@@ -13,7 +13,7 @@ public class MembersDaoTestMain {
 //		System.out.println(memberService.findMembersByNo(1));
 //		System.out.println(memberService.selectAll());
 		
-		Members members = new Members(0, "김복자", "k9@kkk.kkk", "1234", "01024546788");
+		Members members = new Members(0, "김복자", "k9@kke.kkk", "1234", "01045689983");
 		memberService.createMembers(members);
 	}
 }

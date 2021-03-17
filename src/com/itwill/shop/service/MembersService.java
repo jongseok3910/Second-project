@@ -38,10 +38,10 @@ public class MembersService {
 	}
 	
 	public int createMembers(Members members) throws Exception{
-//		if(memberDao.findMembersById(members.getMembers_email())!=null) {
-//			return 0;
-//		}
-		return createMembers(members);
+		if(memberDao.findMembersById(members.getMembers_email())!=null) {
+			return 0;
+		}
+		return memberDao.createMembers(members);
 	}
 //	/*
 //	 * 회원가입
