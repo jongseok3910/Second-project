@@ -8,14 +8,17 @@ public class CardDaoTestMain {
 	public static void main(String[] args) throws Exception {
 		
 		CardDaoImpl cardDao=new CardDaoImpl();
-		System.out.println(cardDao.findCardByNo(111));
-		/*
-		System.out.println(cardDao.findCardAll());
-		Card card= new Card(5, 5555-5555-5555-5555, "농협카드", 0, 1);
-		System.out.println(cardDao.insertCard(card));
-		System.out.println(cardDao.updateCardByNo(card));
-		System.out.println(cardDao.deleteCardByNo(3));
-		*/
+		//System.out.println(cardDao.findCardByNo(1));  // =  성공 
+		
+		//System.out.println(cardDao.findCardAll()); //  =  성공 
+		
+		Card card= new Card(2,"5555555555555555", "농협카드", 0, 2);
+		//System.out.println(cardDao.insertCard(card)); //  = 실패 
+		
+		Card card1= new Card("111111111111", "국민카드", 1, 1);
+		System.out.println(cardDao.updateCardByNo(card1));  //= 실패
+		//System.out.println(cardDao.deleteCardByNo(2)); // =  성공 
+		
 		
 	
 	}

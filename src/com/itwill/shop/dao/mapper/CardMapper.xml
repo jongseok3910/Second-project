@@ -27,8 +27,12 @@
 	
 	<!-- update -->
 	
+	
 	<update id="updateCardByNo" parameterType="com.itwill.shop.domain.Card">
-	update address set card_number=#{cardNumber},card_name=#{cardName},card_type=#{cardType} where members_no =#{membersNo}
+		update members set card_number=#{cardNumber},
+		card_name=#{cardName},
+		card_type=#{cardType},
+        where members_no=#{members_no}
 	</update>
 	
 	<!-- delete -->
