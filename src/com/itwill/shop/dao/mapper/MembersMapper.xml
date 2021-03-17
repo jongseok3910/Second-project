@@ -12,7 +12,7 @@
 	<resultMap type="Members" id="membersWithCartMap" autoMapping="true">
 		<result column="MEMBERS_NO" property="members_no"/>
 		<association property="members_no" javaType="Cart" autoMapping="true">
-			<result column="CART_NO" property="cart_no"/>
+			<result column="CART_NO" property="cartNo"/>
 		</association>
 	</resultMap>
 	
