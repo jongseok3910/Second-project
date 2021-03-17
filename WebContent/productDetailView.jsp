@@ -260,7 +260,7 @@ body #content {
 				</div>
 			</div>
 		</div>
-		<%@include file="commentListView.jsp" %>
+		<%@include file="../include/boardListView.jsp" %>
 
 	</div>
 	<%@ include file="../include/bottom.jsp"%>
