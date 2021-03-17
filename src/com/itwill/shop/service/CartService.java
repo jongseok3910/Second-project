@@ -18,8 +18,12 @@ public class CartService {
 		return cartDao.findCartAll();
 	}
 	
-	public Cart findCartByFoodNo(Integer foodNo) {
+	public List<Cart> findCartByFoodNo(Integer foodNo) {
 		return cartDao.findCartByFoodNo(foodNo);
+	}
+	
+	public List<Cart> findCartByMembersNo(Integer membersNo) {
+		return cartDao.findCartByMembersNo(membersNo);
 	}
 	
 	public int updateCartByNo(Cart cart) {

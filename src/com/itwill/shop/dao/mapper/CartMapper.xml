@@ -9,10 +9,9 @@
 		<association property="membersNo" javaType="com.itwill.shop.domain.Members" autoMapping="true">
 			<result column="MEMBERS_NO" property="members_no"/>
 		</association>
-		<collection property="foodNo" ofType="com.itwill.shop.domain.Food" 
-										  javaType="java.util.List" autoMapping="true">
+		<association property="foodNo" javaType="com.itwill.shop.domain.Food" autoMapping="true">
 			<result column="FOOD_NO" property="foodNo"/>
-		</collection>
+		</association>
 		 
 	</resultMap>
 
@@ -21,20 +20,24 @@
 	</select>
 	
 	<select id="findCartByFoodNo" resultMap="cartWithMemberAndFoodResultMap" parameterType="int">
-		select * from cart c join food f on f.food_no=#{foodNo.foodNo}
+		select * from cart c join food f on c.food_no=f.food_no where f.food_no=#{foodNo}
+	</select>
+	
+	<select id="findCartByMembersNo" resultMap="cartWithMemberAndFoodResultMap" parameterType="int">
+		select * from cart c join members m on c.members_no=m.members_no where m.members_no =#{memberNo}
 	</select>
 	
 	<update id="updateCartByNo" parameterType="com.itwill.shop.domain.Cart" >
-		update cart set cart_qty=#{cartQty} where cart_no=#{cartNo} and food_no= #{foodNo.foodNo}
+		update cart set cart_qty=#{cartQty} where cart_no=#{cartNo} and food_no= #{foodNo}
 	</update>
 	
 	<insert id="insertCart" parameterType="com.itwill.shop.domain.Cart">
-		insert into cart(CART_NO, CART_QTY,MEMBERS_NO, FOOD_NO) 
-		values(CART_NO_SEQ.nextval,#{cartQty},#{membersNo.membersNo},#{foodNo.foodNo})
+		insert into cart(CART_NO, CART_QTY,MEMBERS_NO,FOOD_NO) 
+		values(CART_NO_SEQ.nextval,#{cartQty},#{membersNo},#{foodNo})
 	</insert>
 	
 	<delete id="deleteCartByNo" parameterType="int">
-		delete from cart where members_no=#{membersNo.membersNo}
+		delete from cart where members_no=#{membersNo}
 	</delete>
 
 </mapper>

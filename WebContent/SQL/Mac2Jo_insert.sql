@@ -23,7 +23,7 @@ insert into address values(ADDRESS_NO_SEQ.nextval,'부산집','부산광역시 �
 
 --CART
 insert into cart values(CART_NO_SEQ.nextval,1,1,301);
-insert into cart values(CART_NO_SEQ.nextval,2,5,301);
+insert into cart values(CART_NO_SEQ.nextval,3,8,302);
 
 --Orders,Orders_detail
 insert into Orders values(ORDERS_NO_SEQ.nextval,'빅맥',sysdate,5300,1);

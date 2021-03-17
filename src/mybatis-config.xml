@@ -32,11 +32,12 @@
 	</environments>
 	<mappers>
 <!--
-		<mapper class="com.itwill.shop.dao.mapper.CardMapper"/>
+		
 		<mapper class="com.itwill.shop.dao.mapper.CategoryMapper"/>
 		<mapper class="com.itwill.shop.dao.mapper.CommentsMapper"/>
 		<mapper class="com.itwill.shop.dao.mapper.OrdersDetailMapper"/>
 -->
+		<mapper class="com.itwill.shop.dao.mapper.CardMapper"/>
 		<mapper class="com.itwill.shop.dao.mapper.CartMapper"/>
 		<mapper class="com.itwill.shop.dao.mapper.MembersMapper"/>
 		<mapper class="com.itwill.shop.dao.mapper.AddressMapper"/>

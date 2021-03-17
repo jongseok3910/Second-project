@@ -106,7 +106,7 @@ CREATE SEQUENCE Comment_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 /**********************************/
 CREATE TABLE Card(
 		Card_no NUMBER PRIMARY KEY,
-        card_number INTEGER,
+        card_number VARCHAR2(30),
 		Card_name VARCHAR2(100),
 		Card_type NUMBER(10) DEFAULT 0,
 		Members_no NUMBER(10),

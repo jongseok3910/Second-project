@@ -7,7 +7,7 @@ import com.itwill.shop.domain.Card;
 
 public interface CardDao {
 	
-	Card findCardByNo(Integer cardNo) throws Exception;
+	Card findCardByNo(int cardNo) throws Exception;
 	public List<Card> findCardAll() throws Exception;
 	public int insertCard(Card card) throws Exception;
 	public int updateCardByNo(Card card) throws Exception;

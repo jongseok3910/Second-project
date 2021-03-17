@@ -13,7 +13,8 @@ public interface CartMapper {
 	 * 메쏘드리턴타입은 StudentMapper.xml 파일의 resultType 와일치(ResultSet이 한 개 이상일 경우 반환타입이 List이다)
 	 */
 	public List<Cart> findCartAll(); 
-	public Cart findCartByFoodNo(Integer foodNo);
+	public List<Cart> findCartByFoodNo(Integer foodNo);
+	public List<Cart> findCartByMembersNo(Integer membersNo);
 	public int updateCartByNo(Cart cart);
 	public int insertCart(Cart cart);
 	public int deleteCartByNo(Integer memberNo);

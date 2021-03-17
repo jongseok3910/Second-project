@@ -12,7 +12,7 @@ public interface CardMapper {
 	 * 메쏘드리턴타입은 StudentMapper.xml 파일의 resultType 와일치(ResultSet이 한 개 이상일 경우 반환타입이 List이다)
 	 */
 	
-	public Card findCardByNo(Integer cardNo) throws Exception;
+	public Card findCardByNo(int cardNo) throws Exception;
 	/*
  	<select id=findCardByNo" parameterType="int" resultMap=cardResultMap">
 		select * from card where card_no = #{cardNo}
@@ -36,8 +36,8 @@ public interface CardMapper {
 	
 	public int updateCardByNo(Card card) throws Exception;
 	/*
-	 <update id="updateAddressByNo" parameterType="com.itwill.shop.domain.Address">
-		update address set address_name=#{addressName},address_detail=#{addressDetail},address_type=#{addressType}
+	 <update id="updateCardByNo" parameterType="com.itwill.shop.domain.Card">
+		update card set card_name=#{cardName},card_detail=#{cardDetail},card_type=#{cardType}
 	</update>
 	 */
 	
