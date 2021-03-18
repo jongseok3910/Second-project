@@ -11,8 +11,18 @@
 %>
 
 <script type="text/javascript">
+	var pagehandle=0;
+	function openpage() {
+		if(pagehandle==0){
+			document.getElementById("openpage").style.display="block";
+			pagehandle=1;
+		}else{
+			document.getElementById("openpage").style.display="none";
+			pagehandle=0;
+		}
+	}
 </script>
-
+	
 <body style="">
 	<div id="content">
 
@@ -51,6 +61,7 @@
 							<th width="80">작성자</th>
 							<th width="80">작성일</th>
 							<th width="80">평점</th>
+							<th width="80">댓글작성</th>
 						</tr>
 					</tbody>
 				</table>
@@ -117,11 +128,119 @@
 									%>
 									<%= evalStr %>
 								</td>
-								
+								<td width="80" align="center"><img src="./" onclick="openpage()"/></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+				<!-- 대댓글 시작 -->
+				<div style="display: none;" id="openpage">
+				<table id="table_after" width="60%" cellpadding="0" cellspacing="0"
+				border="0" style="margin: 0 auto">
+			<tbody>
+				<tr>
+					<td
+						style="border-style: solid; border-width: 10px; border-color: #000000"
+						valign="top">
+
+
+						<div
+							style="margin-left: 20px; margin-right: 20px; margin-top: 10px;">
+
+							<div
+								style="border-width: 1px; border-style: solid; border-color: #DEDEDE; margin-top: 5px;"
+								class="hundred">
+								<table width="100%" cellpadding="0" cellspacing="0" border="0">
+									<tbody>
+										<tr>
+											<td
+												style="border-width: 3px; border-style: solid; border-color: #F3F3F3; padding: 5px 5px 5px 5px">
+
+												<table width="100%" id="form" cellpadding="5"
+													cellspacing="0" border="0" align="center">
+													<colgroup>
+														<col width="80">
+													</colgroup>
+													<tbody>
+														<tr>
+															<td colspan="2" height="1" bgcolor="#DEDEDE"
+																style="padding: 0px;"></td>
+														</tr>
+														<tr>
+															<td class="input_txt" align="right">평가</td>
+															<td class="noline">
+																<input type="radio" name="evalPoint" name="evalPoint" value="5" class="noline" checked="checked">★★★★★
+																<input type="radio" name="evalPoint" value="4" class="noline">★★★★☆ 
+																<input type="radio" name="evalPoint" value="3" class="noline">★★★☆☆ 
+																<input type="radio" name="evalPoint" value="2" class="noline">★★☆☆☆
+																<input type="radio" name="evalPoint" value="1" class="noline">★☆☆☆☆</td>
+														</tr>
+														<tr>
+															<td colspan="2" height="1" bgcolor="#DEDEDE"
+																style="padding: 0px;"></td>
+														</tr>
+														<tr>
+															<td class="input_txt" align="right">작성자</td>
+															<td>
+																<div style="float: left; width: 50%;">
+																<!-- readonly="readonly" -->
+																	<input type="text" name="memberId" style="width: 100px;" 
+																		required="" fld_esssential="" readonly="readonly"  label="작성자" value="">
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2" height="1" bgcolor="#DEDEDE"
+																style="padding: 0px;"></td>
+														</tr>
+														<tr>
+															<td class="input_txt" align="right">제목</td>
+															<td><input type="text" id="title" name="title"
+																style="width: 95%" required="" fld_esssential=""
+																label="제목" value=""></td>
+														</tr>
+														<tr>
+															<td colspan="2" height="1" bgcolor="#DEDEDE"
+																style="padding: 0px;"></td>
+														</tr>
+														<tr>
+															<td class="input_txt" align="right">내용</td>
+															<td><textarea id="content" name="content"
+																	style="width: 95%; height: 120px;" required=""
+																	fld_esssential="" label="내용"></textarea></td>
+														</tr>
+														<tr>
+															<td colspan="2" height="1" bgcolor="#DEDEDE"
+																style="padding: 0px;"></td>
+														</tr>
+
+													</tbody>
+												</table>
+										</tr>
+									</tbody>
+								</table>
+								
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<div align="center" style="padding-bottom: 210px;">
+					<%if(true){ %>
+						<img src="./res/btn_confirm.gif" onClick="confirm()">&nbsp; 
+					<%}else{ %>
+						<img src="./res/btn_confirm.gif" onClick="">&nbsp; 
+					<%} %>
+						<img src="./res/btn_order_back.gif" onclick="history.back()" style="cursor: pointer; vertical-align: bottom; height: 55;">
+					</div>
+					</td>
+				</tr>
+			</tbody>
+			
+		</table>
+	</div>
+				<!-- 대댓글 End -->
 				<%count++; } %>
 				<!-- 게시판 표시 종료 -->
 				</form>
