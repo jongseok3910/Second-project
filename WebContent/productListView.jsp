@@ -207,9 +207,10 @@ body .pprice, body .pprice:hover {
 													<tr>
 
 														<%
-														int i = 0;
+														int i = 0;														
 														for (Food food : foodList)
 														{
+															
 															i++;
 															if (i == 1 || i % 3 == 1) {
 														%>
@@ -225,7 +226,7 @@ body .pprice, body .pprice:hover {
 																<div class="gview1">
 																	<div class="gooodimg"
 																		style="margin-left: auto; margin-right: auto; display: block;">
-																		<a href="productDetailView.jsp"> <img
+																		<a href="productDetailView.jsp?Food_no=<%= food.getFoodNo() %>"> <img
 																			src="./image/<%=food.getFoodImage()%>" width="60"
 																			class="">
 																		</a>
@@ -238,7 +239,7 @@ body .pprice, body .pprice:hover {
 
 																		<div style="padding-bottom: 20px;">
 																			<a href="" class="pprice"><b
-																				style="font-weight: 600;">2</b><span
+																				style="font-weight: 600;"><%=food.getFoodPrice() %></b><span
 																				style="font-size: 16px; font-weight: 700;">원</span></a>
 																		</div>
 																	</div>
