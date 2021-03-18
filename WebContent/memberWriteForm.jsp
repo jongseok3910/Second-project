@@ -17,7 +17,7 @@
 	} 
 	
 	// 아이디 중복체크 화면open
-/*
+
 	function openIdChk(e){		
 		if (document.frmMember.memberId.value == "") {
 			alert("아이디를 입력하십시요.");
@@ -25,13 +25,13 @@
 			return false;
 		}
 		var param="?memberId="+document.frmMember.memberId.value;
-
-	}
-*/		
 		var param="?kim";
 		window.name = "parentForm";
 		window.open("memberIdCheckForm.jsp"+param,
 				"chkForm", "width=500,height=300,resizable = no,scrollbars = no");	
+
+	}
+	
 		
 		
 	

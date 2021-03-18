@@ -13,13 +13,13 @@
 
 		<script type="text/javascript">
 		function jumunComplete() {
-			window.location.href = 'jumunAction.do';
+			window.location.href = 'jumunComplete.jsp';
 			//frmOrder.action = 'jumunAction.do';
 			//frmOrder.method = 'POST';
 			//frmOrder.submit();
 		}
 		function historyback(){
-			window.location.href = 'cartForm.do';
+			window.location.href = 'mac_main.jsp';
 			
 		}
 		
@@ -410,7 +410,7 @@
 					
 						<img src="./res/btn_order_pay.gif"  onclick="jumunComplete()"
 						style="vertical-align: top; border: none;">&nbsp; 
-						<img src="./res/btn_order_back.gif" onclick="history.back()"
+						<img src="./res/btn_order_back.gif" onclick="historyback()"
 						style="cursor: pointer; vertical-align: top;">
 					
 				</div>

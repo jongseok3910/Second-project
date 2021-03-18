@@ -538,7 +538,7 @@ table.orderitem-list tfoot tr td table td {
 					style="margin-top: 30px;">
 					<tbody>
 						<tr>
-							<td align="center"><a href="jumunForm.do" onfocus="blur()">
+							<td align="center"><a href="jumunForm.jsp" onfocus="blur()">
 									<!--<img src="/shop/data/skin/mera_ws/img/common/btn_check_order.gif" border=0>-->
 									<span
 									style="display: inline-block; background: #364437; color: #fff; font-weight: bold; width: 200px; line-height: 45px;">주문하기</span>

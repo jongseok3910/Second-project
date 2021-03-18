@@ -213,7 +213,7 @@ body #content {
 						<!-- 각종 버튼 -->
 						<div>
 
-							<a href="cartUpdateAddAction.do?productNo=1" id="cartBtn" onclick="cartbtn()">
+							<a href="cartForm.jsp" id="cartBtn" onclick="cartbtn()">
 								<img src="./res/btn_cart.gif">
 							</a>
 
@@ -260,7 +260,7 @@ body #content {
 				</div>
 			</div>
 		</div>
-		<%@include file="commentListView.jsp" %>
+		<%@include file="../include/boardListView.jsp" %>
 
 	</div>
 	<%@ include file="../include/bottom.jsp"%>

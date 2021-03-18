@@ -209,7 +209,7 @@ body .pprice, body .pprice:hover {
                                              <!-- 할인율 -->
                                              <div class="gview1">
                                                 <div class="gooodimg"style="margin-left: auto; margin-right: auto; display: block;">	
-												<a href="">
+												<a href="productDetailView.jsp">
                                                    <img src= width="70"  class="">
                                                 </a>              
                                              </div>

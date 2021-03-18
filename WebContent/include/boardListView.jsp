@@ -124,9 +124,9 @@
 				<a href="boardListView.do?boardNo=<%= i+1 %>" class="navi">[<%=i+1 %>]</a>
 			<% } %>
 
-			<a href="" onclick=""><img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;"></a>
 			</div>
 		</div>
+		<%@include file="../include/commentWrite.jsp" %>
 		<!-- End indiv -->
 		<!-- 검색 : Start -->
 				<div
