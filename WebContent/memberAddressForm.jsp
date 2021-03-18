@@ -5,10 +5,6 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
-<<<<<<< HEAD
-<%@ include file="login_check.jspf" %>
-=======
-
 <%@ include file="login_check.jspf" %>
 
 <%
@@ -18,9 +14,6 @@
 	Address address=addressService.findAddressByNo((int)session.getAttribute("members_no"));
 	Members members=membersService.findMembersByNo((int)session.getAttribute("members_no"));
 %>
-
->>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
-
 <style type="text/css">
 div.passwordStrenth {
 	background-color: #FFFFFF;
@@ -300,13 +293,8 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(이름을 불러온다)-->
-<<<<<<< HEAD
-								<td width=145 height=26 align=center class=t1>1</td>
-=======
-
 								<td width=145 height=26 align=center class=t1><%=members.getMembers_name()%></td>
 
->>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
 							</tr>
 							<tr>
 								<th
@@ -314,13 +302,9 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(아이디를 불러온다)-->
-<<<<<<< HEAD
-								<td width=145 height=26 align=center class=t1>2</td>
-=======
 
 								<td width=145 height=26 align=center class=t1><%=members.getMembers_email()%></td>
 
->>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
 							</tr>
 							<tr>
 								<th
@@ -361,11 +345,9 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 									<!--밑은 내가 수정한부분(주소를 불러온다)-->
-<<<<<<< HEAD
-								<td width=145 height=26 align=center class=t1>1</td>
-=======
-								<td width=145 height=26 align=center class=t1><%=address.getAddressName()%></td>
->>>>>>> branch 'master' of https://github.com/2020-12-JAVA-BACKEND/2nd-project-team2-Mac2ja.git
+
+								<td width=145 height=26 align=center class=t1><%=address.getAddress_name()%></td>
+
 							</tr>
 								
 							<tr>

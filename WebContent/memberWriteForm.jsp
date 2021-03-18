@@ -1,7 +1,6 @@
 <%@page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="login_check.jspf" %>	
 <%
 	String message=request.getParameter("message");
 	if(message==null){
