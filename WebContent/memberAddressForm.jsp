@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
-<%@ include file="login_checj.jspf" %>
+<%@ include file="login_check.jspf" %>
 
 <style type="text/css">
 div.passwordStrenth {
@@ -285,7 +285,7 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(이름을 불러온다)-->
-								<td width=145 height=26 align=center class=t1><%=Members.getMembers_name()%></td>
+								<td width=145 height=26 align=center class=t1>1</td>
 							</tr>
 							<tr>
 								<th
@@ -293,7 +293,7 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(아이디를 불러온다)-->
-								<td width=145 height=26 align=center class=t1><%=Members.getMembers_email()%></td>
+								<td width=145 height=26 align=center class=t1>2</td>
 							</tr>
 							<tr>
 								<th
@@ -334,7 +334,7 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 									<!--밑은 내가 수정한부분(주소를 불러온다)-->
-								<td width=145 height=26 align=center class=t1><%=Address.getAddressName%></td>
+								<td width=145 height=26 align=center class=t1>1</td>
 							</tr>
 								
 							<tr>

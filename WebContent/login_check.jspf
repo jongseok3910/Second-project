@@ -4,7 +4,7 @@
 <%
 	String sMembers_id = (String)session.getAttribute("members_email");
 	int sMembers_no = (int)session.getAttribute("members_no");	
-	if(sEmail==null){
+	if(sMembers_id==null){
 		response.sendRedirect("mac_main.jsp");
 		return;
 	}
