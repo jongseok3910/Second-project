@@ -10,7 +10,7 @@
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
 	String food_no = request.getParameter("food_no");	
-	
+	System.out.println(evalPoint+" "+memberId+" "+title+" "+content+" "+food_no);
 	
 	Comments comments = 
 			new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,0,0,0,Integer.parseInt(food_no));
