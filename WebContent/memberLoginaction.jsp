@@ -15,7 +15,8 @@
 	 		session.setAttribute("members_no", members.getMembers_no());
 	 		response.sendRedirect("mac_main.jsp");
 	 	}	
-	 	response.sendRedirect("mac_main.jsp");
+ 	}else{
+ 			response.sendRedirect("mac_main.jsp");
  	}
 
 %>

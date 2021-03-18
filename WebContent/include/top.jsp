@@ -4,9 +4,11 @@
 	SimpleDateFormat format = new SimpleDateFormat ("HH");
 	String format_time = format.format (System.currentTimeMillis());
 	
+	String sMembers_id="";
+	int sMembers_no=0;
 	if(session.getAttribute("members_email")!=null){
-		String sMembers_id = (String)session.getAttribute("members_email");
-		int sMembers_no = (int)session.getAttribute("members_no");	
+		sMembers_id = (String)session.getAttribute("members_email");
+		sMembers_no = (int)session.getAttribute("members_no");	
 	}
 %>
 <script type="text/javascript">
@@ -25,7 +27,7 @@
 
 			<div class="tarea3">
 				<ul>
-					<%if(session.getAttribute("members_email")!=null){ %>
+					<%if(!sMembers_id.equals("")){ %>
 					<li>
 						<a href="memberLoginOut.jsp">로그아웃</a>	
 					</li>
