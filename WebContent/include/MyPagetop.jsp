@@ -3,6 +3,11 @@
 <%
 	SimpleDateFormat format = new SimpleDateFormat ("HH");
 	String format_time = format.format (System.currentTimeMillis());
+	
+	if(session.getAttribute("members_email")!=null){
+		String sMembers_id = (String)session.getAttribute("members_email");
+		int sMembers_no = (int)session.getAttribute("members_no");	
+	}
 %>
 <script type="text/javascript">
 	function ck() {
@@ -20,9 +25,15 @@
 
 			<div class="tarea3">
 				<ul>
+					<%if(session.getAttribute("members_email")!=null){ %>
+					<li>
+						<a href="memberLoginOut.jsp">로그아웃</a>	
+					</li>
+					<%}else{ %>
 					<li>
 						<a href="memberLoginForm.jsp">로그인</a>	
 					</li>
+					<%} %>
 					<li>
 						<a href="memberWriteForm.jsp">회원가입</a>
 					</li>

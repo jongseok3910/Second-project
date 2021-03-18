@@ -15,15 +15,15 @@
 					입력해주세요.</span>
 			
 			</div>
-			<form method="post" action="memberLoginAction.do" id="form"
+			<form method="post" action="memberLoginaction.jsp" id="form"
 				name="form">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
-						<input type="text" name="memberId" onfocus="this.value='';" value="" placeholder="아이디" class="txtborder">
+						<input type="text" name="members_email" onfocus="this.value='';" value="" placeholder="아이디" class="txtborder">
 						
 					</p>
 					<p style="margin-bottom: 10px;">
-						<input type="password" name="memberPassword" onfocus="this.value='';"	value="" placeholder="비밀번호" class="txtborder">
+						<input type="password" name="members_password" onfocus="this.value='';"	value="" placeholder="비밀번호" class="txtborder">
 						
 					</p>
 					<p>

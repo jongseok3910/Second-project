@@ -65,6 +65,16 @@ public class MembersDaoImpl implements MembersDao {
 	}
 	
 	@Override
+	public Members findMembersByPassWord(String members_password) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		Members members = membersMapper.findMembersByPassWord(members_password);
+		sqlSession.commit();
+		sqlSession.close();
+		return members;
+	}
+	
+	@Override
 	public int createMembers(Members members) throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
