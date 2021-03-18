@@ -1,4 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.domain.Comments"%>
+<%@page import="com.itwill.shop.service.CommentsService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%
+	CommentsService commentsService = new CommentsService();
+	List<Comments> commentsList = commentsService.findCommentAll();
+%>
 
 <script type="text/javascript">
 </script>
@@ -46,14 +53,16 @@
 				</table>
 
 				<!-- 게시판 표시 시작 -->
-				<% for (int i =0; i < 10; i ++) { %>
+				<% 
+				int count=1;
+				for (Comments comments : commentsList) {%>
 				<div>
 					<table width="100%" cellpadding="0" cellspacing="0"
 						style="border-top: none; cursor: pointer;" class="listtablen"
 						>
 						<tbody>
 							<tr>
-								<td width="50" align="center"><%=i %></td>
+								<td width="50" align="center"><%=count %></td>
 								<td width="100" align="center" style="padding: 10px 0;">
 								<a href="">
 									<img src="./" width="70"/></a></td>
@@ -65,14 +74,13 @@
 											<tr>
 												<td style="padding-top: 5px; border: none; height: auto; text-align: left; color: #333;">
 													<a href="">		
-													<%= "K"+i %>
+													<%= comments.getComments_writer() %>
 													</a>		
 												</td>
 											</tr>
 											<tr>
 												<td style="padding-top: 5px; padding-bottom: 5px; border: none; height: auto; text-align: left;">
 													<a href="">
-														<%="난 "+i+"번 째" %>
 													</a>
 												</td>
 											</tr>
@@ -80,12 +88,12 @@
 										</tbody>
 									</table>
 								</td>
-								<td width="80" align="center"><%= i+" 번째 작성자" %></td>
+								<td width="80" align="center"><%=count +" 번째 작성자" %></td>
 								<td width="80" align="center">2020-20-20</td>
 								<td width="80" style="color: #744134;">
 									<%
 										String evalStr = "";
-									switch(5) {
+									switch(comments.getComments_star()) {
 									case 1:
 										evalStr = "★☆☆☆☆";
 										break;
@@ -111,7 +119,7 @@
 						</tbody>
 					</table>
 				</div>
-				<% } %>
+				<%count++; } %>
 				<!-- 게시판 표시 종료 -->
 
 
@@ -120,11 +128,12 @@
 
 			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
 			
-			<% for (int i = 0; i < 10; i++) { %>
-				<a href="boardListView.do?boardNo=<%= i+1 %>" class="navi">[<%=i+1 %>]</a>
-			<% } %>
+			<% 
+			count=1;
+			for (Comments comments : commentsList) { %>
+				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">[<%=count %>]</a>
+			<% count++;} %>
 
-			<a href="" onclick=""><img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;"></a>
 			</div>
 		</div>
 		<!-- End indiv -->
@@ -143,6 +152,7 @@
 					</div>
 				</div>
 				<!-- 검색 : End -->
+				<%@include file="../include/commentWrite.jsp" %>
 	</div>
 </body>
 </html>

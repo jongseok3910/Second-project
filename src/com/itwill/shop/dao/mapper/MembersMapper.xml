@@ -33,6 +33,10 @@
 		select * from members where members_email = #{members_email}
 	</select>
 	
+	<select id="findMembersByPassWord" parameterType="String" resultType="Members">
+		select * from members where members_password = #{members_password}
+	</select>
+	
 	<select id="selectAll" resultType="Members">
 		select * from members
 	</select>

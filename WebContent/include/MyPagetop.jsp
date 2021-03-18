@@ -51,27 +51,15 @@
 	</div>
 	<div id="header_main_2">
 		<div class="inner">
-		<%if(!(Integer.parseInt(format_time) >= 6 && Integer.parseInt(format_time) <= 10)){ %>
 			<ul>
-				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
+				<li class="sm11"><a href="memberMypage.jsp">마이페이지</a></li>
 				
-				<li class="sm12"><a href="productListView.jsp">버거/세트</a></li>
+				<li class="sm12"><a href="memberCardForm.jsp">카드관리</a></li>
 				
-				<li class="sm13"><a href="productListView.jsp">스낵/사이드</a></li>
+				<li class="sm13"><a href="memberAddressForm.jsp">주소관리</a></li>
 				
-				<li class="sm14"><a href="productListView.jsp">음료</a></li>
+				<li class="sm14"><a href="jumunListView.jsp">주문기록</a></li>
 			</ul>
-		<%}else{ %>
-			<ul>
-				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
-				
-				<li class="sm12"><a href="productListView.jsp">아침 버거/세트</a></li>
-				
-				<li class="sm13"><a href="productListView.jsp">아침 스낵/사이드</a></li>
-				
-				<li class="sm14"><a href="productListView.jsp">음료</a></li>
-			</ul>
-		<%} %>
 		</div>
 	</div>
 </div>

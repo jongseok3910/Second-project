@@ -37,6 +37,11 @@ public class MembersService {
 		return memberDao.findMembersById(members_email);
 	}
 	
+	public Members findMembersByPassWord(String members_password) throws Exception{
+		return memberDao.findMembersById(members_password);
+	}
+	
+	
 	public int createMembers(Members members) throws Exception{
 		if(memberDao.findMembersById(members.getMembers_email())!=null) {
 			return 0;

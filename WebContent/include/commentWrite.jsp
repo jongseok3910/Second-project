@@ -106,8 +106,8 @@
 				<tr>
 					<td>
 					<div align="center" style="padding-bottom: 210px;">
-						<img src="../res/btn_confirm.gif" onClick="confirm(this)">&nbsp; 
-						<img src="../res/btn_order_back.gif" onclick="history.back()" style="cursor: pointer; vertical-align: bottom; height: 55;">
+						<img src="./res/btn_confirm.gif" onClick="confirm(this)">&nbsp; 
+						<img src="./res/btn_order_back.gif" onclick="history.back()" style="cursor: pointer; vertical-align: bottom; height: 55;">
 					</div>
 					</td>
 				</tr>

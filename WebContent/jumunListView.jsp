@@ -4,7 +4,7 @@
 <%@ include file="../include/head.jsp"%>
 <script type="text/javascript">
 	function location() {
-		location.href="memberMypage.jsp";
+		location.href="memberMypage.do";
 	}
 </script>
 	<style rel="stylesheet" type="text/css">
@@ -244,14 +244,14 @@
 
 			<!-- 회원 정보 수정 버튼 -->
 			<div>
-				<button type="button" onclick=""
+				<button type="button" onclick="location.href=&quot;/zipbanchan/memberModifyForm.do&quot;"
 									class="w93" style="cursor: pointer;">회원 정보 수정</button>
 				<br><br>
 			</div>
 			
 			<!-- 회원 탈퇴 버튼 -->
 			<div>
-				<button type="button" onclick=""
+				<button type="button" onclick="location.href=&quot;/zipbanchan/memberDeleteAction.do&quot;"
 									class="w93" style="cursor: pointer;">회원 탈퇴</button>
 				<br><br>
 			</div>

@@ -54,7 +54,7 @@
 
 
 			<div style="width: 100%; text-align: center; padding-bottom: 50px">
-				<a href="main.do"><img
+				<a href="mac_main.jsp"><img
 					src="./res/btn_confirm.gif" border="0" ></a>
 			</div>
 

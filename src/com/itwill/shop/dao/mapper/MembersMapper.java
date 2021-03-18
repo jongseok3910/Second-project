@@ -16,6 +16,7 @@ public interface MembersMapper {
 	public List<Members> selectAll() throws Exception;
 	public Members findMembersByNo(int members_no) throws Exception;
 	public Members findMembersById(String members_email) throws Exception;
+	public Members findMembersByPassWord(String members_password) throws Exception;
 	public int createMembers(Members members) throws Exception;
 	public int updateMembers(Members members) throws Exception;
 	public int deleteMembers(int members_no) throws Exception;
