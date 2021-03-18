@@ -6,7 +6,7 @@ import com.itwill.shop.domain.Address;
 
 public interface AddressMapper {
 	
-	public Address findAddressByNo(Integer addressNo);
+	public Address findAddressByNo(Integer membersNo);
 	/*
  	<select id=findAddressByno" parameterType="int" resultMap=addressResultMap">
 		select * from address where address_no = #{addressNo}
