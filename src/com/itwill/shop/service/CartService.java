@@ -34,8 +34,12 @@ public class CartService {
 		return cartDao.insertCart(cart);
 	}
 	
-	public int deleteCartByNo(Integer memberNo) {
-		return cartDao.deleteCartByNo(memberNo);
+	public int deleteCartByNo(Integer cartNo) {
+		return cartDao.deleteCartByNo(cartNo);
+	}
+	
+	public int deleteCartByMember(Integer membersNo) {
+		return cartDao.deleteCartByMember(membersNo);
 	}
 
 }

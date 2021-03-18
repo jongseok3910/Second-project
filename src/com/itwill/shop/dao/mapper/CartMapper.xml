@@ -6,12 +6,16 @@
 	<resultMap id= "cartWithMemberAndFoodResultMap" type="com.itwill.shop.domain.Cart" autoMapping="true">
 		<result column="CART_NO" property="cartNo"/>
 		<result column="CART_QTY" property="cartQty"/>
+		<result column="MEMBERS_NO" property="membersNo"/>
+		<result column="FOOD_NO" property="foodNo"/>
+		<!-- 
 		<association property="membersNo" javaType="com.itwill.shop.domain.Members" autoMapping="true">
 			<result column="MEMBERS_NO" property="members_no"/>
 		</association>
 		<association property="foodNo" javaType="com.itwill.shop.domain.Food" autoMapping="true">
 			<result column="FOOD_NO" property="foodNo"/>
 		</association>
+		 -->
 		 
 	</resultMap>
 
@@ -37,6 +41,10 @@
 	</insert>
 	
 	<delete id="deleteCartByNo" parameterType="int">
+		delete from cart where cart_no=#{cartNo}
+	</delete>
+	
+	<delete id="deleteCartByMember" parameterType="int">
 		delete from cart where members_no=#{membersNo}
 	</delete>
 
