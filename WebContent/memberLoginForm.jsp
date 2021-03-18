@@ -15,7 +15,7 @@
 					입력해주세요.</span>
 			
 			</div>
-			<form method="post" action="mac_main.jsp" id="form"
+			<form method="post" action="memberLoginaction.jsp" id="form"
 				name="form">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
