@@ -12,87 +12,70 @@ ADDRESS_TYPE            NUMBER(10)
 MEMBERS_NO              NUMBER(10)   
  */
 	
-private Integer addressNo;
-private String addressName;
-private String addressDetail;
-private Integer addressType;
-private Integer membersNo;
+private Integer address_no;
+private String address_name;
+private String address_detail;
+private Integer address_type;
+private Integer members_no;
 
 public Address() {
 	
 }
 
-
-public Address(Integer addressNo, String addressName, String addressDetail, Integer addressType, Integer membersNo) {
-	this.addressNo = addressNo;
-	this.addressName = addressName;
-	this.addressDetail = addressDetail;
-	this.addressType = addressType;
-	this.membersNo = membersNo;
-}
-
-
-public Address(Integer addressNo) {
+public Address(Integer address_no, String address_name, String address_detail, Integer address_type,
+		Integer members_no) {
 	super();
-	this.addressNo = addressNo;
+	this.address_no = address_no;
+	this.address_name = address_name;
+	this.address_detail = address_detail;
+	this.address_type = address_type;
+	this.members_no = members_no;
 }
 
-
-public Integer getAddressNo() {
-	return addressNo;
+public Integer getAddress_no() {
+	return address_no;
 }
 
-
-public void setAddressNo(Integer addressNo) {
-	this.addressNo = addressNo;
+public void setAddress_no(Integer address_no) {
+	this.address_no = address_no;
 }
 
-
-public String getAddressName() {
-	return addressName;
+public String getAddress_name() {
+	return address_name;
 }
 
-
-public void setAddressName(String addressName) {
-	this.addressName = addressName;
+public void setAddress_name(String address_name) {
+	this.address_name = address_name;
 }
 
-
-public String getAddressDetail() {
-	return addressDetail;
+public String getAddress_detail() {
+	return address_detail;
 }
 
-
-public void setAddressDetail(String addressDetail) {
-	this.addressDetail = addressDetail;
+public void setAddress_detail(String address_detail) {
+	this.address_detail = address_detail;
 }
 
-
-public Integer getAddressType() {
-	return addressType;
+public Integer getAddress_type() {
+	return address_type;
 }
 
-
-public void setAddressType(Integer addressType) {
-	this.addressType = addressType;
+public void setAddress_type(Integer address_type) {
+	this.address_type = address_type;
 }
 
-
-public Integer getMembersNo() {
-	return membersNo;
+public Integer getMembers_no() {
+	return members_no;
 }
 
-
-public void setMembersNo(Integer membersNo) {
-	this.membersNo = membersNo;
+public void setMembers_no(Integer members_no) {
+	this.members_no = members_no;
 }
-
 
 @Override
 public String toString() {
-	return "Address [addressNo=" + addressNo + ", addressName=" + addressName + ", addressDetail=" + addressDetail
-			+ ", addressType=" + addressType + ", membersNo=" + membersNo + "]";
+	return "Address [address_no=" + address_no + ", address_name=" + address_name + ", address_detail=" + address_detail
+			+ ", address_type=" + address_type + ", members_no=" + members_no + "]";
 }
-
 
 }
