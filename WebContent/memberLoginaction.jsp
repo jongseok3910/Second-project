@@ -14,7 +14,8 @@
 	 		session.setAttribute("members_email", members.getMembers_email());
 	 		session.setAttribute("members_no", members.getMembers_no());
 	 		response.sendRedirect("mac_main.jsp");
-	 	}				
+	 	}	
+	 	response.sendRedirect("mac_main.jsp");
  	}
 
 %>
