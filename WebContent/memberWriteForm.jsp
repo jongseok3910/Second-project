@@ -1,31 +1,77 @@
+<%@page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String message=request.getParameter("message");
+	if(message==null){
+		message="";
+	}
+
+%>
+	
+	
 <%@ include file="../include/head.jsp"%>
 <body style="">
-	<%@ include file="../include/top.jsp"%>
+<%@ include file="../include/top.jsp"%>
 	<script>
+	/*
 	function idCheck(){
-		var memberId = document.getElementById("memberId").value;
-		if (!memberId) {
-			alert("검색할 아이디를 입력하시고 중복체크를 하셔요.");
+		var email = document.getElementById("email").value;
+		if (!email) {
+			alert("검색할 이메일을 입력하시고 중복체크를 하실까요?");
 			return false;
 		}else{
-			var param="memberId="+memberId
-			var url = "user_id_check_form.jsp?"+memberId;
+			var param="email="+email
+			var url = "memberIdCheckForm.jsp?"+email;
 			location.href=url;
 		}
 	} 
-	
-	// 아이디 중복체크 화면open
+	*/
+	function memberCreate(){
+		if (document.f.name.value=="") {
+			alert("사용자 이름을 입력하세요");
+			f.name.focus();
+			return false;			
+		}
+		if (document.f.email.value=="") {
+			alert("사용자 이메일을 입력하세요");
+			f.email.focus();
+			return false;			
+		}
+		if (document.f.password.value=="") {
+			alert("사용자 비밀번호를 입력하세요");
+			f.password.focus();
+			return false;			
+		}
+		if (document.f.password2.value=="") {
+			alert("사용자 비밀번호확인을 입력하세요");
+			f.password2.focus();
+			return false;			
+		}
+		if (f.password.value != f.password2.value) {
+			alert("비밀번호와 비밀번호확인은 일치하여야 합니다");
+			f.password.focus();
+			f.password.select();
+			return false;			
+		}
+		f.action="memberWriteAction.jsp";		
+		f.method='POST';
+		f.summit;
+	}
+	function memberList(){
+		f.action="memberLoginAction.jsp";
+		f.summit;
+	}
+	// 이메일 중복체크 화면open
 
 	function openIdChk(e){		
-		if (document.frmMember.memberId.value == "") {
-			alert("아이디를 입력하십시요.");
-			document.form.memberId.focus();
+		if (document.frmMember.email.value == "") {
+			alert("이메일을 입력하세요.");
+			document.form.email.focus();
 			return false;
 		}
-		var param="?memberId="+document.frmMember.memberId.value;
-		var param="?kim";
+		var param="?email="+document.frmMember.email.value;
+		var param="?name";
 		window.name = "parentForm";
 		window.open("memberIdCheckForm.jsp"+param,
 				"chkForm", "width=500,height=300,resizable = no,scrollbars = no");	
@@ -36,8 +82,8 @@
 		
 	
 
-	// 아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
-	// 이렇게 하는 이유는 중복체크 후 다시 아이디 창이 새로운 아이디를 입력했을 때
+	// 이메일 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
+	// 이렇게 하는 이유는 중복체크 후 다시 이메일 창이 새로운 이메일을 입력했을 때
 	// 다시 중복체크를 하도록 한다.
 	function inputIdChk(){
 		document.memberInfo.idDuplication.value ="idUncheck";
@@ -329,18 +375,19 @@ input[type=text] {
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름" ></td>
 							</tr>
+							
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">아이디
+									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
 								<td><input type="text" name="memberId" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									&nbsp; <input type="hidden" name="chk_id" required=""
-									fld_esssential="" label="아이디중복체크"> <a
+									fld_esssential="" label="이메일중복체크"> <a
 									href="" onclick="openIdChk(event)"
-									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">아이디
+									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">이메일
 										중복체크</a></td>
 							</tr>
 							
@@ -394,8 +441,7 @@ input[type=text] {
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">핸드폰
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
-								<td>
-		 <input type="text" name="memberPhone" id="mobile0" value=""
+								<td><input type="text" name="memberPhone" id="mobile0" value=""		 
 									maxlength="4" required="" fld_esssential="" option="regNum"
 									label="핸드폰"
 									style="width: 92px; height: 30px; padding-left: 10px;">
@@ -406,26 +452,26 @@ input[type=text] {
 									&nbsp;-&nbsp; <input type="text" name="memberPhone3" id="mobile2"
 									value="" maxlength="4" required="" fld_esssential=""
 									option="regNum" label="핸드폰"
-									style="width: 90px; height: 30px; padding-left: 10px;">
-									
-
+									style="width: 90px; height: 30px; padding-left: 10px;">			
 								</td>
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
+									style="padding-left: 20px; color: #717071; font-weight: bold;">추가 이메일
 									<em class="star">*</em>
 								</th>
 								<td><input type="text" name="memberEmail" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									&nbsp;@&nbsp; <input type="text" name="id2" value=""
-									required=""
+									&nbsp;@&nbsp; 
+									<!-- 
+									<input type="text" name="id2" value="" required=""									
 									style="width: 144px; height: 30px; padding-left: 10px;">
+									 -->
 									&nbsp;<select name="memberEmail2"
 									style="width: 110px; height: 34px; border: 1px solid #d5d4d3; border-radius: 0; background: #f4f4f4; vertical-align: middle"
 									onchange="select_email(this);">
 										<option value="">이메일 선택</option>
-										<option value="sannamchon.co.kr">sannamchon.co.kr</option>
+										<option value="sannamchon.co.kr">email.com</option>
 										<option value="naver.com">naver.com</option>
 										<option value="hanmail.net">hanmail.net</option>
 										<option value="daum.net">daum.net</option>
@@ -460,308 +506,6 @@ input[type=text] {
 			<iframe id="ifrmHpauth" name="ifrmHpauth"
 				style="width: 300px; height: 200px; display: none;"></iframe>
 			<script>
-				var sms = {
-					code : 'failure',
-					message : '핸드폰 인증 후 이용가능합니다.'
-				};
-				var recommend = {
-					code : 'failure',
-					message : '추천인아이디가 존재하지 않습니다.'
-				};
-
-				function checkRecommend() {
-					var reco_type = $("input[name=reco_type]:checked").val();
-
-					if (!jQuery("input[name=recommid]").val()) {
-						alert('추천인아이디를 입력해주세요.');
-						return false;
-					}
-
-					jQuery
-							.ajax({
-								method : 'POST',
-								url : '/shop/member/join_recommend.php',
-								async : false,
-								data : {
-									mode : 'check',
-									recommid : jQuery("input[name=recommid]")
-											.val(),
-									recotype : reco_type
-								},
-								dataType : 'json',
-								success : function(data) {
-									recommend = data;
-									if (recommend.code == 'success') {
-										recommend.message = '정상적인 추천인아이디입니다.';
-										//console.log(recommend);
-										jQuery("input[name=recommid]").val(
-												recommend.m_id);
-										recommend.id = jQuery(
-												"input[name=recommid]").val();
-										$(".recomm_id").html(recommend.m_text);
-										$(
-												".reco_type, .reco_phone, .reco_email, .reco_desc")
-												.hide();
-									} else if (recommend.code == 'failure') {
-										jQuery("input[name=recommid]").val('');
-										recommend.message = '추천인아이디가 존재하지 않습니다.';
-									}
-
-									alert(recommend.message);
-								}
-							});
-				}
-
-				function checkAuthNumber() {
-					if (!jQuery("input[name=auth_number]").val()) {
-						alert('인증번호를 입력해주세요.');
-						return false;
-					}
-
-					jQuery.ajax({
-						method : 'POST',
-						url : '/shop/member/join_sms.php',
-						async : false,
-						data : {
-							mode : 'check',
-							auth_number : jQuery("input[name=auth_number]")
-									.val()
-						},
-						dataType : 'json',
-						success : function(data) {
-							sms = data;
-							if (sms.code == 'success') {
-								sms.message = '인증이 완료되었습니다.';
-							} else if (data.code == 'failure') {
-								sms.message = '인증번호가 일치하지 않습니다.';
-							}
-
-							alert(sms.message);
-						}
-					});
-				}
-
-				function sendAuthSms() {
-					if (!jQuery("#mobile0").val() || !jQuery("#mobile1").val()
-							|| !jQuery("#mobile2").val()) {
-						alert('휴대폰 번호를 입력해주세요.');
-						return false;
-					}
-
-					jQuery
-							.post(
-									'/shop/member/join_sms.php',
-									{
-										mode : 'send',
-										phone : jQuery(
-												"input[name='mobile[]'],select[name='mobile[]'] :selected")
-												.map(function() {
-													return this.value;
-												}).get().join('-')
-									}, function(data) {
-										alert('인증번호가 발송되었습니다.');
-									});
-				}
-
-				function chkAll(obj) {
-					jQuery(
-							"input[name=agree][value=y], input[name=private1][value=y], input[name=ex1][value=y], input[name=mailling], input[name=sms]")
-							.prop('checked', obj.checked);
-				}
-
-				function select_email(obj) {
-					jQuery("input[name=id2]").val(obj.value).trigger('blur');
-				}
-
-				function chkId() {
-					var form = document.frmMember;
-					var pattern = /([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)\.([0-9a-zA-Z_-]+)/;
-
-					if (!chkText(form.memberId, form.memberId.value, "아이디를 입력해주세요"))
-						return;
-
-					//if (!chkPatten(form.m_id,form.m_id.getAttribute('option'),"아이디는 4자 이상 16자 이하의 영문자,숫자 조합만 가능합니다")) return;
-					ifrmHidden.location.href = "indb.php?mode=chkId&m_id="
-							+ form.m_id.value;
-				}
-
-				function chkEmail() {
-					var form = document.frmMember;
-					if (!chkText(form.email, form.email.value, "이메일을 입력해주세요"))
-						return;
-					if (!chkPatten(form.email, form.email
-							.getAttribute('option'), "정상적인 이메일 주소를 입력해주세요"))
-						return;
-					ifrmHidden.location.href = "indb.php?mode=chkEmail&email="
-							+ form.email.value + "&m_id=" + form.m_id.value;
-				}
-
-				function chkNickname() {
-					var form = document.frmMember;
-					if (!chkText(form.nickname, form.nickname.value,
-							"닉네임을 입력해주세요"))
-						return;
-					ifrmHidden.location.href = "indb.php?mode=chkNickname&nickname="
-							+ form.nickname.value + "&m_id=" + form.m_id.value;
-				}
-
-				function chkBirth(obj) {
-					var birth = document.getElementsByName(obj.name)[0].value;
-					var di = document.getElementsByName(obj.name)[1].value;
-					var objBirth = document.getElementsByName('birth[]');
-
-					if (di.substring(0, 1) == 1 || di.substring(0, 1) == 2)
-						var dy = "19";
-					else
-						var dy = "20";
-
-					obj.form.birth_year.value = (birth) ? dy
-							+ birth.substring(0, 2) : "";
-					objBirth[0].value = birth.substring(2, 4);
-					objBirth[1].value = birth.substring(4, 6);
-				}
-
-				function openPasswordField() {
-					if (navigator.appName.indexOf("Microsoft") > -1) {
-						_ID('pwLayer01').style.display = 'block';
-						_ID('pwLayer02').style.display = 'block';
-					} else {
-						_ID('pwLayer01').style.display = 'table-row';
-						_ID('pwLayer02').style.display = 'table-row';
-					}
-				}
-
-				function checkPassword(el) {
-
-					if (el.value) {
-
-						var param = {
-							form : document.frmMember,
-							fields : [ 'm_id', 'birth_year', 'phone[]',
-									'birth[]', 'mobile[]', 'email' ]
-						}
-
-						nsGodo_PasswordStrength.appendBlacklist(param);
-						nsGodo_PasswordStrength.appendBlacklist(param);
-
-						var result = nsGodo_PasswordStrength.check(el);
-
-						_ID('el-password-strength-indicator-msg').innerText = result.msg;
-						_ID('el-password-strength-indicator-level').className = 'lv'
-								+ result.level;
-						_ID('el-password-strength-indicator-level').innerText = result.levelText;
-						_ID('el-password-strength-indicator').style.display = 'block';
-
-					} else {
-						emptyPwState();
-					}
-
-				}
-
-				function emptyPwState() {
-					_ID('el-password-strength-indicator').style.display = "none";
-				}
-
-				function chkForm2(f) {
-					if (chkRadioSelect(f, 'agree', 'y',
-							'[회원가입 이용약관]에 동의를 하셔야 회원가입이 가능합니다.') === false)
-						return false;
-					if (chkRadioSelect(f, 'private1', 'y',
-							'[개인정보취급방침]에 동의를 하셔야 회원가입이 가능합니다.') === false)
-						return false;
-					if (sms.code != 'success') {
-						alert(sms.message);
-						return false;
-					}
-					if (recommend.code == 'success'
-							&& recommend.id != jQuery("input[name=recommid]")
-									.val()) {
-						alert('추천인아이디를 확인해주세요.');
-						return false;
-					}
-
-					if (document.getElementById('avoidDbl'))
-						btn = document.getElementById('avoidDbl').innerHTML;
-
-					if (chkForm(f) === false) {
-						return false;
-					}
-
-					// 만14세 미만 회원가입 가능여부 생년월일로 체크
-					var under14Code = '';
-					var under14Status = '';
-					if (under14Code == 'needBirthCheck') {
-						var birthDay = '';
-						if (typeof (f['birth_year']) != 'undefined'
-								&& typeof (f['birth[]'][0]) != 'undefined'
-								&& typeof (f['birth[]'][0]) != 'undefined') {
-							bY = '0000' + f['birth_year'].value;
-							bM = '00' + f['birth[]'][0].value;
-							bD = '00' + f['birth[]'][1].value;
-							birthDay = bY.substring(bY.length - 4)
-									+ bM.substring(bM.length - 2)
-									+ bD.substring(bD.length - 2);
-						}
-						if (chkUnder14(birthDay, under14Status, under14Code) === false) {
-							if (document.getElementById('avoidDbl'))
-								document.getElementById('avoidDbl').innerHTML = btn;
-							return false;
-						}
-					}
-
-					return true;
-				}
-
-				function goIDCheckIpin() {
-
-					return;
-				}
-
-				jQuery(function() {
-					jQuery("input[name=id1],input[name=id2]").blur(
-							function() {
-								jQuery("input[name=m_id]").val(
-										jQuery("input[name=id1]").val()
-												+ '@'
-												+ jQuery("input[name=id2]")
-														.val());
-							});
-				});
-
-				/* 비밀번호변경 토글 */
-				jQuery(function() {
-					jQuery(".prv-btn").click(function() {
-						jQuery("#pwLayer01").toggle();
-						jQuery("#pwLayer02").toggle();
-					});
-
-					jQuery("input[name=recommid1],input[name=recommid2]")
-							.change(
-									function() {
-										recommid = jQuery(
-												"input[name=recommid1],input[name=recommid2]")
-												.map(function() {
-													return this.value;
-												});
-										console.log(recommid);
-										jQuery("input[name=recommid]").val(
-												recommid.get().join('@'));
-									});
-
-					jQuery(
-							"input[name=recommid3],input[name=recommid4],input[name=recommid5]")
-							.change(
-									function() {
-										recommid = jQuery(
-												"input[name=recommid3],input[name=recommid4],input[name=recommid5]")
-												.map(function() {
-													return this.value;
-												});
-										console.log(recommid);
-										jQuery("input[name=recommid]").val(
-												recommid.get().join('-'));
-									});
-				});
 			</script>
 
 		</div>

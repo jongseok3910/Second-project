@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String sEmail= "";
+	if(session.getAttribute("members_email")!=null){
+		sEmail=(String)session.getAttribute("members_email");
+	}
+
+	
+%>
 <script type="text/javascript">
+	function confirm() {
+		document.comWrtie.submit();
+	}
 </script>
 <body style="">
-	<form action="boardWriteAction.do" method="POST">
+	<form action="commentWriteAction.jsp" method="POST" name="comWrtie">
+	<input type="hidden" name="food_no" value="310"/>
 		<table id="table_after" width="60%" cellpadding="0" cellspacing="0"
 			border="0" style="margin: 0 auto">
 			<tbody>
@@ -32,16 +44,6 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<td class="input_txt" align="right">상품</td>
-															<td class="noline">
-															<select id="productItem" name="productNo" class="select" required="" label="상품">
-																	<option value="" align="center">= 상품 선택 =</option>
-																	<% for (int i=0; i<10; i++) { %>
-																	<option value="<%= i %>"><%= "K"+i %></option>
-																	<% } %>
-															</select></td>
-														</tr>
-														<tr>
 															<td colspan="2" height="1" bgcolor="#DEDEDE"
 																style="padding: 0px;"></td>
 														</tr>
@@ -64,7 +66,7 @@
 																<div style="float: left; width: 50%;">
 																<!-- readonly="readonly" -->
 																	<input type="text" name="memberId" style="width: 100px;" 
-																		required="" fld_esssential="" readonly="readonly"  label="작성자" value="abc">
+																		required="" fld_esssential="" readonly="readonly"  label="작성자" value="<%=sEmail%>">
 																</div>
 															</td>
 														</tr>
@@ -106,7 +108,11 @@
 				<tr>
 					<td>
 					<div align="center" style="padding-bottom: 210px;">
-						<img src="./res/btn_confirm.gif" onClick="confirm(this)">&nbsp; 
+					<%if(!sEmail.equals("")){ %>
+						<img src="./res/btn_confirm.gif" onClick="confirm()">&nbsp; 
+					<%}else{ %>
+						<img src="./res/btn_confirm.gif" onClick="">&nbsp; 
+					<%} %>
 						<img src="./res/btn_order_back.gif" onclick="history.back()" style="cursor: pointer; vertical-align: bottom; height: 55;">
 					</div>
 					</td>

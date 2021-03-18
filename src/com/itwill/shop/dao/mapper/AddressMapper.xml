@@ -4,16 +4,18 @@
 	
 	<!--resultMap 정의-->
 	<resultMap type="com.itwill.shop.domain.Address" id="addressResultMap" autoMapping="true">
-		<result column="ADDRESS_NO" property="addressNo"/>
-		<result column="ADDRESS_NAME" property="addressName"/>
-		<result column="ADDRESS_DETAIL" property="addressDetail"/>
-		<result column="ADDRESS_TYPE" property="addressType"/>
-		<result column="MEMBERS_NO" property="membersNo"/>
+		<result column="ADDRESS_NO" property="address_no"/>
+		<result column="ADDRESS_NAME" property="address_name"/>
+		<result column="ADDRESS_DETAIL" property="address_detail"/>
+		<result column="ADDRESS_TYPE" property="address_type"/>
+		<result column="MEMBERS_NO" property="members_no"/>
 	</resultMap>
 	
 	<!--select-->
 	<select id="findAddressByNo" parameterType="int" resultMap="addressResultMap">
-		select * from address where address_no = #{addressNo}
+
+		select * from address where members_no = #{membersNo}
+
 	</select>
 	
 	<select id="findAddressAll" resultMap="addressResultMap">

@@ -48,6 +48,8 @@ public class CommentsDaoImpl implements CommentsDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		int insertRow = commentsMapper.insertComments(comments);
+		sqlSession.commit();
+		sqlSession.close();
 		return insertRow;
 	}
 

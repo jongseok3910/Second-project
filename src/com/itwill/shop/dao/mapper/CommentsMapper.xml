@@ -22,13 +22,13 @@
        </select>
        
        <select id="findCommentAll" resultMap="comment_Map">
-                select * from comments 
+                select * from comments
        </select>
  
        <insert id="insertComments" parameterType="com.itwill.shop.domain.Comments">
 		       insert into comments(comments_no, comments_title, comments_writer, comments_content, comments_star, comments_count,
-		       comments_group, comments_step, comments_dept, food_no) values(comments_no_seq.nextval,#{comments_title},#{comments_writer},#{comments_content}
-		      #{comments_star},#{comments_count},#{comments_group}#{comments_step},#{comments_dept},#{food_no})
+		       comments_group, comments_step, comments_dept, food_no) values(comments_no_seq.nextval,#{comments_title},#{comments_writer},
+		       #{comments_content},#{comments_star},#{comments_count},#{comments_group},#{comments_step},#{comments_dept},#{food_no})
 	   </insert>
 	   
 	   <update id="updateCommentsByNo" parameterType="com.itwill.shop.domain.Comments">

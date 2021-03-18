@@ -41,15 +41,16 @@
 <script type="text/javascript">
 		
 		
-		// 아이디 중복체크
-		function idCheck(){
-			var memberId = document.getElementById("memberId").value;
-			if (!memberId) {
-				alert("검색할 아이디를 입력하시고 중복체크를 하셔요.");
+		// 이메일 아이디 중복체크
+		function emailCheck(){
+			//var email = document.getElementById("email").value;
+			var email = document.get.value;			
+			if (!email) {
+				alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
 				return false;
 			}else{ 
-				var param="memberId="+memberId
-				var url = "memberIdCheckForm.do?"+param;
+				var param="email="+email
+				var url = "memberCheckForm.do?"+param;
 				location.href=url;
 			}
 		}
@@ -61,7 +62,7 @@
 			// 중복체크 결과인 idCheck 값을 전달한다.
 			//opener.document.form.idDuplication.value ="idCheck";
 			// 회원가입 화면의 ID입력란에 값을 전달
-			opener.document.frmMember.memberId.value = document.getElementById("memberId").value;
+			opener.document.findMember.email.value = document.getElementById("email").value;
 			if (opener != null) {
             	opener.chkForm = null;
             	self.close();
@@ -74,13 +75,13 @@
 </head>
 <body>
 	<div id="wrap">
-		<br> <b><font size="4" color="gray">아이디 중복체크</font></b>
+		<br> <b><font size="4" color="gray">이메일 중복체크</font></b>
 		<hr size="1" width="460">
 		<br>
 		<div id="chk">
 			<form id="checkForm">
 				<input type="text" name="memberId" id="memberId" value="abc"> <input
-					type="button" value="중복확인" onclick="idCheck()">
+					type="button" value="중복확인" onclick="emailCheck()">
 			</form>
 			<div id="msg">msg</div>
 			
