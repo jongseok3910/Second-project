@@ -1,7 +1,44 @@
+<%@page import="com.itwill.shop.service.FoodService"%>
+<%@page import="com.itwill.shop.domain.Food"%>
+<%@page import="com.itwill.shop.domain.Cart"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.service.CartService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/head.jsp"%>
+
+<%
+	//String foodQtyStr = request.getParameter("food_qty");
+	//String foodQtyStr = "1";
+	//int foodQty = Integer.parseInt("1");
+	
+	CartService cartService = new CartService();
+	FoodService foodService = new FoodService();
+	//List<Cart> cartList = cartService.findCartByMembersNo(sMember.getMembers_no()); 
+	List<Cart> cartList = cartService.findCartByMembersNo(5);
+	
+	String cartQtyStr = "";
+	//int cartQty = Integer.parseInt("1");
+	
+%>
+<script type="text/javascript">
+	function cart_delete(){
+		document.delete_cart_form.method='POST';
+		document.delete_cart_form.action='cart_delete_action.jsp';
+		document.delete_cart_form.submit();
+	}
+	function view_cart_form_submit(){
+		document.view_cart_form.method='POST';
+		document.view_cart_form.action='jumun_create_form.jsp';
+		document.view_cart_form.submit();
+	}
+</script>
 <body style="">
+	
+	<form name="delete_cart_form"></form>
+	<form name="view_cart_form">
+		<input type="hidden" name="buyType" value="cart">
+	</form>
 	<%@ include file="../include/top.jsp"%>
 
 	<div id="main">
@@ -296,7 +333,7 @@ table.orderitem-list tfoot tr td table td {
 }
 
 .calc_order div {
-	width: 367px;
+	width:550px;
 	float: left;
 	border-left: 1px dashed #ddd;
 	margin-left: -1px;
@@ -346,10 +383,16 @@ table.orderitem-list tfoot tr td table td {
 
 .calc_order div:last-child span {
 	font-weight: normal;
+	padding: 50px 0;
+	font-size: 20px;
 	color: #333;
-	font-size: 14px;
+	font-weight: bold;
+	position: relative;
 }
 </style>
+
+
+
 
 					<div class="groobeeProductList" style="display: none;">
 						<a
@@ -372,6 +415,7 @@ table.orderitem-list tfoot tr td table td {
 							<col width="80">
 							<col width="50">
 							<col width="80">
+							<col width="60">
 
 						</colgroup>
 						<thead>
@@ -382,6 +426,7 @@ table.orderitem-list tfoot tr td table td {
 								<th>수량</th>
 								<th>배송비</th>
 								<th>합계</th>
+								<th></th>
 
 							</tr>
 						</thead>
@@ -404,31 +449,37 @@ table.orderitem-list tfoot tr td table td {
 							
 					
 							
-							<% for (int i = 0; i < 6; i++) { %>
+							<% 
+							int tot_price = 0;
+							for (Cart cart: cartList) { %>
+								<%Food food = foodService.findFoodByNo(cart.getFoodNo()); 
+								tot_price = tot_price + (food.getFoodPrice()*cart.getCartQty());%>
+								
 							
 							<tr>
 								<input type="hidden" name="adultpro[]" value="0">
 								<td align="center"><input type="checkbox" name="idxs[]"
-									value="0" data-goodsno="560" checked=""
+									value="<%=cart.getFoodNo() %>" data-goodsno="<%=cart.getFoodNo() %>" 
 									onclick="nsGodo_CartAction.recalc();"></td>
 								<td align="center" style="padding: 10px 0;"><a
 									href="">
-									<img src="./" width="70"
+									<img src="./image/<%=food.getFoodImage() %>" width="70"
 										onerror=""></a>
 								</td>
 								<td>
-									<div style="word-break: break-all; text-align: left;">1955 버거</div> 
+									<div style="word-break: break-all; text-align: left;"><%=food.getFoodName() %></div> 
 
 								</td>
-								<td align="right" style="padding-right: 10px">25</td>
+								<td align="right" style="padding-right: 10px"><%=food.getFoodPrice() %></td>
 								<td align="center">
 									<table cellpadding="0" cellspacing="0" border="0">
 										<tbody>
 											<tr>
 											
-												<td style="border: none;"><input type="text"
-													name="ea[0]" step="1" min="1" max="0" 
-													value="1" 
+												<td style="border: none;">
+												<input type="text"
+													name="food_qty[0]" step="1" min="1" max="0" 
+													value="<%=cart.getCartQty() %>" 
 													readonly
 													style="text-align: right; height: 25px; line-height: 25px; border: 1px solid #ccc; width: 28px; padding-right: 10px;"
 													onkeydown="onlynumber()"
@@ -460,9 +511,19 @@ table.orderitem-list tfoot tr td table td {
 								</td>
 <!--    주석               -->
 
-								<td align="right" style="padding-right: 10px">45000<a
-									href=""
+								<td align="right" style="padding-right: 10px"><%=food.getFoodPrice()*cart.getCartQty() %>
+									<!--  <a href="javascript:cart_delete();"
 									style="font-size: 14px; float: right;">X</a>
+									-->
+								
+								</td>
+								
+								<td align="center">
+									<form action="cart_delete_item_action.jsp" method="post">
+									<input type="hidden" name="cart_no"
+										value="<%=cart.getCartNo()%>"> <input type="submit"
+										value="삭제">
+								</form>
 								</td>
 
 							</tr>
@@ -479,14 +540,15 @@ table.orderitem-list tfoot tr td table td {
 							<tr>
 								<td colspan="10" style="text-align: left; border: none;">
 									<div style="padding: 5px; padding-left: 20px;">
-										<input type="checkbox" id="cart_select_all" checked=""
+										<input type="checkbox" id="cart_select_all" 
 											onclick="chkBox(&#39;idxs[]&#39;,&#39;rev&#39;);nsGodo_CartAction.recalc();">
 										<label for="cart_select_all">전체선택</label> (<span
-											id="el-orderitem-selected">1</span>/1) <a
-											href="javascript:void(0);"
+											id="el-orderitem-selected">1</span>/1) 
+											<a
+											href="javascript:cart_delete();"
 											onclick="nsGodo_CartAction.del();return false;"
 											onfocus="blur()"
-											style="border: 1px solid #aaa; padding: 5px 10px; display: inline-block;">선택상품삭제</a>
+											style="border: 1px solid #aaa; padding: 5px 10px; display: inline-block;">전체상품삭제</a>
 									</div>
 								</td>
 							</tr>
@@ -503,19 +565,23 @@ table.orderitem-list tfoot tr td table td {
 											<span class="desc">상품합계</span><br> <span
 												id="el-orderitem-total-price">
 												
-												45000원</span>
+												<%=tot_price %>원</span>
 										</div>
+										 <!--
 										<div>
 											<span class="desc">우체국택배 / 새벽배송</span><br> <span
 												id="el-orderitem-delivery-price">무료</span>
 										</div>
+										
 										<div>
 											<span class="desc">무료배송을 위한 추가금액</span><br> <span
 												id="el-orderitem-price">0</span>원
 										</div>
+										
 										<div>
 											<span>*단 하루특송은 배송비가 발생합니다.</span>
 										</div>
+										 -->
 									</div>
 								</td>
 							</tr>

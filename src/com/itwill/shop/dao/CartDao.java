@@ -12,5 +12,6 @@ public interface CartDao {
 	public List<Cart> findCartByMembersNo(Integer membersNo);
 	public int updateCartByNo(Cart cart);
 	public int insertCart(Cart cart);
-	public int deleteCartByNo(Integer memberNo);
+	public int deleteCartByNo(Integer cartNo);
+	public int deleteCartByMember(Integer membersNo);
 }
