@@ -1,7 +1,19 @@
+<%@page import="com.itwill.shop.service.MembersService"%>
+<%@page import="com.itwill.shop.domain.Address" %>
+<%@page import="com.itwill.shop.service.AddressService" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
+<%@ include file="login_check.jspf" %>
+
+<%
+	AddressService addressService = new AddressService();
+	MembersService membersService = new MembersService();
+	
+	Address address=addressService.findAddressByNo((int)session.getAttribute("members_no"));
+	Members members=membersService.findMembersByNo((int)session.getAttribute("members_no"));
+%>
 
 <style type="text/css">
 div.passwordStrenth {
@@ -247,9 +259,9 @@ input[type=text] {
 	<div id="content">
 		<!-- 상단이미지 || 현재위치 -->
 		<div class="atit">
-			<p>회원정보수정</p>
+			<p>주소관리</p>
 			<span class="path"><img src="./res/ico_home.gif" alt="HOME"
-				style="cursor: pointer;"> <b>회원정보수정</b></span>
+				style="cursor: pointer;"> <b>주소관리</b></span>
 		</div>
 
 		<div class="indiv" style="margin: 0 auto; width: 1100px;">
@@ -281,16 +293,16 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberName" value="홍길동"
-									style="width: 217px; height: 30px; padding-left: 10px;"
-									required="" fld_esssential="" label="이름"></td>
+								<!--밑은 내가 수정한부분(이름을 불러온다)-->
+								<td width=145 height=26 align=center class=t1><%=members.getMembers_name()%></td>
 							</tr>
 							<tr>
 								<th
 									style="padding-left: 20px; color: #717071; font-weight: bold;">아이디
 									<em class="star">*</em>
 								</th>
-								<td><span class="eng"><b>abc@naver.com</b></span></td>
+								<!--밑은 내가 수정한부분(아이디를 불러온다)-->
+								<td width=145 height=26 align=center class=t1><%=members.getMembers_email()%></td>
 							</tr>
 							<tr>
 								<th
@@ -330,10 +342,8 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">주소
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberAddress" value="강남" required=""
-									style="width: 350px; height: 30px; padding-left: 10px;">
-									&nbsp;
-									&nbsp; </td>
+									<!--밑은 내가 수정한부분(주소를 불러온다)-->
+								<td width=145 height=26 align=center class=t1><%=address.getAddressName()%></td>
 							</tr>
 								
 							<tr>
