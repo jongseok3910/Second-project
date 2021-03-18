@@ -153,7 +153,7 @@ body #content {
 									<th>구매</th>
 									<td>
 										<div style="float: left;">
-											<input type="text" name="ea" value="1" class="line"
+											<input type="text" name="food_qty" value="1" class="line"
 												style="text-align: right; height: 29px; line-height: 29px; width: 46px; padding-right: 10px; border: 1px solid #ccc;"
 												step="1" min="1" max="0"
 												onblur="chg_cart_ea(frmView.ea,'set');chg_item_add_carc();">
