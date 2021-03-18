@@ -15,7 +15,7 @@
 					입력해주세요.</span>
 			
 			</div>
-			<form method="post" action="memberLoginAction.jsp" id="form"
+			<form method="post" action="memberLoginaction.jsp" id="form"
 				name="form">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
@@ -35,15 +35,7 @@
 				</div>
 			</form>
 
-			<div class="snslogin">
-				<button
-					style="background: url('/shop/data/skin/mera_ws/img/login_sns_facebook_wide.gif') no-repeat; border: none; width: 400px; height: 50px; font-size: 0; cursor: pointer; text-indent: -9999px; display: block;"
-					onclick="">FACEBOOK</button>
-				<!--button style="background: url('/shop/data/skin/mera_ws/img/login_sns_kakao_wide.gif') no-repeat; border: none; width: 400px; height: 50px; font-size: 0; cursor: pointer; text-indent: -9999px; display: block;" onclick="popup('https://kauth.kakao.com/oauth/authorize?client_id=5673ccd3a8a59a5abb27f2bc1aa333af&redirect_uri=&response_type=code&state=', 400, 300);">카카오톡</button-->
-				<button
-					style="background: url('/shop/data/skin/mera_ws/img/login_sns_naver_wide.gif') no-repeat; border: none; width: 400px; height: 50px; font-size: 0; cursor: pointer; text-indent: -9999px; display: block;"
-					onclick="">네이버</button>
-			</div>
+			
 
 			<div class="joinfind">
 				<a href="memberIdPwFind.jsp" onfocus="blur()">아이디찾기</a>
