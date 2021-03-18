@@ -8,11 +8,11 @@ import com.itwill.shop.domain.Food;
 
 public interface CardDao {
 	
-	Card findCardByNo(Integer cardNo);
+	public List<Card> findCardByNo(int cardNo);
 	public List<Card> findCardAll();
 	int insertCard(Card card);
 	int updateCardByNo(Card card) throws Exception;
-	int deleteCardByNo(Integer cardNo);
+	int deleteCardByNo(int cardNo);
 	
 	
 	

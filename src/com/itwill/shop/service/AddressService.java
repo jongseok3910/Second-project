@@ -14,19 +14,19 @@ public class AddressService {
 		addressDao = new AddressDaoImpl();
 	}
 	
-	public Address findAddressByNo(Integer addressNo) {
+	public List<Address> findAddressByNo(int addressNo)  throws Exception{
 		return addressDao.findAddressByNo(addressNo);
 	}
-	public List<Address> findAddressAll(){
+	public List<Address> findAddressAll() throws Exception{
 		return addressDao.findAddressAll();
 	}
-	public int insertAddress(Address address) {
+	public int insertAddress(Address address)  throws Exception{
 		return addressDao.insertAddress(address);
 	}
-	public int updateAddressByNo(Address address) {
+	public int updateAddressByNo(Address address)  throws Exception{
 		return addressDao.updateAddressByNo(address);
 	}
-	public int deleteAddresByNo(Integer addressNo) {
+	public int deleteAddresByNo(int addressNo)  throws Exception{
 		return addressDao.deleteAddressByNo(addressNo);
 	}
 }

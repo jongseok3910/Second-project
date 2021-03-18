@@ -28,11 +28,11 @@ public class AddressDaoImpl implements AddressDao {
 		}
 	}
 	@Override
-	public Address findAddressByNo(Integer addressNo) {
+	public List<Address> findAddressByNo(int addressNo) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		AddressMapper addressMapper = sqlsession.getMapper(AddressMapper.class);
-		Address address = addressMapper.findAddressByNo(addressNo);
-		return address;
+		List<Address> addressList = addressMapper.findAddressByNo(addressNo);
+		return addressList;
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class AddressDaoImpl implements AddressDao {
 	}
 
 	@Override
-	public int deleteAddressByNo(Integer addressNo) {
+	public int deleteAddressByNo(int addressNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
 		int deleteRow = addressMapper.deleteAddressByNo(addressNo);
