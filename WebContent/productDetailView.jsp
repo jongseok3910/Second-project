@@ -6,10 +6,23 @@
 <% 
 
 FoodService foodService = new FoodService();
-Food food = foodService.findFoodByNo(Integer.parseInt(request.getParameter("Food_no")));
-
+String food_noStr = request.getParameter("Food_no");
+if(food_noStr==null){
+	response.sendRedirect("productListView.jsp");
+	return;
+}
+int food_no = Integer.parseInt(food_noStr);
+Food food = foodService.findFoodByNo(food_no);
 %>
+<script type="text/javascript">
+	function cart_form(){
+		document.frmView.method='POST';
+		document.frmView.action='cart_add_action.jsp';
+		document.frmView.submit();
+	}
+</script>
 <body style="">
+
 <%@ include file="../include/top.jsp"%>
 <div id="content">
 <script src="./res/countdown.js.다운로드"></script>
@@ -109,7 +122,7 @@ body #content {
 				<div id="goods_spec" style="width: 50%; float: left;">
 					<!--디테일뷰수정-->
 					<!--디테일뷰수정-->
-					<form name="frmView" method="post" onsubmit="return false">
+					<form name="frmView" method="post">
 						<input type="hidden" name="goodsname" value="<%= food.getFoodName() %>">
 						<input type="hidden" name="goodsno" value="<%= food.getFoodNo() %>">
 						<input type="hidden" name="goodsCoupon" value="0">
@@ -127,7 +140,7 @@ body #content {
 								<tr>
 									<th>판매가격</th>
 									<td><b><span id="price"
-											style="font-size: 30px; font-weight: bold;"><%= food.getFoodPrice() %></span></b></td>
+											style="font-size: 30px; font-weight: bold;"><%= food.getFoodPrice() %>원</span></b></td>
 								</tr>
 								<tr>
 									<th style="vertical-align: top;">배송정보</th>
@@ -152,8 +165,10 @@ body #content {
 								<tr>
 									<th>구매</th>
 									<td>
+										<input type="hidden" name="food_no"	value="<%= food.getFoodNo()%>">
 										<div style="float: left;">
-											<input type="text" name="food_qty" value="1" class="line"
+										
+											<input type="text" name="ea" value="1" class="line"
 												style="text-align: right; height: 29px; line-height: 29px; width: 46px; padding-right: 10px; border: 1px solid #ccc;"
 												step="1" min="1" max="0"
 												onblur="chg_cart_ea(frmView.ea,'set');chg_item_add_carc();">
@@ -212,7 +227,7 @@ body #content {
 								style="font-size: 15px; text-align: right; margin-bottom: 20px; font-weight: 500;">
 								총 상품금액 &nbsp; <span
 									style="color: #c45c5a; font-size: 30px; font-weight: bold;"
-									id="el-multi-option-total-price"><%= food.getFoodPrice() %></span>
+									id="el-multi-option-total-price"><%= food.getFoodPrice()%>원</span>
 							</div>
 						</div>
 						<!-- / -->
@@ -221,7 +236,7 @@ body #content {
 						<!-- 각종 버튼 -->
 						<div>
 
-							<a href="cartForm.jsp" id="cartBtn" onclick="cartbtn()">
+							<a href="javascript:cart_form();" id="cartBtn" onclick="cartbtn()">
 								<img src="./res/btn_cart.gif">
 							</a>
 

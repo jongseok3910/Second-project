@@ -6,7 +6,6 @@
 	pageEncoding="UTF-8"%>
 <%
 FoodService foodService = new FoodService();
-
 List<Food> foodList = foodService.findFoodAll();
 
 %>

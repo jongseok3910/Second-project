@@ -1,10 +1,29 @@
+<%@page import="com.itwill.shop.domain.Members"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.service.MembersService"%>
+<%@page import="com.itwill.shop.service.CartService"%>
+<%@page import="com.itwill.shop.domain.Cart"%>
+<%@page import="com.itwill.shop.service.FoodService"%>
+<%@page import="com.itwill.shop.domain.Food"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%
-	
+
+
+//String p_noStr=request.getParameter("p_no");
+//String p_qtyStr=request.getParameter("p_qty");
+
+CartService cartService = new CartService();
+MembersService membersService = new MembersService();
+FoodService foodService = new FoodService();
+
+List<Cart> cartList = cartService.findCartByMembersNo(5);
+Members members = membersService.findMembersByNo(5);
+
+
 %>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 
@@ -112,26 +131,34 @@
 						kakaoPixel('3696278984956819256').viewCart();
 					</script>
 					
+					<% 
+						int tot_price = 0;
+						for (Cart cart: cartList) {
+							Food food = foodService.findFoodByNo(cart.getFoodNo()); 
+							tot_price = tot_price + (food.getFoodPrice()*cart.getCartQty());%>
 					
 					<tr>
 						<input type="hidden" name="adultpro[]" value="0">
 						<td align="center" style="padding: 10px 0;"><img
-								src="./image/1995bur.jpg" width="70" >
+								src="./image/<%=food.getFoodImage() %>" width="70" >
 						</td>
 						<td>
-							<div style="word-break: break-all; text-align: left;">1995 라지 버거 세트</div>
+							<div style="word-break: break-all; text-align: left;"><%=food.getFoodName() %></div>
 						</td>
 						<td align="center"></td>
-						<td align="right" style="padding-right: 10px">50000</td>
-						<td align="center">1개</td>
+						<td align="right" style="padding-right: 10px"><%=food.getFoodPrice()%>원</td>
+						<td align="center"><%=cart.getCartQty() %></td>
 						<td align="center">
 							<div id="el-default-delivery">기본배송</div>
 						</td>
 
 
-						<td align="right" style="padding-right: 10px">1개</td>
+						<td align="right" style="padding-right: 10px"><%= food.getFoodPrice()*cart.getCartQty()%>원</td>
+						
 
 					</tr>
+					
+					<%} %>
 					<!-- Groobee Cart & Order Selector Script -->
 
 					<!-- End of Groobee Cart & Order Selector Script -->
@@ -204,7 +231,7 @@
 									<tr>
 										<th nowrap="">총 상품금액</th>
 										<td><span id="el-orderitem-total-price">
-										50000</span></td>
+										<%=tot_price %>원</span></td>
 									</tr>
 									<tr style="display: none">
 										<th>
@@ -237,29 +264,8 @@
 					<dl>
 						<dt>주문하시는 분</dt>
 						<dd>
-							<input type="text" name="nameOrder" value="홍길동"
-								class="input_w296" readonly="" style="border: 0" required=""
-								readonlycheck="" readonly=""
-								msgr="주문하시는분의 이름을 적어주세요">
-						</dd>
-					</dl>
-					<dl style="display: none;">
-						<dt>주소</dt>
-						<dd>
-							서울 강서구 화곡동 371-42
-							<div style="padding-top: 5px; font: 12px dotum; color: #999;">서울
-								강서구 월정로32길 49 (화곡동, 창대빌라)</div>
-						</dd>
-					</dl>
-					<dl style="display: none;">
-						<dt>전화번호</dt>
-						<dd>
-							<input type="text" name="phoneOrder[]" class="input_w76" value=""
-								size="3" maxlength="3">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input type="text" name="phoneOrder[]" class="input_w76" value=""
-								size="4" maxlength="4">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input type="text" name="phoneOrder[]" class="input_w76" value=""
-								size="4" maxlength="4">
+							<input type="text" name="nameOrder" value="<%= members.getMembers_name() %>"
+								class="input_w296" readonly="" style="border: 0" msgr="주문하시는분의 이름을 적어주세요">
 						</dd>
 					</dl>
 					
@@ -267,7 +273,7 @@
 						<dt>핸드폰번호</dt>
 						<dd>
 							<input type="text" name="mobileOrder[]" class="input_w296"
-								value="010-1154-4844" required="" readonlycheck="" readonly=""
+								value="<%=members.getMembers_phone() %>" required="" readonlycheck="" readonly=""
 								label="주문자 핸드폰번호">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<!--  
 							<input type="" name="mobileOrder[]" class="input_w76"
@@ -283,7 +289,7 @@
 					<dl>
 						<dt>이메일</dt>
 						<dd>
-							<input type="text" name="email" value="xx@gamil.com"
+							<input type="text" name="email" value="<%=members.getMembers_email() %>"
 								class="input_w296" required="" readonlycheck="" readonly="" option="regEmail">
 						</dd>
 					</dl>

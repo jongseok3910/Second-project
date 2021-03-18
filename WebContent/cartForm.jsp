@@ -17,7 +17,7 @@
 	//List<Cart> cartList = cartService.findCartByMembersNo(sMember.getMembers_no()); 
 	List<Cart> cartList = cartService.findCartByMembersNo(5);
 	
-	String cartQtyStr = "";
+	//String cartQtyStr = "";
 	//int cartQty = Integer.parseInt("1");
 	
 %>
@@ -36,9 +36,7 @@
 <body style="">
 	
 	<form name="delete_cart_form"></form>
-	<form name="view_cart_form">
-		<input type="hidden" name="buyType" value="cart">
-	</form>
+
 	<%@ include file="../include/top.jsp"%>
 
 	<div id="main">
@@ -451,8 +449,8 @@ table.orderitem-list tfoot tr td table td {
 							
 							<% 
 							int tot_price = 0;
-							for (Cart cart: cartList) { %>
-								<%Food food = foodService.findFoodByNo(cart.getFoodNo()); 
+							for (Cart cart: cartList) {
+								Food food = foodService.findFoodByNo(cart.getFoodNo()); 
 								tot_price = tot_price + (food.getFoodPrice()*cart.getCartQty());%>
 								
 							

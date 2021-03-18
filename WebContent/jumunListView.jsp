@@ -311,13 +311,13 @@
 									style="background: rgb(255, 255, 255);">
 									<td scope="row">2019-08-05 00:42:00</td>
 									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1564933277894"
+										href="http://localhost:8081/2nd-project-team2-Mac2ja/OrderDetailsList.jsp"
 										style="color: #777;">1564933277894</a></td>
 									<td>가상계좌</td>
 									<td class="right">18,900</td>
 									<td class="right">0</td>
 									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1564933277894"><img
+										href="http://localhost:8081/2nd-project-team2-Mac2ja/OrderDetailsList.jsp"><img
 											src="./res/btn_detailview.gif"></a></td>
 								</tr>
 							</tbody>
@@ -332,7 +332,7 @@
 				<div class="ordtitle">
 					<span class="ordment"><span class="b_cate">1:1 문의내역</span></span> <span
 						class="ordlink"><button type="button"
-							onclick="location.href=&quot;https://www.zipbanchan.co.kr:14027/shop/mypage/mypage_qna.php?&amp;&quot;"
+							onclick="http://localhost:8081/2nd-project-team2-Mac2ja/;"
 							class="w93" style="cursor: pointer;">1:1 문의게시판</button></span>
 				</div>
 				<div class="ordlistdiv" style="margin-bottom: 30px;">
