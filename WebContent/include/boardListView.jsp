@@ -124,11 +124,7 @@
 				</div>
 				<%count++; } %>
 				<!-- 게시판 표시 종료 -->
-
-
-
-			</form>
-
+				</form>
 			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
 			
 			<% 
