@@ -207,9 +207,9 @@ body .pprice, body .pprice:hover {
 													<tr>
 
 														<%
+														int i = 0;
 														for (Food food : foodList)
 														{
-															int i = 0;
 															i++;
 															if (i == 1 || i % 3 == 1) {
 														%>

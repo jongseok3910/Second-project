@@ -13,7 +13,7 @@
 	
 	<!--select-->
 	<select id="findAddressByNo" parameterType="int" resultMap="addressResultMap">
-		select * from address where address_no = #{addressNo}
+		select * from address where members_no = #{members_no}
 	</select>
 	
 	<select id="findAddressAll" resultMap="addressResultMap">
