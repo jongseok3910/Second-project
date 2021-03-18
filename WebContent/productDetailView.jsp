@@ -1,6 +1,14 @@
+<%@page import="com.itwill.shop.domain.Food"%>
+<%@page import="com.itwill.shop.service.FoodService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/head.jsp"%>
+<% 
+
+FoodService foodService = new FoodService();
+Food food = foodService.findFoodByNo(302);
+
+%>
 <body style="">
 <%@ include file="../include/top.jsp"%>
 <div id="content">
@@ -74,13 +82,13 @@ body #content {
 
 			<!-- Groobee Selector Script -->
 			<div class="groobeeProductDetail" style="display: none;">
-				<span class="groobeeProductName">빅맥</span>
-				<span class="groobeeProductPrice">45000</span>
-				<span class="groobeeProductCode">1</span>
+				<span class="groobeeProductName"><%= food.getFoodName() %></span>
+				<span class="groobeeProductPrice"><%= food.getFoodPrice() %></span>
+				<span class="groobeeProductCode"><%= food.getFoodName() %></span>
 				<span class="groobeeProductImage"> <img
-					src="./res/august_matboki_banchan_3.jpg" id="objImg"
+					src="./image/<%=food.getFoodImage()%>" id="objImg"
 					onerror="this.src='/shop/data/skin/mera_ws/img/common/noimg_100.gif'">
-				</span> <span class="groobeeProductCategory"> 20</span>
+				</span> <span class="groobeeProductCategory"> <%= food.getCategory().getCategoryNo() %></span>
 			</div>
 			<!-- End of Groobee Selector Script -->
 
@@ -102,13 +110,13 @@ body #content {
 					<!--디테일뷰수정-->
 					<!--디테일뷰수정-->
 					<form name="frmView" method="post" onsubmit="return false">
-						<input type="hidden" name="mode" value="addItem">
-						<input type="hidden" name="goodsno" value="578">
+						<input type="hidden" name="goodsname" value="<%= food.getFoodName() %>">
+						<input type="hidden" name="goodsno" value="<%= food.getFoodNo() %>">
 						<input type="hidden" name="goodsCoupon" value="0">
-						<input type="hidden" id="sale_price" value="45000">
+						<input type="hidden" id="sale_price" value="<%= food.getFoodPrice() %>">
 						<input type="hidden" id="special_discount_amount" value="0">
 						<div style="padding-bottom: 25px; border-bottom: 1px solid #333;" align="left">
-							<b style="font-size: 32px; font-weight: 500;"> 빅맥</b>
+							<b style="font-size: 32px; font-weight: 500;"><%= food.getFoodName() %></b>
 						</div>
 
 						<table border="0" cellpadding="0" cellspacing="0" class="top">
@@ -119,13 +127,13 @@ body #content {
 								<tr>
 									<th>판매가격</th>
 									<td><b><span id="price"
-											style="font-size: 30px; font-weight: bold;">45000원</span></b></td>
+											style="font-size: 30px; font-weight: bold;"><%= food.getFoodPrice() %></span></b></td>
 								</tr>
 								<tr>
 									<th style="vertical-align: top;">배송정보</th>
 									<td style="font-size: 14px; color: #555; font-weight: 400;">하루특송
-										: 서울 전지역<br>우체국택배 : 전국(도서지역 일부제외)<br>새벽배송 : 서울/경기지역
-										대부분<br>(자세한 사항은 배송안내를 참조하세요)<br> <!--<span style="color:#c45c5a;">[화·수·목·금·토]</span>수령 가능한 상품입니다.-->
+										: 서울 전지역<br>우체국택배 : 전국(도서지역 일부제외)<br>(자세한 사항은 배송안내를 참조하세요)<br> 
+										<!--<span style="color:#c45c5a;">[화·수·목·금·토]</span>수령 가능한 상품입니다.-->
 									</td>
 								</tr>
 
@@ -204,7 +212,7 @@ body #content {
 								style="font-size: 15px; text-align: right; margin-bottom: 20px; font-weight: 500;">
 								총 상품금액 &nbsp; <span
 									style="color: #c45c5a; font-size: 30px; font-weight: bold;"
-									id="el-multi-option-total-price">45000원</span>
+									id="el-multi-option-total-price"><%= food.getFoodPrice() %></span>
 							</div>
 						</div>
 						<!-- / -->
@@ -248,11 +256,8 @@ body #content {
 							</h1>
 							<div class="description">
 								<img src="./" width="auto"> <br>
-								<br> 집반찬연구소는 국내산 식재료를 사용합니다.<br> 국내산 식재료를 선호하는 이유는 농가나
-								업체에 직접 찾아가 식재료의 상태와 보관,<br> 관리 과정을 눈으로 확인할 수 있기 때문입니다.<br>
-								물론, 수급 상황에 따라 국내산 식재료를 사용하지 못할 때도 있습니다.<br> 하지만 최대한 국내산
-								식재료와 천연재료만을 사용해 자연의 본질적인 맛을 느끼실 수 있도록 최선을 다할 것입니다.<br> 안전한
-								먹거리에 대한 걱정은 접어두셔도 좋습니다.
+								<br> 알레르기 정보 
+								<br> <%= food.getFoodDesc() %>
 							</div>
 						</article>
 					</div>
