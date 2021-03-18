@@ -22,7 +22,7 @@
        </select>
        
        <select id="findCommentAll" resultMap="comment_Map">
-                select * from comments 
+                select * from comments
        </select>
  
        <insert id="insertComments" parameterType="com.itwill.shop.domain.Comments">
