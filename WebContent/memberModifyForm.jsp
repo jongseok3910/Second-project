@@ -281,16 +281,16 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberName" value="홍길동"
+								<td><input type="text" name="memberName" value="테스형"
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름"></td>
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">아이디
+									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
-								<td><span class="eng"><b>abc@naver.com</b></span></td>
+								<td><span class="eng"><b>test@email.com</b></span></td>
 							</tr>
 							<tr>
 								<th
@@ -330,7 +330,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">주소
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberAddress" value="강남" required=""
+								<td><input type="text" name="memberAddress" value="서울시 강남구 테헤란로 182길 15" required=""
 									style="width: 350px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									&nbsp; </td>
@@ -352,19 +352,21 @@ input[type=text] {
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
+									style="padding-left: 20px; color: #717071; font-weight: bold;">추가이메일
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberEmail" value="abc" required=""
+								<td><input type="text" name="memberEmail" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									&nbsp;@&nbsp; <input type="text" name="memberEmail2" value="@naver.com"
-									required=""
+									&nbsp;@&nbsp; 
+									<!-- 
+									<input type="text" name="test" value="" required=""
 									style="width: 144px; height: 30px; padding-left: 10px;">
+									 -->
 									&nbsp;<select name="memberName2"
 									style="width: 110px; height: 34px; border: 1px solid #d5d4d3; border-radius: 0; background: #f4f4f4; vertical-align: middle"
 									onchange="select_email(this);">
 										<option value="">이메일 선택</option>
-										<option value="sannamchon.co.kr">sannamchon.co.kr</option>
+										<option value="email.com">email.com</option>
 										<option value="naver.com">naver.com</option>
 										<option value="hanmail.net">hanmail.net</option>
 										<option value="daum.net">daum.net</option>

@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
+
 <%@ include file="login_check.jspf" %>
 
 <%
@@ -14,6 +15,7 @@
 	Address address=addressService.findAddressByNo((int)session.getAttribute("members_no"));
 	Members members=membersService.findMembersByNo((int)session.getAttribute("members_no"));
 %>
+
 
 <style type="text/css">
 div.passwordStrenth {
@@ -294,7 +296,9 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(이름을 불러온다)-->
+
 								<td width=145 height=26 align=center class=t1><%=members.getMembers_name()%></td>
+
 							</tr>
 							<tr>
 								<th
@@ -302,7 +306,9 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<!--밑은 내가 수정한부분(아이디를 불러온다)-->
+
 								<td width=145 height=26 align=center class=t1><%=members.getMembers_email()%></td>
+
 							</tr>
 							<tr>
 								<th

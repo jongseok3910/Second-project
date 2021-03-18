@@ -43,12 +43,13 @@
 		
 		// 이메일 아이디 중복체크
 		function emailCheck(){
-			var email = document.getElementById("email").value;
+			//var email = document.getElementById("email").value;
+			var email = document.get.value;			
 			if (!email) {
 				alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
 				return false;
 			}else{ 
-				var param="email="+memberId
+				var param="email="+email
 				var url = "memberCheckForm.do?"+param;
 				location.href=url;
 			}

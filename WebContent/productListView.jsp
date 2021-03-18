@@ -1,6 +1,15 @@
-﻿<%@ page import="java.util.ArrayList"%>
+﻿<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.domain.Food"%>
+<%@page import="com.itwill.shop.service.FoodService"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+FoodService foodService = new FoodService();
+
+List<Food> foodList = foodService.findFoodAll();
+
+%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -34,8 +43,9 @@
 }
 </style>
 
-<script type="text/javascript">	
-</script>
+			<script type="text/javascript">
+				
+			</script>
 
 			<div class="listTopImg">
 				<img src="./res/c2627f04d18ceede.jpg">
@@ -155,30 +165,28 @@ body .pprice, body .pprice:hover {
 						style="display: none; position: absolute; top: 0; left: 0; background: url(../data/goods/icon/custom/soldout_overlay) no-repeat center center;">
 					</div>
 
-<UL class="prdList">
+					<UL class="prdList">
 
 
-					<div class="totals">
-						<p>
-							총 <b>N개의 상품이 있습니다.
-						</p>
-						
-						
-						
-						<div>
-							
-							<a href="">낮은가격순</a>
-							<a href="">높은가격순</a> 
-							<a href="">상품명순</a>
-							
-						
+						<div class="totals">
+							<p>
+								총 <b>N개의 상품이 있습니다. 
+							</p>
+
+
+
+							<div>
+
+								<a href="">낮은가격순</a> <a href="">높은가격순</a> <a href="">상품명순</a>
+
+
+							</div>
 						</div>
-					</div>
-					<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td style="padding: 15px 0">
-									<style>
+						<table width="100%" border="0" cellpadding="0" cellspacing="0">
+							<tbody>
+								<tr>
+									<td style="padding: 15px 0">
+										<style>
 body .pprice, body .pprice:hover {
 	color: #c45c5a;
 	font-size: 20px;
@@ -190,62 +198,74 @@ body .pprice, body .pprice:hover {
 	text-align: center;
 }
 </style> <!-- 상품 리스트 -->
-				
-								
-									<div class="listwrap">
-										<table border="0" cellpadding="0" cellspacing="0"
-											style= margin-left: auto; margin-right: auto; display: block;">
-											<tbody>					
-												<tr>
-												
-					<%for(int i=1; i<=10;i++){ 
-					if (i==1||i%3==1){
-						%><tr><%
-	
-					}%>
-														
-													<td align="center" valign="top" class="number1">
-														<div class="innerwrap">
-                                             <!-- 할인율 -->
-                                             <div class="gview1">
-                                                <div class="gooodimg"style="margin-left: auto; margin-right: auto; display: block;">	
-												<a href="productDetailView.jsp">
-                                                   <img src= width="70"  class="">
-                                                </a>              
-                                             </div>
-                                                <div class="goodtxt"
-                                                   style="text-align: left; word-break: break-all;">
-                                                   <div style="margin-bottom: 10px;">
-                                                      <a
-                                                       href=""
-                                                         style="font-size: 14px; color: #888;">빅맥</a>
-                                                   </div>
-                                                   
-                                                   <div style="padding-bottom: 20px;">
-                                                      <a
-                                                         href=""
-                                                         class="pprice"><b style="font-weight: 600;">2</b><span
-                                                         style="font-size: 16px; font-weight: 700;">원</span></a>
-                                                   </div>
-                                                </div>
-											</div>
+
+
+										<div class="listwrap">
+											<table border="0" cellpadding="0" cellspacing="0"
+												style=margin-left: auto; margin-right: auto; display:block;">
+												<tbody>
+													<tr>
+
+														<%
+														int i = 0;
+														for (Food food : foodList)
+														{
+															i++;
+															if (i == 1 || i % 3 == 1) {
+														%>
+													
+													<tr>
+														<%
+														}
+														%>
+
+														<td align="center" valign="top" class="number1">
+															<div class="innerwrap">
+																<!-- 할인율 -->
+																<div class="gview1">
+																	<div class="gooodimg"
+																		style="margin-left: auto; margin-right: auto; display: block;">
+																		<a href="productDetailView.jsp"> <img
+																			src="./image/<%=food.getFoodImage()%>" width="60"
+																			class="">
+																		</a>
+																	</div>
+																	<div class="goodtxt"
+																		style="text-align: left; word-break: break-all;">
+																		<div style="margin-bottom: 10px;">
+																			<a href="" style="font-size: 14px; color: #888;"><%=food.getFoodName() %></a>
+																		</div>
+
+																		<div style="padding-bottom: 20px;">
+																			<a href="" class="pprice"><b
+																				style="font-weight: 600;">2</b><span
+																				style="font-size: 16px; font-weight: 700;">원</span></a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</td>
+														<%
+														if (i % 3 == 0) {
+														%>
+													</tr>
+													<%
+													}
+													%>
+													<%
+													}
+													%>
+													</tr>
+												</tbody>
+											</table>
+										</div> <!-- 품절상품 마스크 -->
+										<div id="el-goods-soldout-image-mask"
+											style="display: none; position: absolute; top: 0; left: 0; background: url(../data/goods/icon/custom/soldout_overlay) no-repeat center center;">
 										</div>
 									</td>
-								 <% if(i%3==0){ %>
-								 	</tr>
-								 <% } %>	   
-							<%} %>
-												</tr>
-											</tbody>
-										</table>
-									</div> <!-- 품절상품 마스크 -->
-									<div id="el-goods-soldout-image-mask"
-										style="display: none; position: absolute; top: 0; left: 0; background: url(../data/goods/icon/custom/soldout_overlay) no-repeat center center;">
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+								</tr>
+							</tbody>
+						</table>
 				</form>
 			</div>
 		</div>

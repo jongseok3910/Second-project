@@ -1,31 +1,78 @@
+<%@page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf" %>	
+<%
+	String message=request.getParameter("message");
+	if(message==null){
+		message="";
+	}
+
+%>
+	
+	
 <%@ include file="../include/head.jsp"%>
 <body style="">
-	<%@ include file="../include/top.jsp"%>
+<%@ include file="../include/top.jsp"%>
 	<script>
+	/*
 	function idCheck(){
-		var memberId = document.getElementById("memberId").value;
-		if (!memberId) {
-			alert("검색할 아이디를 입력하시고 중복체크를 하셔요.");
+		var email = document.getElementById("email").value;
+		if (!email) {
+			alert("검색할 이메일을 입력하시고 중복체크를 하실까요?");
 			return false;
 		}else{
-			var param="memberId="+memberId
-			var url = "user_id_check_form.jsp?"+memberId;
+			var param="email="+email
+			var url = "memberIdCheckForm.jsp?"+email;
 			location.href=url;
 		}
 	} 
-	
-	// 아이디 중복체크 화면open
+	*/
+	function memberCreate(){
+		if (document.f.name.value=="") {
+			alert("사용자 이름을 입력하세요");
+			f.name.focus();
+			return false;			
+		}
+		if (document.f.email.value=="") {
+			alert("사용자 이메일을 입력하세요");
+			f.email.focus();
+			return false;			
+		}
+		if (document.f.password.value=="") {
+			alert("사용자 비밀번호를 입력하세요");
+			f.password.focus();
+			return false;			
+		}
+		if (document.f.password2.value=="") {
+			alert("사용자 비밀번호확인을 입력하세요");
+			f.password2.focus();
+			return false;			
+		}
+		if (f.password.value != f.password2.value) {
+			alert("비밀번호와 비밀번호확인은 일치하여야 합니다");
+			f.password.focus();
+			f.password.select();
+			return false;			
+		}
+		f.action="memberWriteAction.jsp";		
+		f.method='POST';
+		f.summit;
+	}
+	function memberList(){
+		f.action="memberLoginAction.jsp";
+		f.summit;
+	}
+	// 이메일 중복체크 화면open
 
 	function openIdChk(e){		
-		if (document.frmMember.memberId.value == "") {
-			alert("아이디를 입력하십시요.");
-			document.form.memberId.focus();
+		if (document.frmMember.email.value == "") {
+			alert("이메일을 입력하세요.");
+			document.form.email.focus();
 			return false;
 		}
-		var param="?memberId="+document.frmMember.memberId.value;
-		var param="?kim";
+		var param="?email="+document.frmMember.email.value;
+		var param="?name";
 		window.name = "parentForm";
 		window.open("memberIdCheckForm.jsp"+param,
 				"chkForm", "width=500,height=300,resizable = no,scrollbars = no");	
@@ -36,8 +83,8 @@
 		
 	
 
-	// 아이디 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
-	// 이렇게 하는 이유는 중복체크 후 다시 아이디 창이 새로운 아이디를 입력했을 때
+	// 이메일 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
+	// 이렇게 하는 이유는 중복체크 후 다시 이메일 창이 새로운 이메일을 입력했을 때
 	// 다시 중복체크를 하도록 한다.
 	function inputIdChk(){
 		document.memberInfo.idDuplication.value ="idUncheck";
@@ -329,18 +376,19 @@ input[type=text] {
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름" ></td>
 							</tr>
+							
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">아이디
+									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
 								<td><input type="text" name="memberId" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									&nbsp; <input type="hidden" name="chk_id" required=""
-									fld_esssential="" label="아이디중복체크"> <a
+									fld_esssential="" label="이메일중복체크"> <a
 									href="" onclick="openIdChk(event)"
-									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">아이디
+									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">이메일
 										중복체크</a></td>
 							</tr>
 							
@@ -394,8 +442,7 @@ input[type=text] {
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">핸드폰
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
-								<td>
-		 <input type="text" name="memberPhone" id="mobile0" value=""
+								<td><input type="text" name="memberPhone" id="mobile0" value=""		 
 									maxlength="4" required="" fld_esssential="" option="regNum"
 									label="핸드폰"
 									style="width: 92px; height: 30px; padding-left: 10px;">
@@ -406,26 +453,26 @@ input[type=text] {
 									&nbsp;-&nbsp; <input type="text" name="memberPhone3" id="mobile2"
 									value="" maxlength="4" required="" fld_esssential=""
 									option="regNum" label="핸드폰"
-									style="width: 90px; height: 30px; padding-left: 10px;">
-									
-
+									style="width: 90px; height: 30px; padding-left: 10px;">			
 								</td>
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
+									style="padding-left: 20px; color: #717071; font-weight: bold;">추가 이메일
 									<em class="star">*</em>
 								</th>
 								<td><input type="text" name="memberEmail" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									&nbsp;@&nbsp; <input type="text" name="id2" value=""
-									required=""
+									&nbsp;@&nbsp; 
+									<!-- 
+									<input type="text" name="id2" value="" required=""									
 									style="width: 144px; height: 30px; padding-left: 10px;">
+									 -->
 									&nbsp;<select name="memberEmail2"
 									style="width: 110px; height: 34px; border: 1px solid #d5d4d3; border-radius: 0; background: #f4f4f4; vertical-align: middle"
 									onchange="select_email(this);">
 										<option value="">이메일 선택</option>
-										<option value="sannamchon.co.kr">sannamchon.co.kr</option>
+										<option value="sannamchon.co.kr">email.com</option>
 										<option value="naver.com">naver.com</option>
 										<option value="hanmail.net">hanmail.net</option>
 										<option value="daum.net">daum.net</option>
