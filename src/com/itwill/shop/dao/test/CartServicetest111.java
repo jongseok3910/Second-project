@@ -17,13 +17,14 @@ public class CartServicetest111 {
 		
 		//System.out.println(cartService.findCartAll());
 		//System.out.println(cartService.findCartByFoodNo(302));
-		//System.out.println(cartService.findCartByMembersNo(8));
+		//System.out.println(cartService.findCartByMembersNo(5));
 
 		//Cart cart = new Cart(6, 8, 11, 305);
 		
 		//System.out.println(cartService.insertCart(cart));
 		//System.out.println(cartService.updateCartByNo(cart));
-		System.out.println(cartService.deleteCartByNo(11));
+		//System.out.println(cartService.deleteCartByNo(11));
+		System.out.println(cartService.deleteCartByMember(5));
 		
 
 	}

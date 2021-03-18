@@ -62,10 +62,10 @@ public class CartDaoImpl implements CartDao {
 		return insertRow;
 	}
 	@Override
-	public int deleteCartByNo(Integer memberNo) {
+	public int deleteCartByNo(Integer cartNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
-		int deleteRow = cartMapper.deleteCartByNo(memberNo);
+		int deleteRow = cartMapper.deleteCartByNo(cartNo);
 		return deleteRow;
 	}
 	@Override
@@ -74,6 +74,13 @@ public class CartDaoImpl implements CartDao {
 		CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
 		List<Cart> cart = cartMapper.findCartByMembersNo(membersNo);
 		return cart;
+	}
+	@Override
+	public int deleteCartByMember(Integer membersNo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CartMapper cartMapper = sqlSession.getMapper(CartMapper.class);
+		int deleteRow = cartMapper.deleteCartByMember(membersNo);
+		return deleteRow;
 	}
 	
 
