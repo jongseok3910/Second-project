@@ -6,7 +6,7 @@
 <% 
 
 FoodService foodService = new FoodService();
-Food food = foodService.findFoodByNo(302);
+Food food = foodService.findFoodByNo(Integer.parseInt(request.getParameter("Food_no")));
 
 %>
 <body style="">
@@ -98,7 +98,7 @@ body #content {
 				<div style="width: 50%; float: left;">
 					<div style="padding-bottom: 10px;" class="detailimg">
 						<span>
-							<img src="./" width="300" id="objImg">
+							<img src="./image/<%=food.getFoodImage()%>" width="300" id="objImg">
 							<!--디테일뷰수정-->
 						</span>
 					</div>
