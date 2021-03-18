@@ -21,6 +21,10 @@
 			pagehandle=0;
 		}
 	}
+	
+	function confirm() {
+		document.frmList.submit();
+	}
 </script>
 	
 <body style="">
@@ -43,7 +47,7 @@
 		<div class="indiv" style="margin: 0;">
 			<!-- Start indiv -->
 
-			<form name="frmList" action="boardListView.do" method="POST">
+			<form name="frmList" action="commentWriteAction.jsp" method="POST">
 				<input type="hidden" name="sort" value="1"> <input
 					type="hidden" name="page_num" value="10">
 
