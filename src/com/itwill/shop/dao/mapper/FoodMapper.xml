@@ -35,6 +35,10 @@
 		select * from food
 	</select>
 	
+	<select id="findCategoryByNo" parameterType="int" resultMap="foodResultMap">
+	    select * from food where category_no=#{categoryNo}
+	</select>
+	
 	<!-- insert -->
 	<insert id="insertFood" parameterType="com.itwill.shop.domain.Food">
 		INSERT INTO FOOD (food_no, food_name, food_price, food_image, food_desc, food_star,food_kcal,category_no)

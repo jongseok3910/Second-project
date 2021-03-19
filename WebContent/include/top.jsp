@@ -55,11 +55,11 @@
 			<ul>
 				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
 				
-				<li class="sm12"><a href="productListView.jsp">버거/세트</a></li>
+				<li class="sm12"><a href="productListView.jsp?category_no=30">버거/세트</a></li>
 				
-				<li class="sm13"><a href="productListView.jsp">스낵/사이드</a></li>
+				<li class="sm13"><a href="productListView.jsp?category_no=40">스낵/사이드</a></li>
 				
-				<li class="sm14"><a href="productListView.jsp">음료</a></li>
+				<li class="sm14"><a href="productListView.jsp?category_no=50">음료</a></li>
 			</ul>
 		<%}else{ %>
 			<ul>
