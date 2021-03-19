@@ -14,7 +14,7 @@
 <body style="">
 <%@ include file="../include/top.jsp"%>
 	<script>
-	
+	/*
 	function idCheck(){
 		var email = document.getElementById("email").value;
 		if (!email) {
@@ -26,6 +26,7 @@
 			location.href=url;
 		}
 	} 
+	*/
 	
 	function memberCreate(){
 		if (document.f.name.value=="") {
@@ -54,14 +55,17 @@
 			f.password.select();
 			return false;			
 		}
-		f.action="memberWriteAction.jsp";		
-		f.method='POST';
-		f.summit;
+		document.f.action = "memberWriteAction.jsp";		
+		document.f.method = 'POST';
+		document.f.submit();
 	}
+	/*
 	function memberList(){
 		f.action="memberLoginAction.jsp";
-		f.summit;
+		f.summit;	
 	}
+	*/
+	/*
 	// 이메일 중복체크 화면 open
 
 	function openIdChk(email){		
@@ -77,7 +81,8 @@
 				"chkForm", "width=500,height=300,resizable = no,scrollbars = no");	
 
 	}
-
+	*/
+	
 	// 이메일 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
 	// 이렇게 하는 이유는 중복체크 후 다시 이메일 창이 새로운 이메일을 입력했을 때
 	// 다시 중복체크를 하도록 한다.
@@ -337,8 +342,8 @@ input[type=text] {
 </style>
 
 			<form id="form" name="frmMember" method="post"
-				action="memberWriteAction.do" onsubmit="return chkForm2(this)">
-				<input type="hidden" name="mode" value="joinMember"> <input
+				action="memberWriteAction.jsp" onsubmit="return chkForm2(this)">
+				<input type="hidden" name="mode" value="createMembers"> <input
 					type="hidden" name="rncheck" value=""> <input type="hidden"
 					name="dupeinfo" value=""> <input type="hidden" name="pakey"
 					value=""> <input type="hidden" name="foreigner" value="">
@@ -367,7 +372,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberName" value=""
+								<td><input type="text" name="member_name" value="테스형"
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름" ></td>
 							</tr>
@@ -377,14 +382,17 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberId" value="" required=""
+								<td><input type="text" name="email" value="test@email.com" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									&nbsp;
+									<!-- 
 									&nbsp; <input type="hidden" name="chk_id" required=""
 									fld_esssential="" label="이메일중복체크"> <a
 									href="" onclick="openIdChk()"
 									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">이메일
-										중복체크</a></td>
+										중복체크</a>
+									 -->
+								</td>
 							</tr>
 							
 							<tr>
@@ -392,7 +400,7 @@ input[type=text] {
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">비밀번호
 									<em class="star" style="vertical-align: top;">*</em>									
 								</th>
-								<td><input type="password" name="newPassword" required=""
+								<td><input type="password" name="newPassword" value="a123456789A" required=""
 									fld_esssential="" option="regPass" label="비밀번호"
 									onfocus="checkPassword(this)" onkeyup="checkPassword(this)"
 									onblur="emptyPwState()"
@@ -415,22 +423,24 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<td class="memberCols2"><input type="password"
-									name="memberPassword2" required="" fld_esssential="" option="regPass"
+									name="memberPassword2" value="a123456789A" required="" fld_esssential="" option="regPass"
 									label="비밀번호"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									
 								</td>
 							</tr>
+							<!-- 
 							<tr>
 								<th
 									style="padding-left: 20px; color: #717071; font-weight: bold;">주소
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberAddress" value="" required=""
+								<td><input type="text" name="memberAddress" value="서울특별시 강남구 테헤란로 124 4층" required=""
 									style="width: 350px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									&nbsp; </td>
 							</tr>
+							 -->
 
 							<tr>								
 								<th
@@ -438,7 +448,7 @@ input[type=text] {
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
 								<td class="memberPhone"><input type="phone"
-									name="member_phone" required="" fld_esssential="" option="regPass"
+									name="member_phone" value="01022228888" required="" fld_esssential="" option="regPass"
 									label="휴대폰"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									<span style="display: block; width: 525px; height: 40px; padding-left: 10px; line-height: 40px; background: #f5f5f5; margin-top: 8px;">
