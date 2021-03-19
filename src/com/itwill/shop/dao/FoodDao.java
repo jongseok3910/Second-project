@@ -18,4 +18,6 @@ public interface FoodDao {
 	int updateFoodByNo(Food food);
 	
 	int deleteFoodByNo(Integer foodNo);
+	
+	int findCategoryByNo(Integer categoryNo);
 }
