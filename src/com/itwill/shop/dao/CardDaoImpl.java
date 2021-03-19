@@ -36,6 +36,14 @@ public class CardDaoImpl implements CardDao {
 		List<Card> cardList = cardMapper.findCardByNo(cardNo);
 		return cardList;
 	}
+	
+	@Override
+	public List<Card> findCardByMembersNo(int membersNo){
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlsession.getMapper(CardMapper.class);
+		List<Card> cardList = cardMapper.findCardByMembersNo(membersNo);
+		return cardList;
+	}
 
 	@Override
 	public List<Card> findCardAll(){
@@ -77,5 +85,11 @@ public class CardDaoImpl implements CardDao {
 		int deleteRow = cardMapper.deleteCardByNo(cardNo);
 		return deleteRow;
 	}
-
+	@Override
+	public int createCard(Card card) throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
+		int createRow = cardMapper.createCard(card);
+		return createRow;
+}
 }

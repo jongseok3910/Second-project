@@ -13,9 +13,7 @@
 	
 	<!--select-->
 	<select id="findAddressByNo" parameterType="int" resultMap="addressResultMap">
-
 		select * from address where members_no = #{membersNo}
-
 	</select>
 	
 	<select id="findAddressAll" resultMap="addressResultMap">

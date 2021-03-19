@@ -10,7 +10,7 @@
 <%
 
 	CardService cardService = new CardService();
-	List<Card> cardList=cardService.findCardByNo((int)session.getAttribute("members_no"));
+	List<Card> cardList=cardService.findCardByMembersNo((int)session.getAttribute("members_no"));
 %>
 <style type="text/css">
 div.passwordStrenth {
@@ -302,9 +302,9 @@ input[type=text] {
 <%} %>
 				<div id="avoidDbl"
 					style="padding: 70px 0 100px 0; border-top: 1px solid #ccc; margin-top: 70px; text-align: center;">
-					<input type="submit" onclick="isSuccess();"
+					<input type="button" onclick="location.href='card_Write_Form.jsp'"
 						style="width: 230px; background: #344336; color: #fff; display: inline-block; line-height: 65px; text-align: center; font-size: 20px; margin-right: 10px; cursor: pointer;"
-						value="정보수정"> <input type="button" border="0"
+						value="카드추가"> <input type="button" border="0"
 						onclick="history.back()"
 						style="width: 230px; background: #344336; color: #fff; display: inline-block; line-height: 65px; text-align: center; font-size: 20px; cursor: pointer;"
 						value="이전으로">
