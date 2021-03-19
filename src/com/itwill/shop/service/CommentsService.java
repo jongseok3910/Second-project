@@ -21,6 +21,10 @@ public class CommentsService {
 	 	return commentsDao.findCommentAll(food_no);
 	}
 	
+	public int countComment(int comments_group) throws Exception{
+		return commentsDao.countComment(comments_group);
+	}
+	
 	public int insertComments(Comments comments) throws Exception{
 		return commentsDao.insertComments(comments);
 	}

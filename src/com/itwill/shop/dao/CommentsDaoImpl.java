@@ -42,7 +42,15 @@ public class CommentsDaoImpl implements CommentsDao {
 		List<Comments> commentsList = commentsMapper.findCommentAll(food_no);
 		return commentsList;
 	}
-
+	
+	@Override
+	public int countComment(int comments_group) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
+		int count = commentsMapper.countComment(comments_group);
+		return count;
+	}
+	
 	@Override
 	public int insertComments(Comments comments)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
