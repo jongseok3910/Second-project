@@ -17,11 +17,12 @@
 	
 	try{
 		if(comHandle.equalsIgnoreCase("child")){
-		int group_no = Integer.parseInt(request.getParameter("comments_no"));
-		Comments comments = 
-				new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,group_no,0,0,Integer.parseInt(food_no));
-				commentsService.insertCommentsChild(comments);
-				response.sendRedirect("productDetailView.jsp?Food_no="+Integer.parseInt(food_no));
+			int group_no = Integer.parseInt(request.getParameter("comments_no"));
+			int row=commentsService.countComment(group_no);
+			Comments comments = 
+					new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,group_no,(row+1),row,Integer.parseInt(food_no));
+					commentsService.insertCommentsChild(comments);
+					response.sendRedirect("productDetailView.jsp?Food_no="+Integer.parseInt(food_no));
 	}
 	else{
 		Comments comments = 

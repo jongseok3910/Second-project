@@ -295,7 +295,8 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 							배송 받으실분<span class="dot">*</span>
 						</dt>
 						<dd>
-							<input type="text" name="receiver_name" class="input_w336 dark_gray" value="<%= members.getMembers_name()%>" >
+							<input type="text" name="receiver_name" class="input_w336 dark_gray" 
+							value="<%= members.getMembers_name()%>" readonly="readonly">
 						</dd>
 					</dl>
 					<dl>
