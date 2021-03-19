@@ -17,8 +17,8 @@ public class CommentsService {
 	    return commentsDao.findCommentByno(commentsNo);	
 	}
 	
-	public List<Comments> findCommentAll() throws Exception{
-	 	return commentsDao.findCommentAll();
+	public List<Comments> findCommentAll(int food_no) throws Exception{
+	 	return commentsDao.findCommentAll(food_no);
 	}
 	
 	public int insertComments(Comments comments) throws Exception{

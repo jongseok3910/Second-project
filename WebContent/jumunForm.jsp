@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.domain.Address"%>
+<%@page import="com.itwill.shop.service.AddressService"%>
 <%@page import="com.itwill.shop.domain.Members"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.service.MembersService"%>
@@ -9,6 +11,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="login_check.jspf" %>
 	
 <%
 
@@ -19,9 +22,11 @@
 CartService cartService = new CartService();
 MembersService membersService = new MembersService();
 FoodService foodService = new FoodService();
+AddressService addressService = new AddressService();
 
-List<Cart> cartList = cartService.findCartByMembersNo(5);
-Members members = membersService.findMembersByNo(5);
+List<Cart> cartList = cartService.findCartByMembersNo(sMemberNo);
+Members members = membersService.findMembersByNo(sMemberNo);
+List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 
 
 %>
@@ -298,9 +303,14 @@ Members members = membersService.findMembersByNo(5);
 							배송지 주소<span class="dot">*</span>
 						</dt>
 						<dd>
-							<div class="mt_10">
-								<input type="text" name="receiver_address" id="address"
-									class="lineBig dark_gray" value="">
+							<div >
+								<select name="receiver_address" style="width:300px;">
+									<option value="">주소선택</option>
+									<% for(Address address:addressList){%>
+										<option value="<%=address.getAddress_detail()%>">
+										<%=address.getAddress_name()%></option>
+									<%} %>
+								</select>
 							</div>
 
 
@@ -366,7 +376,6 @@ Members members = membersService.findMembersByNo(5);
 						style="cursor: pointer; vertical-align: top;">
 					
 				</div>
-
 			</form>
 
 		</div>

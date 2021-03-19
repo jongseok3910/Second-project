@@ -36,10 +36,10 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public List<Comments> findCommentAll() {
+	public List<Comments> findCommentAll(int food_no) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
-		List<Comments> commentsList = commentsMapper.findCommentAll();
+		List<Comments> commentsList = commentsMapper.findCommentAll(food_no);
 		return commentsList;
 	}
 

@@ -25,7 +25,7 @@
 	}
 	function view_cart_form_submit(){
 		document.view_cart_form.method='POST';
-		document.view_cart_form.action='jumun_create_form.jsp';
+		document.view_cart_form.action='jumunForm.jsp';
 		document.view_cart_form.submit();
 	}
 </script>

@@ -390,7 +390,7 @@ input[type=text] {
 							<tr>
 								<th
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">비밀번호
-									<em class="star" style="vertical-align: top;">*</em>
+									<em class="star" style="vertical-align: top;">*</em>									
 								</th>
 								<td><input type="password" name="newPassword" required=""
 									fld_esssential="" option="regPass" label="비밀번호"
@@ -432,11 +432,21 @@ input[type=text] {
 									&nbsp; </td>
 							</tr>
 
-							<tr>
+							<tr>								
 								<th
-									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">핸드폰
+									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">휴대폰
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
+								<td class="memberPhone"><input type="phone"
+									name="member_phone" required="" fld_esssential="" option="regPass"
+									label="휴대폰"
+									style="width: 217px; height: 30px; padding-left: 10px;">
+									<span style="display: block; width: 525px; height: 40px; padding-left: 10px; line-height: 40px; background: #f5f5f5; margin-top: 8px;">
+											특수문자(-)없이 숫자만 입력하세요</span></td>
+								</td>
+								
+						
+								<!-- 
 								<td><input type="text" name="memberPhone" id="mobile0" value=""		 
 									maxlength="4" required="" fld_esssential="" option="regNum"
 									label="핸드폰"
@@ -450,7 +460,10 @@ input[type=text] {
 									option="regNum" label="핸드폰"
 									style="width: 90px; height: 30px; padding-left: 10px;">			
 								</td>
+								 -->
 							</tr>
+							
+							<!-- 
 							<tr>
 								<th
 									style="padding-left: 20px; color: #717071; font-weight: bold;">추가 이메일
@@ -458,11 +471,9 @@ input[type=text] {
 								</th>
 								<td><input type="text" name="memberEmail" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									&nbsp;@&nbsp; 
-									<!-- 
+									&nbsp;@&nbsp; 									
 									<input type="text" name="id2" value="" required=""									
-									style="width: 144px; height: 30px; padding-left: 10px;">
-									 -->
+									style="width: 144px; height: 30px; padding-left: 10px;">									
 									&nbsp;<select name="memberEmail2"
 									style="width: 110px; height: 34px; border: 1px solid #d5d4d3; border-radius: 0; background: #f4f4f4; vertical-align: middle"
 									onchange="select_email(this);">
@@ -476,6 +487,7 @@ input[type=text] {
 										<option value="gmail.com">gmail.com</option>
 								</select> &nbsp; </td>
 							</tr>
+							 -->
 						</tbody>
 					</table>
 

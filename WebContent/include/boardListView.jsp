@@ -13,7 +13,7 @@
 <%
 	DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 	CommentsService commentsService = new CommentsService();
-	List<Comments> commentsList = commentsService.findCommentAll();
+	List<Comments> commentsList = commentsService.findCommentAll(Integer.parseInt(request.getParameter("Food_no")));
 %>
 
 <script type="text/javascript">
@@ -33,13 +33,14 @@
 		}
 	}
 	
-	function childopenpage() {
+	function childopenpage(group_no) {
 		if(parentPagehandle==1){
 			parentPagehandle=0;
 		}
 		if(childPagehandle==0){
 			document.getElementById("openpage").style.display="block";
 			document.getElementById("comHandle").value="child";
+			document.getElementById("comments_no").value=group_no;
 			childPagehandle=1;
 		}else{
 			document.getElementById("openpage").style.display="none";
@@ -164,7 +165,7 @@
 									%>
 									<%= evalStr %>
 								</td>
-								<td width="80" align="center"><img src="./" onclick="childopenpage()"/></td>
+								<td width="80" align="center"><img src="./" onclick="childopenpage(<%=comments.getComments_no()%>)"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -186,7 +187,8 @@
 		<!-- 댓글디자인 시작 -->
 		<form name="comments" action="commentWriteAction.jsp" method="POST">
 		<input type="hidden" id="comHandle" name="comHandle" value="0">
-		<input type="hidden" name="food_no" value="301">
+		<input type="hidden" name="comments_no" value="0">
+		<input type="hidden" name="food_no" value="<%=request.getParameter("Food_no")%>">
 				<div style="display: none;" id="openpage">
 				<table id="table_after" width="60%" cellpadding="0" cellspacing="0"
 				border="0" style="margin: 0 auto">

@@ -21,8 +21,8 @@
                 select * from comments where comments_no =#{commentsNo}
        </select>
        
-       <select id="findCommentAll" resultMap="comment_Map">
-                select * from comments
+       <select id="findCommentAll" parameterType="int" resultMap="comment_Map">
+                select * from comments where food_no=#{food_no}
        </select>
  
        <insert id="insertComments" parameterType="com.itwill.shop.domain.Comments">
