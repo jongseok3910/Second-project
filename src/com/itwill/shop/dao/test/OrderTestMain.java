@@ -26,7 +26,7 @@ public class OrderTestMain {
 		ArrayList<OrdersDetail> odl = new ArrayList<>();
 		odl.add(od1);
 		odl.add(od2);
-		Orders o = new Orders(0, "2개", null, 39800, 2, odl);
+		Orders o = new Orders(0, "2개", null, 39800,"참살기좋아요" ,2, odl);
 		System.out.println(ordersService.createOrdersAll(o));
 		/*
 		System.out.println(ordersService.createOrders(o));

@@ -21,6 +21,7 @@ MEMBERS_NO            NUMBER(10)
 	private String orders_desc;
 	private Date orders_date;
 	private int orders_price;
+	private String address_name;
 	private int members_no;
 	private ArrayList<OrdersDetail> ordersdetailList;
 	
@@ -28,22 +29,29 @@ MEMBERS_NO            NUMBER(10)
 		
 	}
 
-	public Orders(int orders_no, String orders_desc, Date orders_date, int orders_price, int members_no,
-			ArrayList<OrdersDetail> ordersdetailList) {
+	
+	
+	public Orders(int orders_no, String orders_desc, Date orders_date, int orders_price, String address_name,
+			int members_no, ArrayList<OrdersDetail> ordersdetailList) {
 		this.orders_no = orders_no;
 		this.orders_desc = orders_desc;
 		this.orders_date = orders_date;
 		this.orders_price = orders_price;
+		this.address_name = address_name;
 		this.members_no = members_no;
 		this.ordersdetailList = ordersdetailList;
 	}
-	
+
+
+
 	@Override
 	public String toString() {
 		return "Orders [orders_no=" + orders_no + ", orders_desc=" + orders_desc + ", orders_date=" + orders_date
-				+ ", orders_price=" + orders_price + ", members_no=" + members_no + ", ordersdetailList="
-				+ ordersdetailList + "]";
+				+ ", orders_price=" + orders_price + ", address_name=" + address_name + ", members_no=" + members_no
+				+ ", ordersdetailList=" + ordersdetailList + "]";
 	}
+
+
 
 	public int getOrders_no() {
 		return orders_no;
@@ -77,6 +85,14 @@ MEMBERS_NO            NUMBER(10)
 		this.orders_price = orders_price;
 	}
 
+	public String getAddress_name() {
+		return address_name;
+	}
+
+	public void setAddress_name(String address_name) {
+		this.address_name = address_name;
+	}
+
 	public int getMembers_no() {
 		return members_no;
 	}
@@ -92,5 +108,7 @@ MEMBERS_NO            NUMBER(10)
 	public void setOrdersdetailList(ArrayList<OrdersDetail> ordersdetailList) {
 		this.ordersdetailList = ordersdetailList;
 	}
+	
+	
 	
 }

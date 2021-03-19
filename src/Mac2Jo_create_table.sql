@@ -1,8 +1,8 @@
 DROP TABLE Orders_detail CASCADE CONSTRAINTS;
+DROP TABLE Orders CASCADE CONSTRAINTS;
 DROP TABLE Address CASCADE CONSTRAINTS;
 DROP TABLE Card CASCADE CONSTRAINTS;
 DROP TABLE Comments CASCADE CONSTRAINTS;
-DROP TABLE Orders CASCADE CONSTRAINTS;
 DROP TABLE Cart CASCADE CONSTRAINTS;
 DROP TABLE Food CASCADE CONSTRAINTS;
 DROP TABLE Category CASCADE CONSTRAINTS;
@@ -73,6 +73,7 @@ CREATE TABLE Orders(
 		Orders_desc VARCHAR2(100),
 		Orders_date DATE DEFAULT sysdate,
 		Orders_price NUMBER(10),
+        Address_name varchar2(100),
 		Members_no NUMBER(10),
   FOREIGN KEY (Members_no) REFERENCES Members (Members_no)
 );
@@ -98,9 +99,9 @@ CREATE TABLE Comments(
   FOREIGN KEY (Food_no) REFERENCES Food (Food_no)
 );
 
-DROP SEQUENCE Comment_no_SEQ;
+DROP SEQUENCE Comments_no_SEQ;
 
-CREATE SEQUENCE Comment_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
+CREATE SEQUENCE Comments_no_SEQ NOMAXVALUE NOCACHE NOORDER NOCYCLE;
 /**********************************/
 /* Table Name: Card */
 /**********************************/
