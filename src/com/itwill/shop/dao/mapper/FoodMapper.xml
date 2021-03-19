@@ -40,11 +40,11 @@
 	</select>
 	
 	<select id="foodListByPriceOrderDesc" parameterType="int" resultMap="foodResultMap">
-	    select * from food order by foodPrice desc
+	    select * from food order by food_Price desc
 	</select>
 	
 	<select id="foodListByPriceOrderAsc" parameterType="int" resultMap="foodResultMap">
-	    select * from food order by foodPrice asc
+	    select * from food order by food_Price asc
 	</select>
 	
 	<!-- insert -->
