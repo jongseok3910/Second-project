@@ -91,7 +91,7 @@ public class FoodDaoImpl implements FoodDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		FoodMapper foodMapper = sqlSession.getMapper(FoodMapper.class);
 		int food = foodMapper.findCategoryByNo(categoryNo);
-		return 0;
+		return food;
 	}
 
 

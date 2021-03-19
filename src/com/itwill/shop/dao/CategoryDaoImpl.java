@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.shop.dao.mapper.CategoryMapper;
 import com.itwill.shop.domain.Category;
+import com.itwill.shop.domain.Comments;
 
 public class CategoryDaoImpl implements CategoryDao {
 	
@@ -49,6 +50,12 @@ public class CategoryDaoImpl implements CategoryDao {
 		int insertRow = categoryMapper.insertCategory(category);
 		return insertRow;
 	}
+	
+	@Override
+	public int insertCommentsChild(Comments comments) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	@Override
 	public int updateCategoryByNo(Category category) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
@@ -64,7 +71,4 @@ public class CategoryDaoImpl implements CategoryDao {
 		return deleteRow;
 	}
 	
-	
-	
-
 }
