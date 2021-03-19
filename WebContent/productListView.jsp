@@ -1,4 +1,4 @@
-﻿<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.domain.Food"%>
 <%@page import="com.itwill.shop.service.FoodService"%>
 <%@ page import="java.util.ArrayList"%>
@@ -8,6 +8,8 @@
 FoodService foodService = new FoodService();
 int categoryno = Integer.parseInt(request.getParameter("category_no"));
 List<Food> foodList = foodService.findCategoryNo(categoryno);
+List<Food> foodList1 = foodService.foodListByPriceOrderAsc();
+List<Food> foodList2 = foodService.foodListByPriceOrderDesc();
 %>
 
 <!DOCTYPE html>
@@ -21,19 +23,16 @@ List<Food> foodList = foodService.findCategoryNo(categoryno);
 #main, #content {
 	width: 100% !important;
 }
-
 #pos_scroll {
 	position: absolute;
 	top: 840px;
 }
-
 .listTopImg {
 	position: relative;
 	width: 100%;
 	height: 220px;
 	overflow: hidden;
 }
-
 .listTopImg img {
 	position: absolute;
 	top: 0;
@@ -152,7 +151,6 @@ body .pprice, body .pprice:hover {
 	font-size: 20px;
 	font-family: "Noto Sans KR", 'Nanum Gothic', sans-serif;
 }
-
 .dcmark p {
 	padding-right: 0;
 	text-align: center;
@@ -191,7 +189,6 @@ body .pprice, body .pprice:hover {
 	font-size: 20px;
 	font-family: "Noto Sans KR", 'Nanum Gothic', sans-serif;
 }
-
 .dcmark p {
 	padding-right: 0;
 	text-align: center;
@@ -204,7 +201,6 @@ body .pprice, body .pprice:hover {
 												style=margin-left: auto; margin-right: auto; display:block;">
 												<tbody>
 													<tr>
-
 														<%
 														int i = 0;														
 														for (Food food : foodList)
@@ -218,7 +214,6 @@ body .pprice, body .pprice:hover {
 														<%
 														}
 														%>
-
 														<td align="center" valign="top" class="number1">
 															<div class="innerwrap">
 																<!-- 할인율 -->

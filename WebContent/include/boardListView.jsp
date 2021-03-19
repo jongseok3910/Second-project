@@ -113,7 +113,12 @@
 						>
 						<tbody>
 							<tr>
+							<%if(comments.getComments_step() > 1){ %>
+								<td width="50" align="center"></td>
+								<td width="50" align="center">>>>>>>></td>
+							<%}else{ %>
 								<td width="50" align="center"><%=count %></td>
+							<%} %>
 								<td width="100" align="center" style="padding: 10px 0;">
 								<a href="">
 									<img src="./image/comments/comments.jpg" width="70"/></a></td>
@@ -125,7 +130,7 @@
 											<tr>
 												<td style="padding-top: 5px; border: none; height: auto; text-align: left; color: #333;">
 													<a href="">		
-													<%= comments.getComments_title() %>
+													<%= comments.getComments_content() %>
 													</a>		
 												</td>
 											</tr>
@@ -165,7 +170,7 @@
 									%>
 									<%= evalStr %>
 								</td>
-								<td width="80" align="center"><img src="./" onclick="childopenpage(<%=comments.getComments_no()%>)"/></td>
+								<td width="80" align="center"><img src="./" onclick="childopenpage(<%=comments.getComments_group()%>)"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -248,7 +253,7 @@
 															<td colspan="2" height="1" bgcolor="#DEDEDE"
 																style="padding: 0px;"></td>
 														</tr>
-														<tr>
+														<tr style="display: none;">
 															<td class="input_txt" align="right">제목</td>
 															<td><input type="text" id="title" name="title"
 																style="width: 95%" required="" fld_esssential=""

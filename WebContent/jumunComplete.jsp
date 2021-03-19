@@ -1,3 +1,5 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Collections"%>
@@ -29,7 +31,8 @@ orderMap.put("orders_no", max);
 
 Orders orders = ordersService.findOrderByOne(orderMap);
 Members members= membersService.findMembersByNo(sMemberNo);
-
+SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+String order_time = format1.format (orders.getOrders_date()); 
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
@@ -71,12 +74,13 @@ Members members= membersService.findMembersByNo(sMemberNo);
 						<td><%=members.getMembers_name() %></td>
 					</tr>
 					<tr>
+					
 						<th>주문일자</th>
-						<td><%=orders.getOrders_date() %></td>
+						<td><%= order_time%></td>
 					</tr>
 					<tr>
 						<th>주문금액</th>
-						<td><%=orders.getOrders_price() %></td>
+						<td><%=new DecimalFormat("#,###").format(orders.getOrders_price()) %>원</td>
 					</tr>
 				</tbody>
 			</table>

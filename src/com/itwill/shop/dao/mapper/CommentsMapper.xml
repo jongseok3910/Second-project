@@ -18,11 +18,11 @@
        </resultMap> 
 
        <select id="findCommentByno" parameterType="int" resultMap="comment_Map">
-                select * from comments where comments_no =#{commentsNo}
+                select * from comments where comments_no =#{commentsNo} 
        </select>
        
        <select id="findCommentAll" parameterType="int" resultMap="comment_Map">
-                select * from comments where food_no=#{food_no}
+                select * from comments where food_no=#{food_no} ORDER by comments_group asc,comments_step asc
        </select>
        
        <select id="countComment" parameterType="int" resultType="int">

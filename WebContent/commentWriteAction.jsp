@@ -23,12 +23,13 @@
 					new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,group_no,(row+1),row,Integer.parseInt(food_no));
 					commentsService.insertCommentsChild(comments);
 					response.sendRedirect("productDetailView.jsp?Food_no="+Integer.parseInt(food_no));
-	}
-	else{
+	}else if(comHandle.equals("parent")){
 		Comments comments = 
 				new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,0,1,0,Integer.parseInt(food_no));
 				commentsService.insertComments(comments);
 		response.sendRedirect("productDetailView.jsp?Food_no="+Integer.parseInt(food_no));
+	}else{
+		response.sendRedirect("productDetailView.jsp?Food_no="+Integer.parseInt(food_no));	
 	}
 	}catch(Exception e){
 		e.printStackTrace();

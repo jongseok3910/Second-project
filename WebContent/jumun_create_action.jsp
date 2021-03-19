@@ -14,6 +14,12 @@
 
 //사람 정보는 세션에서 구해오면 됨
 //제품 수량 정보는 카트에서 구해오면 됨
+
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("mac_main.jsp");
+		return;
+	}
+
 	request. setCharacterEncoding("UTF-8");
 	String address = request.getParameter("receiver_address");
 
