@@ -30,10 +30,12 @@
 		}else{
 				response.sendRedirect("memberLoginForm.jsp");
 		}
+		/*
+		위에서 로그인 체크 기능이 이미 있음
 		Members loginMember = memberService.findMembersById(email);
 		session.setAttribute("sEmail", email);
 		session.setAttribute("sMember", loginMember);
-		response.sendRedirect("mac_main.jsp");
+		*/
 	}catch(MembersNotFoundException e){
 		response.sendRedirect("memberLoginForm.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));
 	}catch(PaswordMismatchException e){
