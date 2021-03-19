@@ -30,7 +30,7 @@
 		}else{
 				response.sendRedirect("memberLoginForm.jsp");
 		}
-		Members loginMember = memberService.login(email,password);
+		Members loginMember = memberService.findMembersById(email);
 		session.setAttribute("sEmail", email);
 		session.setAttribute("sMember", loginMember);
 		response.sendRedirect("mac_main.jsp");
