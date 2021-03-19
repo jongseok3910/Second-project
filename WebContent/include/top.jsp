@@ -4,11 +4,11 @@
 	SimpleDateFormat format = new SimpleDateFormat ("HH");
 	String format_time = format.format (System.currentTimeMillis());
 	
-	String sMembers_id1="";
-	int sMembers_no1=0;
+	String sMembers_id="";
+	int sMembers_no=0;
 	if(session.getAttribute("members_email")!=null){
-		sMembers_id1 = (String)session.getAttribute("members_email");
-		sMembers_no1 = (int)session.getAttribute("members_no");	
+		sMembers_id = (String)session.getAttribute("members_email");
+		sMembers_no = (int)session.getAttribute("members_no");	
 	}
 %>
 <script type="text/javascript">
