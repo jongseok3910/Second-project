@@ -19,6 +19,12 @@ public interface CardMapper {
  	<select id=findCardByNo" parameterType="int" resultMap=cardResultMap">
 		select * from card where card_no = #{cardNo}
 	</select>
+	
+	 */
+	public List<Card> findCardByMembersNo(int membersNo);
+	/*<select id="findCardByMembersNo" parameterType="int" resultMap="cardResultMap">
+		select * from card where members_no = #{membersNo}
+	</select>
 	 */
 	
 	public List<Card> findCardAll();
@@ -52,6 +58,11 @@ public interface CardMapper {
 		delete from card where card_no=#{cardNo}
 	</delete>
 	 */
-
-	
+	public int createCard(Card card) throws Exception;
+	/*
+	<insert id="createCard" parameterType="com.itwill.shop.domain.Card">
+		insert into card(card_no,card_number,card_name,card_type,members_No)
+		values(CARD_NO_SEQ.nextval,#{card_number},#{card_name},#{card_type},#{members_no})
+	</insert>
+*/
 }
