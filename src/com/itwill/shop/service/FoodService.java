@@ -46,12 +46,12 @@ public class FoodService {
 		return foodDao.findCategoryByNo(categoryNo);
 	}
 	
-	public List<Food> foodListByPriceOrderDesc() throws Exception {
-		return foodDao.foodListByPriceOrderDesc();
+	public List<Food> foodListByPriceOrderDesc(Integer categoryNo) throws Exception {
+		return foodDao.foodListByPriceOrderDesc(categoryNo);
 	}
 	
-	public List<Food> foodListByPriceOrderAsc() throws Exception {
-		return foodDao.foodListByPriceOrderAsc();
+	public List<Food> foodListByPriceOrderAsc(Integer categoryNo) throws Exception {
+		return foodDao.foodListByPriceOrderAsc(categoryNo);
 	}
 
 }

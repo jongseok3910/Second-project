@@ -8,8 +8,8 @@
 FoodService foodService = new FoodService();
 int categoryno = Integer.parseInt(request.getParameter("category_no"));
 List<Food> foodList = foodService.findCategoryNo(categoryno);
-List<Food> foodList1 = foodService.foodListByPriceOrderAsc();
-List<Food> foodList2 = foodService.foodListByPriceOrderDesc();
+List<Food> foodList1 = foodService.foodListByPriceOrderAsc(categoryno);
+List<Food> foodList2 = foodService.foodListByPriceOrderDesc(categoryno);
 %>
 
 <!DOCTYPE html>

@@ -21,7 +21,7 @@ public interface FoodDao {
 	
 	List<Food> findCategoryByNo(Integer categoryNo);
 	
-    public List<Food> foodListByPriceOrderDesc() throws Exception;
+    public List<Food> foodListByPriceOrderDesc(Integer categoryNo) throws Exception;
 	
-	public List<Food> foodListByPriceOrderAsc() throws Exception;
+	public List<Food> foodListByPriceOrderAsc(Integer categoryNo) throws Exception;
 }

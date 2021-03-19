@@ -22,9 +22,9 @@ public interface FoodMapper {
 	
 	public int deleteFoodByNo(Integer foodNo);
 	
-	public List<Food> foodListByPriceOrderAsc();
+	public List<Food> foodListByPriceOrderAsc(Integer categoryNo);
 	
-	public List<Food> foodListByPriceOrderDesc();
+	public List<Food> foodListByPriceOrderDesc(Integer categoryNo);
 	
 	
 }

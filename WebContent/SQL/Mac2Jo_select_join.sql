@@ -22,6 +22,13 @@ select * from orders o join orders_detail od on o.orders_no=od.orders_no;
 select * from comments;
 select * from comments where comments_writer='mac123@google.com';
 
+
+select o.orders_no as orders_no,orders_desc,orders_date,orders_price,members_no,orders_detail_no, 
+		orders_detail_qty,food_no from orders o join 
+		orders_detail od on o.orders_no=od.orders_no 
+		where members_no=1
+
+
 --update
 /*
 update members set Members_name='김춘향',
@@ -69,3 +76,4 @@ delete from food where food_no=301;
 delete from category where category_no=?;
 delete from comments where comments_group=2 and comments_step=1 and comments_dept=2;
 */
+
