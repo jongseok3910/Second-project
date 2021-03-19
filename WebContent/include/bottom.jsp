@@ -244,7 +244,7 @@
 			<div class="float wrap3">
 				<b><br></b><b class="sub">맥 딜리버리</b>
 				<p>생산자 / 공급업체 / 봉사단체 / 구직자</p>
-				<p class="mail">test@email.com</p>
+				<p class="mail">macdonalds@mac2ja.co.kr</p>
 			</div>
 		</div>
 
@@ -282,13 +282,13 @@
 			<div class="inner2">
 				<p>
 					주소:서울특별시 강남구 테헤란로 124 <span>｜</span> 상호:맥이자 <span>｜</span>
-					대표:도널드 <span>｜</span> 사업자등록번호:121-88-100443 <span>｜</span>
+					대표: MacDonald <span>｜</span> 사업자등록번호:121-88-100492 <span>｜</span>
 					통신판매업신고번호:제 2021-서울강남-1004 호
 				</p>
 				<p>
-					개인정보 정책 및 담당:테스형<span>｜</span> 대표번호:1588-1004 <span>｜</span>
-					팩스번호:02-2424-2244 <span>｜</span> 이메일:<a
-						href="javascript:popup(&#39;../proc/popup_email.php?to=zipbanchan@sannamchon.co.kr&amp;hidden=1&#39;,650,600)">help@mac2ja.co.kr</a>
+					개인정보 정책 및 담당: 테스형<span>｜</span> 대표번호:1588-1004 <span>｜</span>
+					팩스번호:02-2424-1004 <span>｜</span> 이메일:<a
+						href="javascript:popup(&#39;../proc/popup_email.php?to=01022554884@nate.cdom&amp;hidden=1&#39;,650,600)">help@mac2ja.co.kr</a>
 				</p>
 				<p>
 					Copyright ⓒ <strong>맥이자</strong> All right reserved

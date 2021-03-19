@@ -47,7 +47,7 @@
 	}
 	Orders newOrders=new Orders(0,j_desc, null, j_tot_price, address ,sMemberNo,ordersDetailList);
 		
-	ordersService.createOrders(newOrders);
+	ordersService.createOrdersAll(newOrders);
 	cartService.deleteCartByMember(sMemberNo);
 	
 

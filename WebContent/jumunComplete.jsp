@@ -23,7 +23,7 @@ for(Orders orders:orderList){
 	}
 }
 
-HashMap orderMap=new HashMap();
+HashMap<String,Object> orderMap=new HashMap<String,Object>();
 orderMap.put("members_no", sMemberNo);
 orderMap.put("orders_no", max);
 
