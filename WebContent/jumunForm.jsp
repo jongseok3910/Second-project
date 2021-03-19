@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.domain.Address"%>
 <%@page import="com.itwill.shop.service.AddressService"%>
 <%@page import="com.itwill.shop.domain.Members"%>
@@ -15,9 +16,10 @@
 	
 <%
 
-
-//String p_noStr=request.getParameter("p_no");
-//String p_qtyStr=request.getParameter("p_qty");
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("mac_main.jsp");
+		return;
+	}
 
 CartService cartService = new CartService();
 MembersService membersService = new MembersService();
@@ -69,28 +71,7 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 			<p style="font-size: 17px; margin-bottom: 10px; font-weight: 500;">주문할
 				상품</p>
 
-			
-			<div class="groobeeProductList" style="display: none;">
-				<a
-					href="http://www.zipbanchan.co.kr/shop/goods/goods_view.php?&amp;goodsno="
-					class=""></a> <span class="groobeeProductName">특별반찬
-					4종 - 310g</span> <span class="groobeeProductCount">1</span> <span
-					class="groobeeProductPrice">13,900</span> <span
-					class="groobeeProductImage"><img
-					src="./res/special_banchan_4.jpg" width="100"
-					onerror="this.src='/shop/data/skin/mera_ws/img/common/noimg_100.gif'"></span>
-			</div>
-			<span style="display: none;" name="wp_detection" tag="i">560</span>
-			<div class="groobeeProductList" style="display: none;">
-				<a
-					href="http://www.zipbanchan.co.kr/shop/goods/goods_view.php?&amp;goodsno=578"
-					class="groobeeProductA"></a> <span class="groobeeProductName">8월
-					제철 맛보기반찬 3종 - 500g</span> <span class="groobeeProductCount">1</span> <span
-					class="groobeeProductPrice">14,900</span> <span
-					class="groobeeProductImage"><img
-					src="./res/august_matboki_banchan_3.jpg" width="100"
-					onerror="this.src='/shop/data/skin/mera_ws/img/common/noimg_100.gif'"></span>
-			</div>
+
 			<span style="display: none;" name="wp_detection" tag="i">578</span>
 			<table cellpadding="0" cellspacing="0" border="0" width="100%"
 				class="listtablen">
@@ -151,14 +132,14 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 							<div style="word-break: break-all; text-align: left;"><%=food.getFoodName() %></div>
 						</td>
 						<td align="center"></td>
-						<td align="right" style="padding-right: 10px"><%=food.getFoodPrice()%>원</td>
+						<td align="right" style="padding-right: 10px"><%=new DecimalFormat("#,###").format(food.getFoodPrice())%>원</td>
 						<td align="center"><%=cart.getCartQty() %></td>
 						<td align="center">
 							<div id="el-default-delivery">기본배송</div>
 						</td>
 
 
-						<td align="right" style="padding-right: 10px"><%= food.getFoodPrice()*cart.getCartQty()%>원</td>
+						<td align="right" style="padding-right: 10px"><%= new DecimalFormat("#,###").format(food.getFoodPrice()*cart.getCartQty())%>원</td>
 						
 
 					</tr>
@@ -231,7 +212,7 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 									<tr>
 										<th nowrap="">총 상품금액</th>
 										<td><span id="el-orderitem-total-price">
-										<%=tot_price %>원</span></td>
+										<%=new DecimalFormat("#,###").format(tot_price) %>원</span></td>
 									</tr>
 
 								</tbody>
@@ -306,7 +287,7 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 						<dd>
 							<div >
 								<select name="receiver_address" style="width:300px;">
-									<option value="">주소선택</option>
+									<option value="" selected disabled>주소선택</option>
 									<% for(Address address:addressList){%>
 										<option value="<%=address.getAddress_detail()%>">
 										<%=address.getAddress_name()%></option>
@@ -329,7 +310,7 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 						<div class="order_total_left">
 							<ul>
 								<li>상품합계금액
-									<p id="paper_goodsprice"><%=tot_price %>원</p>
+									<p id="paper_goodsprice"><%=new DecimalFormat("#,###").format(tot_price) %>원</p>
 									<input type="hidden" name="tot_price" value="<%=tot_price %>">
 								</li>
 								<li>배송비
@@ -360,7 +341,7 @@ List<Address> addressList = addressService.findAddressByNo(sMemberNo);
 						<div class="order_total_right">
 							<h2>총 결제 금액</h2>
 							<span>=</span>
-							<div id="paper_settlement" class="paper_settlement"><%=tot_price %></div>
+							<div id="paper_settlement" class="paper_settlement"><%=new DecimalFormat("#,###").format(tot_price) %></div>
 							<span>원</span>
 						</div>
 						<!-- .order_total_right -->

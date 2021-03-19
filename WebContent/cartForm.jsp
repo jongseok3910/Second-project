@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.shop.service.FoodService"%>
 <%@page import="com.itwill.shop.domain.Food"%>
 <%@page import="com.itwill.shop.domain.Cart"%>
@@ -23,15 +24,16 @@
 		document.delete_cart_form.action='cart_delete_action.jsp';
 		document.delete_cart_form.submit();
 	}
-	function view_cart_form_submit(){
-		document.view_cart_form.method='POST';
-		document.view_cart_form.action='jumunForm.jsp';
-		document.view_cart_form.submit();
+	function jumunForm_submit(){
+		document.jumun_form.method='POST';
+		document.jumun_form.action='jumunForm.jsp';
+		document.jumun_form.submit();
 	}
 </script>
 <body style="">
 	
 	<form name="delete_cart_form"></form>
+	<form name="jumun_form"></form>
 
 	<%@ include file="../include/top.jsp"%>
 
@@ -464,7 +466,7 @@ table.orderitem-list tfoot tr td table td {
 									<div style="word-break: break-all; text-align: left;"><%=food.getFoodName() %></div> 
 
 								</td>
-								<td align="right" style="padding-right: 10px"><%=food.getFoodPrice() %></td>
+								<td align="right" style="padding-right: 10px"><%=new DecimalFormat("#,###").format(food.getFoodPrice()) %>원</td>
 								<td align="center">
 									<table cellpadding="0" cellspacing="0" border="0">
 										<tbody>
@@ -505,7 +507,7 @@ table.orderitem-list tfoot tr td table td {
 								</td>
 <!--    주석               -->
 
-								<td align="right" style="padding-right: 10px"><%=food.getFoodPrice()*cart.getCartQty() %>
+								<td align="right" style="padding-right: 10px"><%=new DecimalFormat("#,###").format(food.getFoodPrice()*cart.getCartQty()) %>원
 									<!--  <a href="javascript:cart_delete();"
 									style="font-size: 14px; float: right;">X</a>
 									-->
@@ -559,7 +561,7 @@ table.orderitem-list tfoot tr td table td {
 											<span class="desc">상품합계</span><br> <span
 												id="el-orderitem-total-price">
 												
-												<%=tot_price %>원</span>
+												<%=new DecimalFormat("#,###").format(tot_price) %>원</span>
 										</div>
 										 <!--
 										<div>
@@ -598,7 +600,7 @@ table.orderitem-list tfoot tr td table td {
 					style="margin-top: 30px;">
 					<tbody>
 						<tr>
-							<td align="center"><a href="jumunForm.jsp" onfocus="blur()">
+							<td align="center"><a href="javascript:jumunForm_submit();" onfocus="blur()">
 									<!--<img src="/shop/data/skin/mera_ws/img/common/btn_check_order.gif" border=0>-->
 									<span
 									style="display: inline-block; background: #364437; color: #fff; font-weight: bold; width: 200px; line-height: 45px;">주문하기</span>
