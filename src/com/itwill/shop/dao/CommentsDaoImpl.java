@@ -1,6 +1,7 @@
 package com.itwill.shop.dao;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -41,6 +42,22 @@ public class CommentsDaoImpl implements CommentsDao {
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		List<Comments> commentsList = commentsMapper.findCommentAll(food_no);
 		return commentsList;
+	}
+	
+	@Override
+	public List<Comments> findCommentIndexList(HashMap<String, Object> map) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
+		List<Comments> commentsList = commentsMapper.findCommentIndexList(map);
+		return commentsList;
+	}
+	
+	@Override
+	public int countCommentAll(int food_no) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
+		int count = commentsMapper.countCommentAll(food_no);
+		return count;
 	}
 	
 	@Override
@@ -85,6 +102,7 @@ public class CommentsDaoImpl implements CommentsDao {
 		int deleteRow = commentsMapper.deleteCommentsByNo(commentsNo);
 		return deleteRow;
 	}
+	
 	
 
 }

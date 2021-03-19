@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.domain.CommentsPageMarker"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -11,9 +12,14 @@
 	}
 %>
 <%
+	String pageno=request.getParameter("pageno");
+	if(pageno==null||pageno.equals("")){
+		pageno="1";
+	}		
+
 	DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 	CommentsService commentsService = new CommentsService();
-	List<Comments> commentsList = commentsService.findCommentAll(Integer.parseInt(request.getParameter("Food_no")));
+	CommentsPageMarker commentsPageMarker = commentsService.pagingComments(Integer.parseInt(pageno),Integer.parseInt(request.getParameter("Food_no")));
 %>
 
 <script type="text/javascript">
@@ -104,7 +110,7 @@
 
 				<!-- 게시판 표시 시작 -->
 				<% 
-				for (Comments comments : commentsList) {%>
+				for (Comments comments : commentsPageMarker.commentsList) {%>
 				<div>
 					<table width="100%" cellpadding="0" cellspacing="0"
 						style="border-top: none; cursor: pointer;" class="listtablen"
@@ -175,14 +181,38 @@
 				<% } %>
 				<!-- 게시판 표시 종료 -->
 				</form>
+				
+			<!-- 페이징 start -->
 			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
+			<%if(commentsPageMarker.pagemaker.getPrevGroupStartPage()>0){ %>
+				<a href="productDetailView.jsp?pageno=1&Food_no=<%=request.getParameter("Food_no")%>" class="navi">◀◀</a>
+			<%} %>
+			<%if(commentsPageMarker.pagemaker.getPrevPage()>0){ %>
+				<a href="productDetailView.jsp?pageno=<%=commentsPageMarker.pagemaker.getPrevPage()%>&Food_no=<%=request.getParameter("Food_no")%>" class="navi">◀</a>
+			<%} %>
 			
-			<% 
-			for (Comments comments : commentsList) { %>
-				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">[]</a>
-			<% } %>
+			<%
+			  for (int i = commentsPageMarker.pagemaker.getBlockBegin(); i <= commentsPageMarker.pagemaker.getBlockEnd(); i++) {
+				if (commentsPageMarker.pagemaker.getCurPage() == i) {
+			%>
+			<font color='blue'><strong><%=i%></strong></font>&nbsp;
+			<%} else {%>
+				<a href="productDetailView.jsp?pageno=<%=i%>&Food_no=<%=request.getParameter("Food_no")%>"><strong><%=i%></strong></a>&nbsp;
+			<%}
+				}%>
+			
+			<%if(commentsPageMarker.pagemaker.getNextGroupStartPage()< commentsPageMarker.pagemaker.getTotPage()){%>
+				<a href="productDetailView.jsp?pageno=<%=commentsPageMarker.pagemaker.getNextPage()%>&Food_no=<%=request.getParameter("Food_no")%>">▶&nbsp;</a>
+			<%}%>
+			
+			<%if(commentsPageMarker.pagemaker.getNextGroupStartPage()< commentsPageMarker.pagemaker.getTotPage()){%>
+				<a href="productDetailView.jsp?pageno=<%=commentsPageMarker.pagemaker.getTotPage()%>&Food_no=<%=request.getParameter("Food_no")%>">▶▶</a>&nbsp;
+			<%}%>	
+			
 			<img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;" onclick="parentopenpage()">
 			</div>
+			<!-- 페이징 end -->
+			
 		</div>
 		<!-- 댓글디자인 시작 -->
 		<form name="comments" action="commentWriteAction.jsp" method="POST">
