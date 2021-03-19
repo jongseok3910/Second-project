@@ -1,4 +1,4 @@
-<%@page import="com.itwill.shop.domain.Members"%>
+<%@ page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -14,11 +14,11 @@
 <body style="">
 <%@ include file="../include/top.jsp"%>
 	<script>
-	/*
+	
 	function idCheck(){
 		var email = document.getElementById("email").value;
 		if (!email) {
-			alert("검색할 이메일을 입력하시고 중복체크를 하실까요?");
+			alert("검색할 이메일을 입력하시고 중복체크를 하세요");
 			return false;
 		}else{
 			var param="email="+email
@@ -26,7 +26,7 @@
 			location.href=url;
 		}
 	} 
-	*/
+	
 	function memberCreate(){
 		if (document.f.name.value=="") {
 			alert("사용자 이름을 입력하세요");
@@ -62,10 +62,10 @@
 		f.action="memberLoginAction.jsp";
 		f.summit;
 	}
-	// 이메일 중복체크 화면open
+	// 이메일 중복체크 화면 open
 
-	function openIdChk(e){		
-		if (document.frmMember.email.value == "") {
+	function openIdChk(email){		
+		if (document.Members.email.value == "") {
 			alert("이메일을 입력하세요.");
 			document.form.email.focus();
 			return false;
@@ -77,10 +77,6 @@
 				"chkForm", "width=500,height=300,resizable = no,scrollbars = no");	
 
 	}
-	
-		
-		
-	
 
 	// 이메일 입력창에 값 입력시 hidden에 idUncheck를 세팅한다.
 	// 이렇게 하는 이유는 중복체크 후 다시 이메일 창이 새로운 이메일을 입력했을 때
@@ -348,7 +344,7 @@ input[type=text] {
 					value=""> <input type="hidden" name="foreigner" value="">
 				<input type="hidden" name="passwordSkin" value="Y">
 				<!-- 비밀번호 작성 규칙 보완 스킨패치 여부 -->
-				<input type="hidden" name="m_id" value=""> <input
+				<input type="hidden" name="email" value=""> <input
 					type="hidden" name="private1" value=""> <input
 					type="hidden" name="private2" value=""> <input
 					type="hidden" name="private3" value="">
@@ -386,7 +382,7 @@ input[type=text] {
 									&nbsp;
 									&nbsp; <input type="hidden" name="chk_id" required=""
 									fld_esssential="" label="이메일중복체크"> <a
-									href="" onclick="openIdChk(event)"
+									href="" onclick="openIdChk()"
 									style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">이메일
 										중복체크</a></td>
 							</tr>

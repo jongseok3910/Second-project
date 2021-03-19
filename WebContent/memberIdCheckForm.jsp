@@ -5,7 +5,7 @@
 	String sEmail=(String)session.getAttribute("sEmail");
 	Members sMember=(Members)session.getAttribute("sMember");
 	if(sEmail==null){
-		response.sendRedirect("mac_main.jsp");
+		response.sendRedirect("memberWriteAction.jsp");
 		return;
 	}
 
@@ -43,8 +43,7 @@
 		
 		// 이메일 아이디 중복체크
 		function emailCheck(){
-			//var email = document.getElementById("email").value;
-			var email = document.get.value;			
+			var email = document.getElementById("email").value;					
 			if (!email) {
 				alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
 				return false;

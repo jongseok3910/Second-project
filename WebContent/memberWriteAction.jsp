@@ -13,6 +13,7 @@
 	Members newMember=null;
 	try{
 		request.setCharacterEncoding("UTF-8");	
+		//int no=Integer.parseInt(session.getAttribute("members_no"));
 		int no=0;
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");

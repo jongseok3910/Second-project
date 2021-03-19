@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>행복을 주는 맥이자 세상</title>
+<title>맥이자! 행복한 세상</title>
 <meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 <link href='/challenge/neo_include/good2.css' rel='stylesheet'
 	type='text/css'>
@@ -20,8 +20,8 @@
 	<center>
 		<table width="400" border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td><img
-					src="http://image.gmarket.co.kr/challenge/neo_image/customcenter_img2/pop_up03.gif"
+				<td><img 
+				    src="http://image.gmarket.co.kr/challenge/neo_image/customcenter_img2/pop_up03.gif"							
 					width="400" height="99"></td>
 			</tr>
 			<tr>
@@ -32,7 +32,7 @@
 							<td height="10"></td>
 						</tr>
 						<tr>
-							<td>에로메세지:<%--=exception.getMessage()--%></td>
+							<td>That's an error.<%--=exception.getMessage()--%></td>
 						</tr>
 						<tr>
 							<td></td>
