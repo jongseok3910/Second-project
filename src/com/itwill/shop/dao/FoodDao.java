@@ -19,5 +19,5 @@ public interface FoodDao {
 	
 	int deleteFoodByNo(Integer foodNo);
 	
-	int findCategoryByNo(Integer categoryNo);
+	List<Food> findCategoryByNo(Integer categoryNo);
 }

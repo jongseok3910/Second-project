@@ -87,10 +87,10 @@ public class FoodDaoImpl implements FoodDao {
 	}
 	
 	@Override
-	public int findCategoryByNo(Integer categoryNo) {
+	public List<Food> findCategoryByNo(Integer categoryNo) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		FoodMapper foodMapper = sqlSession.getMapper(FoodMapper.class);
-		int food = foodMapper.findCategoryByNo(categoryNo);
+		List<Food> food = foodMapper.findCategoryByNo(categoryNo);
 		return food;
 	}
 

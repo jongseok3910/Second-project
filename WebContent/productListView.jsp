@@ -6,8 +6,8 @@
 	pageEncoding="UTF-8"%>
 <%
 FoodService foodService = new FoodService();
-List<Food> foodList = foodService.findFoodAll();
-
+int categoryno = Integer.parseInt(request.getParameter("category_no"));
+List<Food> foodList = foodService.findCategoryNo(categoryno);
 %>
 
 <!DOCTYPE html>
