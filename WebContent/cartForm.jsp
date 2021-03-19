@@ -6,19 +6,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/head.jsp"%>
+<%@ include file="login_check.jspf" %>
 
 <%
-	//String foodQtyStr = request.getParameter("food_qty");
-	//String foodQtyStr = "1";
-	//int foodQty = Integer.parseInt("1");
+
 	
 	CartService cartService = new CartService();
 	FoodService foodService = new FoodService();
-	//List<Cart> cartList = cartService.findCartByMembersNo(sMember.getMembers_no()); 
-	List<Cart> cartList = cartService.findCartByMembersNo(5);
-	
-	//String cartQtyStr = "";
-	//int cartQty = Integer.parseInt("1");
+	List<Cart> cartList = cartService.findCartByMembersNo(sMemberNo); 
+
 	
 %>
 <script type="text/javascript">

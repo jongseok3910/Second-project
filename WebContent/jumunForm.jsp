@@ -36,10 +36,10 @@ Members members = membersService.findMembersByNo(5);
 
 		<script type="text/javascript">
 		function jumunComplete() {
-			window.location.href = 'jumunComplete.jsp';
-			//frmOrder.action = 'jumunAction.do';
-			//frmOrder.method = 'POST';
-			//frmOrder.submit();
+			//window.location.href = 'jumunComplete.jsp';
+			frmOrder.action = 'jumun_create_action.jsp';
+			frmOrder.method = 'POST';
+			frmOrder.submit();
 		}
 		function historyback(){
 			window.location.href = 'mac_main.jsp';
@@ -216,11 +216,6 @@ Members members = membersService.findMembersByNo(5);
 				</tbody>
 
 
-
-
-
-
-
 				<tfoot>
 					<tr>
 						<td colspan="10" style="border-bottom: none;">
@@ -233,12 +228,7 @@ Members members = membersService.findMembersByNo(5);
 										<td><span id="el-orderitem-total-price">
 										<%=tot_price %>원</span></td>
 									</tr>
-									<tr style="display: none">
-										<th>
-											<!--  -->받으실예상적립금 <!--  -->
-										</th>
-										<td><span id="el-orderitem-total-reserve">288</span>원</td>
-									</tr>
+
 								</tbody>
 							</table>
 
@@ -249,13 +239,6 @@ Members members = membersService.findMembersByNo(5);
 
 			<form id="frmOrder" name="frmOrder" action="" method="post"
 				onsubmit="return chkForm2(this)">
-				<input type="hidden" name="ordno" value="1565165035617"> <input
-					type="hidden" name="couponVersion" id="couponVersion" value="0">
-				<input type="hidden" name="item_apply_coupon[]"> <input
-					type="hidden" name="item_apply_coupon[]">
-
-				<div id="apply_coupon"></div>
-
 				<!-- 01 주문자정보 -->
 				<p
 					style="font-size: 17px; margin-bottom: 10px; margin-top: 40px; font-weight: 500;">주문자
@@ -265,7 +248,7 @@ Members members = membersService.findMembersByNo(5);
 						<dt>주문하시는 분</dt>
 						<dd>
 							<input type="text" name="nameOrder" value="<%= members.getMembers_name() %>"
-								class="input_w296" readonly="" style="border: 0" msgr="주문하시는분의 이름을 적어주세요">
+								class="input_w296" readonly="readonly">
 						</dd>
 					</dl>
 					
@@ -273,8 +256,7 @@ Members members = membersService.findMembersByNo(5);
 						<dt>핸드폰번호</dt>
 						<dd>
 							<input type="text" name="mobileOrder[]" class="input_w296"
-								value="<%=members.getMembers_phone() %>" required="" readonlycheck="" readonly=""
-								label="주문자 핸드폰번호">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								value="<%=members.getMembers_phone()%>"  readonly="readonly">
 						<!--  
 							<input type="" name="mobileOrder[]" class="input_w76"
 								value="" size="4" maxlength="4" option="regNum" required=""
@@ -290,7 +272,7 @@ Members members = membersService.findMembersByNo(5);
 						<dt>이메일</dt>
 						<dd>
 							<input type="text" name="email" value="<%=members.getMembers_email() %>"
-								class="input_w296" required="" readonlycheck="" readonly="" option="regEmail">
+								class="input_w296" readonly="readonly" option="regEmail">
 						</dd>
 					</dl>
 				</div>
@@ -308,9 +290,7 @@ Members members = membersService.findMembersByNo(5);
 							배송 받으실분<span class="dot">*</span>
 						</dt>
 						<dd>
-							<input type="text" name="j_receiver_name"
-								class="input_w336 dark_gray" value="김경호" required=""
-								>
+							<input type="text" name="receiver_name" class="input_w336 dark_gray" value="<%= members.getMembers_name()%>" >
 						</dd>
 					</dl>
 					<dl>
@@ -318,53 +298,14 @@ Members members = membersService.findMembersByNo(5);
 							배송지 주소<span class="dot">*</span>
 						</dt>
 						<dd>
-							<!--
-			<div class="delivery_info">
-				<p>새벽배송, 하루특송을 원하시는 분은 도로명 주소를 이용해주세요</p>
-				<h5>(도로명주소 입력 후 지번주소로 변환되어도 안심하세요. 정상적인 과정입니다.)</h5>
-			</div>
-		-->
-							<!--  
-							<input type="text" name="zonecode" id="zonecode" size="5"
-								class="line order_add dark_gray" readonly="" value="07762"
-								readonlycheck=""> <input type="text" name="zipcode[]"
-								id="zipcode0" size="3" class="line ta_center ti_0 dark_gray"
-								readonly="" value="157" required="" readonlycheck=""> -
-							<input type="text" name="zipcode[]" id="zipcode1" size="3"
-								class="line ta_center ti_0 dark_gray" readonly="" value="884"
-								required="" readonlycheck="">
-								-->
-
 							<div class="mt_10">
-								<input type="text" name="j_receiver_address" id="address"
-									class="lineBig dark_gray" value="아이티윌">
+								<input type="text" name="receiver_address" id="address"
+									class="lineBig dark_gray" value="">
 							</div>
 
 
 						</dd>
 					</dl>
-
-
-					<!--  
-					<dl>
-						<dt>
-							휴대폰<span class="dot">*</span>
-						</dt>
-						<dd>
-							<input type="text" name="mobileReceiver[]"
-								class="input_w76 dark_gray" value="010" size="3" maxlength="3"
-								option="regNum" required="" label="수령자 핸드폰번호" readonlycheck=""
-								readonly="">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; <input
-								type="text" name="mobileReceiver[]" class="input_w76 dark_gray"
-								value="0000" size="4" maxlength="4" option="regNum" required=""
-								label="수령자 핸드폰번호" readonlycheck="" readonly="">&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input type="text" name="mobileReceiver[]"
-								class="input_w76 dark_gray" value="0000" size="4" maxlength="4"
-								option="regNum" required="" label="수령자 핸드폰번호" readonlycheck=""
-								readonly="">
-						</dd>
-					</dl>
-					-->
 
 				</div>
 				<!-- .order_info -->
@@ -377,7 +318,8 @@ Members members = membersService.findMembersByNo(5);
 						<div class="order_total_left">
 							<ul>
 								<li>상품합계금액
-									<p id="paper_goodsprice">540000</p>
+									<p id="paper_goodsprice"><%=tot_price %>원</p>
+									<input type="hidden" name="tot_price" value="<%=tot_price %>">
 								</li>
 								<li>배송비
 									<div id="paper_delivery_msg1">
@@ -407,7 +349,7 @@ Members members = membersService.findMembersByNo(5);
 						<div class="order_total_right">
 							<h2>총 결제 금액</h2>
 							<span>=</span>
-							<div id="paper_settlement" class="paper_settlement">540000</div>
+							<div id="paper_settlement" class="paper_settlement"><%=tot_price %></div>
 							<span>원</span>
 						</div>
 						<!-- .order_total_right -->

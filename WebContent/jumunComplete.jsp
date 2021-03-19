@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
 <body style="">
-	<%@ include file="../include/top.jsp"%>
+<%@ include file="../include/top.jsp"%>
 
 	<div id="content">
 		<style>
