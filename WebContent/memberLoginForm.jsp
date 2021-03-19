@@ -11,7 +11,7 @@
 			<div class="innertit">
 				<p>로그인</p>
 				<span>로그인이 필요한 서비스입니다. 회원이 아니시면 회원가입을 해주세요.</span> <br> <span
-					style="color: #f0301b; font-weight: 500; text-align: left !important;">아이디와 비밀번호를 
+					style="color: #f0301b; font-weight: 500; text-align: left !important;">이메일과 비밀번호를 
 					입력해주세요.</span>
 			
 			</div>
@@ -19,7 +19,7 @@
 				name="form">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
-						<input type="text" name="members_email" onfocus="this.value='';" value="" placeholder="아이디" class="txtborder">
+						<input type="text" name="members_email" onfocus="this.value='';" value="" placeholder="이메일" class="txtborder">
 						
 					</p>
 					<p style="margin-bottom: 10px;">
@@ -30,7 +30,7 @@
 						<input type="image" src="./res/btn_login.gif">
 					</p>
 					<p style="text-align: left; width: 400px; margin: 5px auto;">
-						<input type="checkbox" name="" value="">아이디저장
+						<input type="checkbox" name="" value="">이메일저장
 					</p>
 				</div>
 			</form>
@@ -38,7 +38,7 @@
 			
 
 			<div class="joinfind">
-				<a href="memberIdPwFind.jsp" onfocus="blur()">아이디찾기</a>
+				<a href="memberIdPwFind.jsp" onfocus="blur()">이메일찾기</a>
 				&nbsp;<span style="color: #aaa; font-size: 11px;">｜</span>&nbsp; <a
 					href="memberIdPwFind.jsp" onfocus="blur()">비밀번호찾기</a>
 				&nbsp;<span style="color: #aaa; font-size: 11px;">｜</span>&nbsp; <a
