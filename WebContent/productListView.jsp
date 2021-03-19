@@ -167,16 +167,11 @@ body .pprice, body .pprice:hover {
 
 						<div class="totals">
 							<p>
-								총 <b>N개의 상품이 있습니다. 
+								총 <b><%=foodList.size() %>개의 상품이 있습니다. 
 							</p>
-
-
-
 							<div>
 
 								<a href="">낮은가격순</a> <a href="">높은가격순</a> <a href="">상품명순</a>
-
-
 							</div>
 						</div>
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
