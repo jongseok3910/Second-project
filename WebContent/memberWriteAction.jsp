@@ -14,9 +14,10 @@
 	    int no=0;
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		String address=request.getParameter("password");
-		String phone=request.getParameter("phone");
+		String address=request.getParameter("newPassword");
+		String phone=request.getParameter("member_phone");
 		newMember=new Members(no,name,email,address,phone);
+		System.out.println(name+"1 "+email+"2 "+address+"3 "+phone);
 	
 	/*
 	try{
@@ -41,12 +42,4 @@
     }
 	*/
 %>
-	
-
-
-
-
-
-
-
-%>    
+    

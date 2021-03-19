@@ -348,8 +348,7 @@ input[type=text] {
 					name="dupeinfo" value=""> <input type="hidden" name="pakey"
 					value=""> <input type="hidden" name="foreigner" value="">
 				<input type="hidden" name="passwordSkin" value="Y">
-				<!-- 비밀번호 작성 규칙 보완 스킨패치 여부 -->
-				<input type="hidden" name="email" value=""> <input
+				<!-- 비밀번호 작성 규칙 보완 스킨패치 여부 --> <input
 					type="hidden" name="private1" value=""> <input
 					type="hidden" name="private2" value=""> <input
 					type="hidden" name="private3" value="">
