@@ -17,23 +17,43 @@
 %>
 
 <script type="text/javascript">
-	var pagehandle=0;
-	function openpage() {
-		if(pagehandle==0){
+	var parentPagehandle=0;
+	var childPagehandle=0;
+	function parentopenpage() {
+		if(childPagehandle==1){
+			childPagehandle=0;
+		}
+		if(parentPagehandle==0){
 			document.getElementById("openpage").style.display="block";
-			pagehandle=1;
+			document.getElementById("comHandle").value="parent";
+			parentPagehandle=1;
 		}else{
 			document.getElementById("openpage").style.display="none";
-			pagehandle=0;
+			parentPagehandle=0;
 		}
 	}
+	
+	function childopenpage() {
+		if(parentPagehandle==1){
+			parentPagehandle=0;
+		}
+		if(childPagehandle==0){
+			document.getElementById("openpage").style.display="block";
+			document.getElementById("comHandle").value="child";
+			childPagehandle=1;
+		}else{
+			document.getElementById("openpage").style.display="none";
+			childPagehandle=0;
+		}
+	}
+	
 	
 	function confirm() {
 		var checkId = document.getElementById("memberId").value;
 		if(checkId==""){
 			alert("로그인 해주세요.");
 		}else{
-			document.frmList.submit();
+			document.comments.submit();
 		}
 	}
 
@@ -144,12 +164,29 @@
 									%>
 									<%= evalStr %>
 								</td>
-								<td width="80" align="center"><img src="./" onclick="openpage()"/></td>
+								<td width="80" align="center"><img src="./" onclick="childopenpage()"/></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<!-- 대댓글 시작 -->
+
+				<%count++; } %>
+				<!-- 게시판 표시 종료 -->
+				</form>
+			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
+			
+			<% 
+			count=1;
+			for (Comments comments : commentsList) { %>
+				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">[<%=count %>]</a>
+			<% count++;} %>
+			<img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;" onclick="parentopenpage()">
+			</div>
+		</div>
+		<!-- 댓글디자인 시작 -->
+		<form name="comments" action="commentWriteAction.jsp" method="POST">
+		<input type="hidden" id="comHandle" name="comHandle" value="0">
+		<input type="hidden" name="food_no" value="301">
 				<div style="display: none;" id="openpage">
 				<table id="table_after" width="60%" cellpadding="0" cellspacing="0"
 				border="0" style="margin: 0 auto">
@@ -252,20 +289,8 @@
 			
 		</table>
 	</div>
-				<!-- 대댓글 End -->
-				<%count++; } %>
-				<!-- 게시판 표시 종료 -->
-				</form>
-			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
-			
-			<% 
-			count=1;
-			for (Comments comments : commentsList) { %>
-				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">페이징[<%=count %>]</a>
-			<% count++;} %>
-
-			</div>
-		</div>
+	</form>
+	<!-- 댓글디자인 End -->
 		<!-- End indiv -->
 		<!-- 검색 : Start 
 				<div
@@ -282,7 +307,6 @@
 					</div>
 				</div>
 		검색 : End -->
-				<%@include file="../include/commentWrite.jsp" %>
 	</div>
 </body>
 </html>
