@@ -92,7 +92,6 @@
 					style="clear: both;" class="listtablen">
 					<tbody>
 						<tr>
-							<th width="50">번호</th>
 							<th width="100">프로필</th>
 							<th>내용</th>
 							<th width="80">작성자</th>
@@ -105,7 +104,6 @@
 
 				<!-- 게시판 표시 시작 -->
 				<% 
-				int count=1;
 				for (Comments comments : commentsList) {%>
 				<div>
 					<table width="100%" cellpadding="0" cellspacing="0"
@@ -115,10 +113,8 @@
 							<tr>
 							<%if(comments.getComments_step() > 1){ %>
 								<td width="50" align="center"></td>
-								<td width="50" align="center">>>>>>>></td>
-							<%}else{ %>
-								<td width="50" align="center"><%=count %></td>
-							<%} %>
+								<td width="50" align="center"><img src="./image/comments/arrows.jpg"></td>
+							<%}%>
 								<td width="100" align="center" style="padding: 10px 0;">
 								<a href="">
 									<img src="./image/comments/comments.jpg" width="70"/></a></td>
@@ -170,22 +166,21 @@
 									%>
 									<%= evalStr %>
 								</td>
-								<td width="80" align="center"><img src="./" onclick="childopenpage(<%=comments.getComments_group()%>)"/></td>
+								<td width="80" align="center"><img src="./image/comments/commentbtn.jpg" onclick="childopenpage(<%=comments.getComments_group()%>)"/></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
-				<%count++; } %>
+				<% } %>
 				<!-- 게시판 표시 종료 -->
 				</form>
 			<div class="pagediv" style="margin-top: 20px; position: relative; text-align: center;"> 
 			
 			<% 
-			count=1;
 			for (Comments comments : commentsList) { %>
-				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">[<%=count %>]</a>
-			<% count++;} %>
+				<a href="boardListView.do?boardNo=<%= comments.getComments_no() %>" class="navi">[]</a>
+			<% } %>
 			<img src="./res/btn_writes2.gif" style="cursor: pointer; position: absolute; top: 0; right: 0;" onclick="parentopenpage()">
 			</div>
 		</div>
