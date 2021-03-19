@@ -270,7 +270,6 @@ body #content {
 								국내산<br>식재료를 사용합니다.<br>
 							</h1>
 							<div class="description">
-								<img src="./" width="auto"> <br>
 								<br> 알레르기 정보 
 								<br> <%= food.getFoodDesc() %>
 							</div>

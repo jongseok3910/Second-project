@@ -14,7 +14,7 @@ public interface FoodMapper {
 	
 	public List<Food> findFoodAll();
 	
-	public int findCategoryByNo(Integer categoryNo);
+	public List<Food> findCategoryByNo(Integer categoryNo);
 	
 	public int insertFood(Food food);
 	

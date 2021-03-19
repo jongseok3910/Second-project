@@ -42,7 +42,7 @@ public class FoodService {
 		return foodDao.deleteFoodByNo(foodNo);
 	}
 	
-	public int findCategoryNo(Integer categoryNo) {
+	public List<Food> findCategoryNo(Integer categoryNo) {
 		return foodDao.findCategoryByNo(categoryNo);
 	}
 
