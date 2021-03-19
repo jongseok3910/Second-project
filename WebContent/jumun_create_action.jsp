@@ -43,7 +43,7 @@
 	if(ordersDetailList.size() <= 1){
 		j_desc = food.getFoodName();
 	}else{
-		j_desc = food.getFoodName()+"외 "+ordersDetailList.size()+"개";
+		j_desc = food.getFoodName()+" 외 "+ordersDetailList.size()+"개";
 	}
 	Orders newOrders=new Orders(0,j_desc, null, j_tot_price, address ,sMemberNo,ordersDetailList);
 		
