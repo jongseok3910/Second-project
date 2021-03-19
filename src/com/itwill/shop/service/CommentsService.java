@@ -25,6 +25,10 @@ public class CommentsService {
 		return commentsDao.insertComments(comments);
 	}
 	
+	public int insertCommentsChild(Comments comments) throws Exception{
+		return commentsDao.insertCommentsChild(comments);
+	}
+	
 	public int updateCommentsByNo(Comments comments) throws Exception{
 		return commentsDao.updateCommentsByNo(comments);
 	}

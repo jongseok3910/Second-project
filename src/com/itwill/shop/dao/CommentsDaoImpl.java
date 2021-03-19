@@ -28,7 +28,7 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 	
 	@Override
-	public Comments findCommentByno(int commentsNo) {
+	public Comments findCommentByno(int commentsNo)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		Comments comments = commentsMapper.findCommentByno(commentsNo);
@@ -36,7 +36,7 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public List<Comments> findCommentAll(int food_no) {
+	public List<Comments> findCommentAll(int food_no)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		List<Comments> commentsList = commentsMapper.findCommentAll(food_no);
@@ -44,7 +44,7 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public int insertComments(Comments comments) {
+	public int insertComments(Comments comments)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		int insertRow = commentsMapper.insertComments(comments);
@@ -54,7 +54,16 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public int updateCommentsByNo(Comments comments) {
+	public int insertCommentsChild(Comments comments) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
+		int insertRow = commentsMapper.insertCommentsChild(comments);
+		sqlSession.commit();
+		sqlSession.close();
+		return insertRow;
+	}
+	@Override
+	public int updateCommentsByNo(Comments comments)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		int updateRow = commentsMapper.updateCommentsByNo(comments);
@@ -62,7 +71,7 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public int deleteCommentsByNo(int commentsNo) {
+	public int deleteCommentsByNo(int commentsNo)throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CommentsMapper commentsMapper = sqlSession.getMapper(CommentsMapper.class);
 		int deleteRow = commentsMapper.deleteCommentsByNo(commentsNo);

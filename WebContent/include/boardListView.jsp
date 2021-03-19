@@ -187,7 +187,7 @@
 		<!-- 댓글디자인 시작 -->
 		<form name="comments" action="commentWriteAction.jsp" method="POST">
 		<input type="hidden" id="comHandle" name="comHandle" value="0">
-		<input type="hidden" name="comments_no" value="0">
+		<input type="hidden" id="comments_no" name="comments_no" value="0">
 		<input type="hidden" name="food_no" value="<%=request.getParameter("Food_no")%>">
 				<div style="display: none;" id="openpage">
 				<table id="table_after" width="60%" cellpadding="0" cellspacing="0"
