@@ -15,8 +15,9 @@
 	System.out.println(evalPoint+" "+memberId+" "+title+" "+content+" "+food_no);
 	
 	if(comHandle.equalsIgnoreCase("child")){
+		int group_no = Integer.parseInt(request.getParameter("comments_no"));
 		Comments comments = 
-				new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,0,0,0,Integer.parseInt(food_no));
+				new Comments(0,title,memberId,content,Integer.parseInt(evalPoint),null,0,group_no,0,0,Integer.parseInt(food_no));
 		CommentsService commentsService = new CommentsService();
 				commentsService.insertComments(comments);
 	}

@@ -9,6 +9,7 @@ public interface CommentsMapper {
 	public Comments findCommentByno(int commentsNo);
 	public List<Comments> findCommentAll(int food_no);
 	public int insertComments(Comments comments);
+	public int insertCommentsChild(Comments comments);
 	public int updateCommentsByNo(Comments comments);
 	public int deleteCommentsByNo(int commentsNo);
 }

@@ -7,10 +7,18 @@
 
 <%
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("memberWriteForm.jsp");
+		response.sendRedirect("mac_main.jsp");
 		return;
 	}
-	Members newMember=null;
+		Members newMember=null;
+	    int no=0;
+		String name=request.getParameter("name");
+		String email=request.getParameter("email");
+		String address=request.getParameter("password");
+		String phone=request.getParameter("phone");
+		newMember=new Members(no,name,email,address,phone);
+	
+	/*
 	try{
 		request.setCharacterEncoding("UTF-8");	
 		//int no=Integer.parseInt(session.getAttribute("members_no"));
@@ -31,6 +39,7 @@
     	e.printStackTrace();
     	response.sendRedirect("memberError.jsp");
     }
+	*/
 %>
 	
 
