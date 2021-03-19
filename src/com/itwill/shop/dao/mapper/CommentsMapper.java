@@ -6,10 +6,10 @@ import com.itwill.shop.domain.Comments;
 
 public interface CommentsMapper {
 	
-	public Comments findCommentByno(int commentsNo);
-	public List<Comments> findCommentAll(int food_no);
-	public int insertComments(Comments comments);
-	public int insertCommentsChild(Comments comments);
-	public int updateCommentsByNo(Comments comments);
-	public int deleteCommentsByNo(int commentsNo);
+	public Comments findCommentByno(int commentsNo) throws Exception;
+	public List<Comments> findCommentAll(int food_no) throws Exception;
+	public int insertComments(Comments comments) throws Exception;
+	public int insertCommentsChild(Comments comments) throws Exception;
+	public int updateCommentsByNo(Comments comments) throws Exception;
+	public int deleteCommentsByNo(int commentsNo) throws Exception;
 }
