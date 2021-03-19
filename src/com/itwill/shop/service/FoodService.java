@@ -45,6 +45,14 @@ public class FoodService {
 	public List<Food> findCategoryNo(Integer categoryNo) {
 		return foodDao.findCategoryByNo(categoryNo);
 	}
+	
+	public List<Food> foodListByPriceOrderDesc() throws Exception {
+		return foodDao.foodListByPriceOrderDesc();
+	}
+	
+	public List<Food> foodListByPriceOrderAsc() throws Exception {
+		return foodDao.foodListByPriceOrderAsc();
+	}
 
 }
 

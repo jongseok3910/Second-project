@@ -20,4 +20,8 @@ public interface FoodDao {
 	int deleteFoodByNo(Integer foodNo);
 	
 	List<Food> findCategoryByNo(Integer categoryNo);
+	
+    public List<Food> foodListByPriceOrderDesc() throws Exception;
+	
+	public List<Food> foodListByPriceOrderAsc() throws Exception;
 }

@@ -93,6 +93,22 @@ public class FoodDaoImpl implements FoodDao {
 		List<Food> food = foodMapper.findCategoryByNo(categoryNo);
 		return food;
 	}
+	
+	@Override
+	public List<Food> foodListByPriceOrderAsc() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		FoodMapper foodMapper = sqlSession.getMapper(FoodMapper.class);
+		List<Food> foodListByAsc = foodMapper.foodListByPriceOrderAsc();
+		return foodListByAsc;
+	}
+	
+	@Override
+	public List<Food> foodListByPriceOrderDesc() throws Exception{
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		FoodMapper foodMapper = sqlSession.getMapper(FoodMapper.class);
+		List<Food> foodListByDesc = foodMapper.foodListByPriceOrderDesc();
+		return foodListByDesc;
+	}
 
 
 }

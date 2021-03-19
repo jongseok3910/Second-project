@@ -18,4 +18,10 @@ public interface MembersDao {
 	public int updateMembers(Members members) throws Exception;
 	public int deleteMembers(int members_no) throws Exception;
 	
+	public static boolean existedMember(Members member) throws Exception{
+		boolean isExist = false;
+		
+		return isExist;		
+	}
+	
 }

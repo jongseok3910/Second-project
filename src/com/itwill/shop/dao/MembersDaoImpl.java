@@ -23,7 +23,7 @@ MEMBERS_PHONE             NUMBER(10)
  */
 public class MembersDaoImpl implements MembersDao {
 	private SqlSessionFactory sqlSessionFactory;
-	
+	public static final String NAMESPACE = "com.itwill.shop.dao.mapper.MembersMapper.";
 	public MembersDaoImpl() throws Exception{
 		try {
 			InputStream membersConInputStream=Resources.getResourceAsStream("mybatis-config.xml");
