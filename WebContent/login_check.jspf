@@ -8,7 +8,7 @@
 		sEmail = (String)session.getAttribute("members_email");
 		sMemberNo = (int)session.getAttribute("members_no");	
 	}
-	if(sEmail==null){
+	if(sEmail.equals("")){
 		response.sendRedirect("mac_main.jsp");
 		return;
 	}

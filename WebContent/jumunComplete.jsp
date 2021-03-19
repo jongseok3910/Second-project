@@ -1,7 +1,37 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.domain.Orders"%>
+<%@page import="com.itwill.shop.service.MembersService"%>
+<%@page import="com.itwill.shop.service.OrdersService"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="login_check.jspf" %>
+<%
+
+OrdersService ordersService = new OrdersService();
+MembersService membersService = new MembersService();
+
+List<Orders> orderList = ordersService.findOrderListById(sMemberNo);
+int max = 0;
+for(Orders orders:orderList){
+	if(max < orders.getOrders_no()){
+		max = orders.getOrders_no();
+	}
+}
+
+HashMap orderMap=new HashMap();
+orderMap.put("members_no", sMemberNo);
+orderMap.put("orders_no", max);
+
+Orders orders = ordersService.findOrderByOne(orderMap);
+Members members= membersService.findMembersByNo(sMemberNo);
+
+%>
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
 <body style="">
@@ -34,19 +64,19 @@
 				<tbody>
 					<tr>
 						<th>주문번호</th>
-						<td>1</td>
+						<td><%=orders.getOrders_no() %></td>
 					</tr>
 					<tr>
 						<th>주문자명</th>
-						<td>홍길동</td>
+						<td><%=members.getMembers_name() %></td>
 					</tr>
 					<tr>
 						<th>주문일자</th>
-						<td>2021-02-02</td>
+						<td><%=orders.getOrders_date() %></td>
 					</tr>
 					<tr>
 						<th>주문금액</th>
-						<td>500000</td>
+						<td><%=orders.getOrders_price() %></td>
 					</tr>
 				</tbody>
 			</table>

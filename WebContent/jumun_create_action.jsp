@@ -37,13 +37,18 @@
 			food = foodService.findFoodByNo(ordersDetail.getFood_no());
 			j_tot_price+=ordersDetail.getOrders_detail_qty()*food.getFoodPrice();
 		}
-		food = foodService.findFoodByNo(ordersDetailList.get(0).getFood_no());
+	food = foodService.findFoodByNo(ordersDetailList.get(0).getFood_no());
 	
-		String j_desc = food.getFoodName()+"외 "+ordersDetailList.size()+"개";
-		Orders newOrders=new Orders(0,j_desc, null, j_tot_price, address ,sMemberNo,ordersDetailList);
+	String j_desc = null;
+	if(ordersDetailList.size() <= 1){
+		j_desc = food.getFoodName();
+	}else{
+		j_desc = food.getFoodName()+"외 "+ordersDetailList.size()+"개";
+	}
+	Orders newOrders=new Orders(0,j_desc, null, j_tot_price, address ,sMemberNo,ordersDetailList);
 		
-		ordersService.createOrders(newOrders);
-		cartService.deleteCartByMember(sMemberNo);
+	ordersService.createOrders(newOrders);
+	cartService.deleteCartByMember(sMemberNo);
 	
 
 	response.sendRedirect("jumunComplete.jsp");	
