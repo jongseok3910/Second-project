@@ -3,7 +3,13 @@
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.domain.Comments"%>
 <%@page import="com.itwill.shop.service.CommentsService"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%
+	String checkIdP="";
+	if(session.getAttribute("members_email")!=null){
+		checkIdP = (String)session.getAttribute("members_email");
+	}
+%>
 <%
 	DateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 	CommentsService commentsService = new CommentsService();
@@ -23,8 +29,14 @@
 	}
 	
 	function confirm() {
-		document.frmList.submit();
+		var checkId = document.getElementById("memberId").value;
+		if(checkId==""){
+			alert("로그인 해주세요.");
+		}else{
+			document.frmList.submit();
+		}
 	}
+
 </script>
 	
 <body style="">
@@ -188,8 +200,8 @@
 															<td>
 																<div style="float: left; width: 50%;">
 																<!-- readonly="readonly" -->
-																	<input type="text" name="memberId" style="width: 100px;" 
-																		required="" fld_esssential="" readonly="readonly"  label="작성자" value="">
+																	<input type="text" id="memberId" name="memberId" style="width: 100px;" 
+																		required="" fld_esssential="" readonly="readonly"  label="작성자" value="<%=checkIdP%>">
 																</div>
 															</td>
 														</tr>
@@ -231,11 +243,7 @@
 				<tr>
 					<td>
 					<div align="center" style="padding-bottom: 210px;">
-					<%if(true){ %>
 						<img src="./res/btn_confirm.gif" onClick="confirm()">&nbsp; 
-					<%}else{ %>
-						<img src="./res/btn_confirm.gif" onClick="">&nbsp; 
-					<%} %>
 						<img src="./res/btn_order_back.gif" onclick="history.back()" style="cursor: pointer; vertical-align: bottom; height: 55;">
 					</div>
 					</td>

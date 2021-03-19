@@ -27,7 +27,7 @@
 
 			<div class="tarea3">
 				<ul>
-					<%if(!sMembers_id1.equals("")){ %>
+					<%if(!sMembers_id.equals("")){ %>
 					<li>
 						<a href="memberLoginOut.jsp">로그아웃</a>	
 					</li>
