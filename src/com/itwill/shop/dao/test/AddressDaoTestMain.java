@@ -8,7 +8,7 @@ public class AddressDaoTestMain {
 
 	public static void main(String[] args) throws Exception{
 		AddressDaoImpl addressDaoImpl = new AddressDaoImpl();
-//		System.out.println(addressDaoImpl.findAddressByNo(1));
+		System.out.println(addressDaoImpl.findAddressByNo(1));
 //		System.out.println(addressDaoImpl.findAddressAll());
 //		Address address = new Address(0,"f", "ff", 2, 3);
 //		System.out.println(addressDaoImpl.insertAddress(address));

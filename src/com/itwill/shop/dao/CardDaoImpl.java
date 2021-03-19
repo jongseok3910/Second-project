@@ -30,11 +30,11 @@ public class CardDaoImpl implements CardDao {
 	}
 	
 	@Override
-	public Card findCardByNo(Integer cardNo){
+	public List<Card> findCardByNo(int cardNo){
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlsession.getMapper(CardMapper.class);
-		Card card = cardMapper.findCardByNo(cardNo);
-		return card;
+		List<Card> cardList = cardMapper.findCardByNo(cardNo);
+		return cardList;
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class CardDaoImpl implements CardDao {
 	}
 
 	@Override
-	public int deleteCardByNo(Integer cardNo){
+	public int deleteCardByNo(int cardNo){
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		CardMapper cardMapper = sqlSession.getMapper(CardMapper.class);
 		int deleteRow = cardMapper.deleteCardByNo(cardNo);

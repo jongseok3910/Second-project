@@ -13,19 +13,19 @@ private CardDao cardDao;
 		cardDao = new CardDaoImpl();
 	}
 	
-	public Card findCardByNo(Integer cardNo) {
+	public List<Card> findCardByNo(int cardNo) throws Exception{
 		return cardDao.findCardByNo(cardNo);
 	}
-	public List<Card> findCardAll(){
+	public List<Card> findCardAll() throws Exception{
 		return cardDao.findCardAll();
 	}
-	public int insertAddress(Card card) {
+	public int insertAddress(Card card) throws Exception{
 		return cardDao.insertCard(card);
 	}
 	public int updateCardByNo(Card card) throws Exception {
 		return cardDao.updateCardByNo(card);
 	}
-	public int deleteCardByNo(Integer cardNo) {
+	public int deleteCardByNo(int cardNo) throws Exception{
 		return cardDao.deleteCardByNo(cardNo);
 	}
 }

@@ -6,7 +6,7 @@ import com.itwill.shop.domain.Address;
 
 public interface AddressMapper {
 	
-	public Address findAddressByNo(Integer membersNo);
+	public List<Address> findAddressByNo(int membersNo);
 	/*
  	<select id=findAddressByno" parameterType="int" resultMap=addressResultMap">
 		select * from address where address_no = #{addressNo}
@@ -35,7 +35,7 @@ public interface AddressMapper {
 	</update>
 	 */
 	
-	public int deleteAddressByNo(Integer addressNo);
+	public int deleteAddressByNo(int addressNo);
 	/*
 	 <delete id="deleteAddressByNo" parameterType="int">
 		delete from address where address_no=#{addressNo}

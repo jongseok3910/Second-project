@@ -1,8 +1,17 @@
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.domain.Card" %>
+<%@page import="com.itwill.shop.service.CardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
+<%@ include file="login_check.jspf" %>
 
+<%
+
+	CardService cardService = new CardService();
+	List<Card> cardList=cardService.findCardByNo((int)session.getAttribute("members_no"));
+%>
 <style type="text/css">
 div.passwordStrenth {
 	background-color: #FFFFFF;
@@ -247,137 +256,50 @@ input[type=text] {
 	<div id="content">
 		<!-- 상단이미지 || 현재위치 -->
 		<div class="atit">
-			<p>회원정보수정</p>
+			<p>카드관리</p>
 			<span class="path"><img src="./res/ico_home.gif" alt="HOME"
-				style="cursor: pointer;"> <b>회원정보수정</b></span>
+				style="cursor: pointer;"> <b>카드관리</b></span>
 		</div>
-
-		<div class="indiv" style="margin: 0 auto; width: 1100px;">
-			<form id="form" name="frmMember" method="post"
-				action="memberModifyAction.do"
-				onsubmit="return chkForm2(this)">
-				<input type="hidden" name="mode" value="modMember"> <input
-					type="hidden" name="rncheck" value="none"> <input
-					type="hidden" name="dupeinfo" value=""> <input
-					type="hidden" name="pakey" value=""> <input type="hidden"
-					name="foreigner" value=""> <input type="hidden"
-					name="passwordSkin" value="Y">
-				<!-- 비밀번호 작성 규칙 보완 스킨패치 여부 -->
-				<input type="hidden" name="m_id" value="hellsprit@naver.com">
-				<input type="hidden" name="private1" value="y">
-
+<%for(Card card:cardList){ %>
+	
 				<div style="height: 30px"></div>
 				<div
 					style="border-bottom: 1px solid #ccc; padding-bottom: 65px; margin-bottom: 40px;">
 					<p class="h4">
-						회원정보입력 <span><em class="star">*</em> 필수입력사항</span>
+						카드정보확인 
 					</p>
 
-					<table width="100%" cellpadding="0" cellspacing="0" border="0"
+					<table width="20%" cellpadding="0" cellspacing="0" border="0"
 						class="intable">
 						<tbody>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
+									style="padding-left: 20px; color: #717071; font-weight: bold;">카드번호
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberName" value="홍길동"
-									style="width: 217px; height: 30px; padding-left: 10px;"
-									required="" fld_esssential="" label="이름"></td>
-							</tr>
-							<tr>
-								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">아이디
-									<em class="star">*</em>
-								</th>
-								<td><span class="eng"><b>abc@naver.com</b></span></td>
-							</tr>
-							<tr>
-								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">비밀번호
-									<em class="star">*</em>
-								</th>
-								<!-- 비밀번호 버튼 -->
-								<td>
-									<div id="pwLayer02" style="display: block;">
-										<!-- 비밀번호 변경 -->
-										<table cellpadding="0" cellspacing="0" border="0">
-											<tbody>
-												<tr>
-													<td class="memberCols3">새 비밀번호</td>
-													<td><input type="password" name="newPassword"
-														id="newPassword" onfocus="checkPassword(this)"
-														onkeyup="checkPassword(this)" onblur="emptyPwState()"
-														label="새 비밀번호" option="regPass" maxlength="16">
-														<div class="passwordStrenth"
-															id="el-password-strength-indicator">
-															<dl>
-																<dt>비밀번호 안전도</dt>
-																<dd id="el-password-strength-indicator-level"></dd>
-															</dl>
-															<p id="el-password-strength-indicator-msg"></p>
-														</div> <span style="font: 8pt 돋움; color: #007FC8">새로 변경할
-															비밀번호를 입력해 주세요.</span></td>
-												</tr>
-												
-											</tbody>
-										</table>
-									</div></td>
-							</tr>
+								<!--(카드번호를 불러온다)-->
+								<td width=145 height=26 align=center class=t1><%=card.getCard_number()%></td>
 
-							<tr>
-								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">주소
-									<em class="star">*</em>
-								</th>
-								<td><input type="text" name="memberAddress" value="강남" required=""
-									style="width: 350px; height: 30px; padding-left: 10px;">
-									&nbsp;
-									&nbsp; </td>
-							</tr>
-								
-							<tr>
-								<th style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">
-									핸드폰
-								<em class="star" style="vertical-align: top;">*</em>
-								</th>
-								<td>
-	 							<input type="text" name="memberPhone" id="mobile0" value="010" maxlength="4" required="" option="regNum" label="핸드폰"
-									style="width: 92px; height: 30px; padding-left: 10px;"> &nbsp;-&nbsp; 
-								<input type="text" name="memberPhone2" id="mobile1" value="4544" maxlength="4" required="" option="regNum" label="핸드폰"
-									style="width: 92px; height: 30px; padding-left: 10px;"> &nbsp;-&nbsp; 
-								<input type="text" name="memberPhone3" id="mobile2" value="3575" maxlength="4" required="" option="regNum" label="핸드폰"
-									style="width: 90px; height: 30px; padding-left: 10px;">
-								</td>
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
+									style="padding-left: 20px; color: #717071; font-weight: bold;">카드명 
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberEmail" value="abc" required=""
-									style="width: 217px; height: 30px; padding-left: 10px;">
-									&nbsp;@&nbsp; <input type="text" name="memberEmail2" value="@naver.com"
-									required=""
-									style="width: 144px; height: 30px; padding-left: 10px;">
-									&nbsp;<select name="memberName2"
-									style="width: 110px; height: 34px; border: 1px solid #d5d4d3; border-radius: 0; background: #f4f4f4; vertical-align: middle"
-									onchange="select_email(this);">
-										<option value="">이메일 선택</option>
-										<option value="sannamchon.co.kr">sannamchon.co.kr</option>
-										<option value="naver.com">naver.com</option>
-										<option value="hanmail.net">hanmail.net</option>
-										<option value="daum.net">daum.net</option>
-										<option value="nate.com">nate.com</option>
-										<option value="hotmail.com">hotmail.com</option>
-										<option value="gmail.com">gmail.com</option>
-								</select> &nbsp; </td>
+								<!--(카드명을 불러온다)-->
+
+								<td width=145 height=26 align=center class=t1><%=card.getCard_name()%></td>
+
 							</tr>
+							
+							
+							
+							
 						</tbody>
 					</table>
 
 				</div>
-
+<%} %>
 				<div id="avoidDbl"
 					style="padding: 70px 0 100px 0; border-top: 1px solid #ccc; margin-top: 70px; text-align: center;">
 					<input type="submit" onclick="isSuccess();"

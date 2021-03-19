@@ -14,7 +14,7 @@ public interface CardMapper {
 	 * 메쏘드리턴타입은 StudentMapper.xml 파일의 resultType 와일치(ResultSet이 한 개 이상일 경우 반환타입이 List이다)
 	 */
 	
-	public Card findCardByNo(Integer cardNo);
+	public List<Card> findCardByNo(int cardNo);
 	/*
  	<select id=findCardByNo" parameterType="int" resultMap=cardResultMap">
 		select * from card where card_no = #{cardNo}
@@ -46,7 +46,7 @@ public interface CardMapper {
 	</update>
 	 */
 	
-	public int deleteCardByNo(Integer cardNo);
+	public int deleteCardByNo(int cardNo);
 	/*
 	 <delete id="deleteCardByNo" parameterType="int">
 		delete from card where card_no=#{cardNo}

@@ -12,11 +12,11 @@ ADDRESS_TYPE            NUMBER(10)
 MEMBERS_NO              NUMBER(10)   
  */
 	
-private Integer address_no;
+private int address_no;
 private String address_name;
 private String address_detail;
-private Integer address_type;
-private Integer members_no;
+private int address_type;
+private int members_no;
 
 public Address() {
 	
