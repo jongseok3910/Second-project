@@ -10,25 +10,26 @@
 		response.sendRedirect("mac_main.jsp");
 		return;
 	}
+		/*
 		Members newMember=null;
 	    int no=0;
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		String address=request.getParameter("newPassword");
+		String password=request.getParameter("newPassword");
 		String phone=request.getParameter("member_phone");
-		newMember=new Members(no,name,email,address,phone);
-		System.out.println(name+"1 "+email+"2 "+address+"3 "+phone);
+		newMember=new Members(no,name,email,password,phone);
+		System.out.println("name: "+name+"\n"+"email: "+email+"\n"+"password: "+password+"\n"+"phone: "+phone);
+		*/
 	
-	/*
+	
 	try{
-		request.setCharacterEncoding("UTF-8");	
-		//int no=Integer.parseInt(session.getAttribute("members_no"));
-		int no=0;
+		Members newMember=null;
+	    int no=0;
 		String name=request.getParameter("name");
 		String email=request.getParameter("email");
-		String address=request.getParameter("password");
-		String phone=request.getParameter("phone");
-		newMember=new Members(no,name,email,address,phone);
+		String password=request.getParameter("newPassword");
+		String phone=request.getParameter("member_phone");
+		newMember=new Members(no,name,email,password,phone);
 		MembersService memberService=new MembersService();
 		int rowCount=memberService.createMembers(newMember);
 		response.sendRedirect("memberLoginForm.jsp");
@@ -39,7 +40,7 @@
     	//알수없는예외
     	e.printStackTrace();
     	response.sendRedirect("memberError.jsp");
-    }
-	*/
+    }	
+	
 %>
     
