@@ -59,15 +59,15 @@
 
 	// 이메일 중복체크 화면 open
 
-	function openIdChk(){		
-		if (document.Members.email.value == "") {
+	function openIdChk(){
+		if (document.f.email.value=="") {
 			alert("이메일을 입력하세요.");
-			document.form.email.focus();
+			document.f.email.focus();
 			return false;
 		}
-		var param="?email="+document.frmMember.email.value;
+		var param="?email="+document.f.email.value;
 		window.name = "parentForm";
-		window.open("memberIdCheckForm.jsp"+param, "width=500,height=300,resizable = no,scrollbars = no");	
+		window.open("memberIdCheckForm.jsp"+param,"chkForm", "width=500, height=300, resizable = no,scrollbars = no");	
 
 	}
 	
@@ -331,8 +331,8 @@ input[type=text] {
 }
 </style>
 
-			<form id="f"  method="post"
-				action="memberWriteAction.jsp">
+			<form id="f" name="f"  method="post"
+				action="memberWriteAction.jsp" onsubmit="return chkForm2(this)">
 				<input type="hidden" name="mode" value="createMembers"> <input
 					type="hidden" name="rncheck" value=""> <input type="hidden"
 					name="dupeinfo" value=""> <input type="hidden" name="pakey"
@@ -373,7 +373,7 @@ input[type=text] {
 								</th>
 								<td><input type="text" name="email" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									 <a href="" onclick="openIdChk()"
+									 <a href="#" onclick="openIdChk()"
 										style="width: 104px; height: 34px; display: inline-block; margin-left: 10px; background: #354436; color: #fff; vertical-align: middle; line-height: 34px; text-align: center;">
 									 중복체크</a>
 								</td>

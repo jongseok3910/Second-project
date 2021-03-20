@@ -31,7 +31,7 @@
 	//Orders orders = new Orders(null, );
 	
 	//ordersService.createOrdersAll(orders);
-	
+	try{
 	List<Cart> cartList=cartService.findCartByMembersNo(sMemberNo);
 	ArrayList<OrdersDetail> ordersDetailList= new ArrayList<OrdersDetail>();
 	int j_tot_price=0;
@@ -57,5 +57,9 @@
 	cartService.deleteCartByMember(sMemberNo);
 	
 
-	response.sendRedirect("jumunComplete.jsp");	
+		response.sendRedirect("jumunComplete.jsp");	
+	}catch(Exception e){
+		e.printStackTrace();
+		response.sendRedirect("jumunForm.jsp");	
+	}
 %>

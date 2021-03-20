@@ -31,7 +31,7 @@
 	</select>
 	
 	<insert id="createOrders" parameterType="com.itwill.shop.domain.Orders">
-		insert into orders(orders_no,orders_desc,orders_date,orders_price,address_name,members_no) values(orders_no_seq.nextval,#{orders_desc},sysdate,#{orders_price},#{address_name},#{members_no})
+		insert into orders(orders_no,orders_desc,orders_date,orders_price,address_name,members_no) values(orders_no_seq.nextval,#{orders_desc},sysdate,#{orders_price},#{address_name,jdbcType=VARCHAR},#{members_no})
 	</insert>
 	
 	<insert id="createOrdersDetail" parameterType="com.itwill.shop.domain.OrdersDetail">

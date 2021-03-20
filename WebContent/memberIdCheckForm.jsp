@@ -1,15 +1,15 @@
+<%@page import="com.itwill.shop.service.MembersService"%>
 <%@ page import="com.itwill.shop.domain.Members"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String sEmail=(String)session.getAttribute("sEmail");
-	Members sMember=(Members)session.getAttribute("sMember");
-	if(sEmail==null){
-		response.sendRedirect("memberWriteAction.jsp");
-		return;
+	MembersService membersService = new MembersService();	
+	Members members = membersService.findMembersById(request.getParameter("email"));
+	String checkId="+";
+	if(members==null){
+		checkId="";
 	}
-
-%>	
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -43,16 +43,16 @@
 		
 		// 이메일 아이디 중복체크
 		function emailCheck(){
-			var email = document.getElementById("email").value;					
+			var email = document.getElementById("memberId").value;	
+			var checkEmail = '<%=checkId%>';
 			if (!email) {
 				alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
 				return false;
-			}else{ 
-				var param="email="+email
-				var url = "memberCheckForm.do?"+param;
-				location.href=url;
 			}
-		}
+			if(checkEmail!=email){
+				alert("사용가능한 이메일 입니다.");
+				}
+			}
 		
 		
 		
@@ -61,7 +61,7 @@
 			// 중복체크 결과인 idCheck 값을 전달한다.
 			//opener.document.form.idDuplication.value ="idCheck";
 			// 회원가입 화면의 ID입력란에 값을 전달
-			opener.document.findMember.email.value = document.getElementById("email").value;
+			opener.document.f.email.value = document.getElementById("memberId").value;
 			if (opener != null) {
             	opener.chkForm = null;
             	self.close();
@@ -79,15 +79,13 @@
 		<br>
 		<div id="chk">
 			<form id="checkForm">
-				<input type="text" name="memberId" id="memberId" value="abc"> <input
+				<input type="text" name="memberId" id="memberId" value="<%=request.getParameter("email")%>"> <input
 					type="button" value="중복확인" onclick="emailCheck()">
 			</form>
 			<div id="msg">msg</div>
 			
 			<br> <input id="cancelBtn" type="button" value="취소" onclick="window.close()">
-				<%if(true){ %>
 				<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
-				<% }%>
 		</div>
 	</div>
 </body>
