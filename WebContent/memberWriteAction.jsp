@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.domain.exception.PaswordMismatchException"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="com.itwill.shop.service.MembersService"%>
 <%@page import="com.itwill.shop.domain.exception.ExistedMembersException"%>
@@ -35,7 +36,8 @@
 		response.sendRedirect("memberLoginForm.jsp");
 	}catch(ExistedMembersException e){
 		response.sendRedirect("memberWriteForm.jsp?msg="+URLEncoder.encode(e.getMessage(),"UTF-8"));
-		
+	}catch(PaswordMismatchException e){
+		response.sendRedirect("memberLoginForm.jsp?message="+URLEncoder.encode(e.getMessage(),"UTF-8"));	
 	}catch(Exception e){
     	//알수없는예외
     	e.printStackTrace();

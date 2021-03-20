@@ -14,6 +14,7 @@
 <script type="text/javascript">
 	function ck() {
 		alert("로그인이 필요한 서비스 입니다.");
+		location.href="memberLoginForm.jsp";
 	}
 </script>				
 <div id="header">

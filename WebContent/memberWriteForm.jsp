@@ -371,7 +371,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="member_name" value="테스형"
+								<td><input type="text" name="member_name" value=""
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름" ></td>
 							</tr>
@@ -381,7 +381,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="email" value="test@email.com" required=""
+								<td><input type="text" name="email" value="" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									<!-- 
@@ -399,7 +399,7 @@ input[type=text] {
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">비밀번호
 									<em class="star" style="vertical-align: top;">*</em>									
 								</th>
-								<td><input type="password" name="newPassword" value="a123456789A" required=""
+								<td><input type="password" name="newPassword" value="" required=""
 									fld_esssential="" option="regPass" label="비밀번호"
 									onfocus="checkPassword(this)" onkeyup="checkPassword(this)"
 									onblur="emptyPwState()"
@@ -422,7 +422,7 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<td class="memberCols2"><input type="password"
-									name="memberPassword2" value="a123456789A" required="" fld_esssential="" option="regPass"
+									name="memberPassword2" value="" required="" fld_esssential="" option="regPass"
 									label="비밀번호"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									
@@ -447,7 +447,7 @@ input[type=text] {
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
 								<td class="memberPhone"><input type="phone"
-									name="member_phone" value="01022228888" required="" fld_esssential="" option="regPass"
+									name="member_phone" value="" required="" fld_esssential="" option="regPass"
 									label="휴대폰"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									<span style="display: block; width: 525px; height: 40px; padding-left: 10px; line-height: 40px; background: #f5f5f5; margin-top: 8px;">

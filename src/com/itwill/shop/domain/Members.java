@@ -1,13 +1,13 @@
 package com.itwill.shop.domain;
 
 /*
- * 이름               널?       유형            
+이름               널?       유형            
 ---------------- -------- ------------- 
 MEMBERS_NO       NOT NULL NUMBER(10)    
 MEMBERS_NAME              VARCHAR2(100) 
 MEMBERS_EMAIL             VARCHAR2(100) 
 MEMBERS_PASSWORD          VARCHAR2(100) 
-MEMBERS_PHONE             NUMBER(10)
+MEMBERS_PHONE             VARCHAR2(30)  
  */
 public class Members {
 	private int members_no;

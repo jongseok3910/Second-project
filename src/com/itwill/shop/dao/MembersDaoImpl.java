@@ -26,9 +26,9 @@ public class MembersDaoImpl implements MembersDao {
 	public static final String NAMESPACE = "com.itwill.shop.dao.mapper.MembersMapper.";
 	public MembersDaoImpl() throws Exception{
 		try {
-			InputStream membersConInputStream=Resources.getResourceAsStream("mybatis-config.xml");
+			InputStream mybatisConfigInputStream=Resources.getResourceAsStream("mybatis-config.xml");
 			SqlSessionFactoryBuilder sqlSessionFactoryBuilder=new SqlSessionFactoryBuilder();
-			this.sqlSessionFactory=sqlSessionFactoryBuilder.build(membersConInputStream);			
+			this.sqlSessionFactory=sqlSessionFactoryBuilder.build(mybatisConfigInputStream);			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
 <body style="">
-	<%@ include file="../include/top.jsp"%>
+<%@ include file="../include/top.jsp"%>
 	<div class="indiv" style="margin: 0 auto; width: 1100px;">
 		<!-- Start indiv -->
 		
@@ -19,11 +19,11 @@
 				name="form">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
-						<input type="text" name="members_email" onfocus="this.value='';" value="test@email.com" placeholder="이메일" class="txtborder">
+						<input type="text" name="members_email" onfocus="this.value='';" value="" placeholder="이메일" class="txtborder">
 						
 					</p>
 					<p style="margin-bottom: 10px;">
-						<input type="password" name="members_password" onfocus="this.value='';"	value="a123456789A" placeholder="비밀번호" class="txtborder">
+						<input type="password" name="members_password" onfocus="this.value='';"	value="" placeholder="비밀번호" class="txtborder">
 						
 					</p>
 					<p>
