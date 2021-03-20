@@ -20,7 +20,7 @@ public class AddressService {
 	public List<Address> findAddressAll() throws Exception{
 		return addressDao.findAddressAll();
 	}
-	public int insertAddress(Address address)  throws Exception{
+	public int insertAddress(Address address) throws Exception{
 		return addressDao.insertAddress(address);
 	}
 	public int updateAddressByNo(Address address)  throws Exception{

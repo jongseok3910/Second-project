@@ -44,7 +44,7 @@ public class AddressDaoImpl implements AddressDao {
 	}
 
 	@Override
-	public int insertAddress(Address address) {
+	public int insertAddress(Address address) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
 		int insertRow = addressMapper.insertAddress(address);
@@ -52,7 +52,7 @@ public class AddressDaoImpl implements AddressDao {
 	}
 
 	@Override
-	public int updateAddressByNo(Address address) {
+	public int updateAddressByNo(Address address) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
 		int updateRow = addressMapper.updateAddressByNo(address);

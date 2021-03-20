@@ -13,7 +13,7 @@
 	try{
 		request.setCharacterEncoding("UTF-8");	
 		int no=0;
-		String number=request.getParameter("card_no");
+		String number=request.getParameter("card_number");
 		String name=request.getParameter("card_name");
 		String type=request.getParameter("card_type");
 		String mNo=request.getParameter("members_no");

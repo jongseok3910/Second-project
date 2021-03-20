@@ -20,7 +20,7 @@ public interface AddressMapper {
 	</select>
 	 */
 	
-	public int insertAddress(Address address);
+	public int insertAddress(Address address)throws Exception;
 	/*
 	 <insert id="insertAddress" parameterType="com.itwill.shop.domain.Address">
 		insert into address(address_no,address_name,address_detail,address_type)
@@ -28,7 +28,7 @@ public interface AddressMapper {
 	</insert>
 	 */
 	
-	public int updateAddressByNo(Address address);
+	public int updateAddressByNo(Address address)throws Exception;
 	/*
 	 <update id="updateAddressByNo" parameterType="com.itwill.shop.domain.Address">
 		update address set address_name=#{addressName},address_detail=#{addressDetail},address_type=#{addressType}
