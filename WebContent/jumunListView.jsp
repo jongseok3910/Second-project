@@ -15,34 +15,17 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
-<script type="text/javascript">
-	function location() {
-		location.href="memberMypage.do";
-	}
-	
-	<%
-
+<%
 	OrdersService ordersService = new OrdersService();
-	MembersService membersService = new MembersService();
 
 	List<Orders> orderList = ordersService.findOrderListById((int)session.getAttribute("members_no"));
-	int max = 0;
-	for(Orders orders:orderList){
-	    if(max < orders.getOrders_no()){
-	        max = orders.getOrders_no();
-	    }
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+%>
+<script type="text/javascript">
+	function orderDeatilList(orders_no) {
+		document.getElementById("orders_no").value=orders_no;
+		document.ordList.submit();
 	}
-
-	HashMap<String,Object> orderMap=new HashMap<String,Object>();
-	orderMap.put("members_no", sMemberNo);
-	orderMap.put("orders_no", max);
-
-	Orders orders = ordersService.findOrderByOne(orderMap);
-	Members members= membersService.findMembersByNo(sMemberNo);
-	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-	String order_time = format1.format (orders.getOrders_date()); 
-	%>
-
 
 </script>
 	<style rel="stylesheet" type="text/css">
@@ -270,6 +253,9 @@
 </style>
 <body style="">
 	<%@ include file="../include/MyPagetop.jsp"%>
+	<form name="ordList" action="OrderDetailsList.jsp" method="POST">
+		<input type="hidden" id="orders_no" name="orders_no" value="">
+	</form>
 	<div id="content">
 		<div class="mypagediv">
 			<!-- 상단이미지 || 현재위치 -->
@@ -279,7 +265,7 @@
 					style="cursor: pointer;"> <b>주문기록</b>
 					</span>
 			</div>
-<%for(Orders order:orderList){ %>
+<%for(Orders orders:orderList){ %>
 			<!-- 여기서 부터 내가 복붙해옴 -->
 			<div style="height: 30px"></div>
 				<div
@@ -297,7 +283,7 @@
 									<em class="star">*</em>
 								</th>
 								<!--(날짜를 불러온다)-->
-								<td width=145 height=26 align=center class=t1><%=orders.getOrders_date() %></td>
+								<td width=145 height=26 align=center class=t1><%=format1.format(orders.getOrders_date())%></td>
 
 							</tr>
 							<tr>
@@ -328,7 +314,7 @@
 								<!--(상세보기버튼 추가)-->
 
 								<td width=145 height=26 align=center class=t1>		<button type="button"
-							onclick="location.href='OrderDetailsList.jsp'"
+							onclick="orderDeatilList(<%=orders.getOrders_no()%>)"
 							class="w93" style="cursor: pointer;">상세보기</button></span></td>
 						
 

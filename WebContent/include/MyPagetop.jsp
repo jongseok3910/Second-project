@@ -59,7 +59,7 @@
 				
 				<li class="sm13"><a href="memberAddressForm.jsp">주소관리</a></li>
 				
-				<li class="sm14"><a href="jumunListView.jsp">주문기록</a></li>
+				<li class="sm14"><a href="jumunListView.jsp">주문조회</a></li>
 			</ul>
 		</div>
 	</div>
