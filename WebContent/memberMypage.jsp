@@ -1,3 +1,5 @@
+<%@page import="com.itwill.shop.service.OrdersService"%>
+<%@page import="com.itwill.shop.domain.Orders"%>
 <%@page import="com.itwill.shop.domain.Address"%>
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.shop.domain.Card"%>
@@ -10,8 +12,12 @@
 <%
 	CardService cardService = new CardService();
 	AddressService addressService = new AddressService();
+	OrdersService ordersService = new OrdersService();
+	
 	List<Card> cardList = cardService.findCardByMembersNo(sMemberNo);
 	List<Address> addressList = addressService.findAddressByNo(sMemberNo);
+	List<Orders> orderList = ordersService.findOrderListById(sMemberNo);
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 %>
 <script type="text/javascript">	
 	function memberModifyForm() {
@@ -280,53 +286,33 @@
 							summary="최근 3건의 주문 정보">
 							<caption>최근 3건의 주문 정보</caption>
 							<colgroup>
-								<col width="*">
 								<col width="10%">
+								<col width="15%">
 								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
+								<col width="12%">
+								<col width="12%">
 							</colgroup>
 							<tbody>
 								<tr>
-									<th scope="col">주문일시</th>
-									<th scope="col">주문번호</th>
-									<th scope="col">결제방법</th>
-									<th scope="col">주문금액</th>
-									<th scope="col">취소금액</th>
-									<th scope="col">상세보기</th>
+									<th colspan="1">주문번호</th>
+									<th colspan="3">주문내역</th>
+									<th colspan="1">주문일시</th>
+									<th colspan="1">주문금액</th>
 								</tr>
-								<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td scope="row">2019-08-07 17:23:49</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1565165608840"
-										style="color: #777;">1565165608840</a></td>
-									<td>가상계좌</td>
-									<td class="right">31,700</td>
-									<td class="right">0</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1565165608840"><img
-											src="./res/btn_detailview.gif"></a></td>
+								<%if(cardList==null){ %>
+								<tr>
+									<td colspan="5" class="nodata">최근 주문한 내역이 없습니다.</td>
 								</tr>
-								<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td scope="row">2019-08-05 00:42:00</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1564933277894"
-										style="color: #777;">1564933277894</a></td>
-									<td>가상계좌</td>
-									<td class="right">18,900</td>
-									<td class="right">0</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1564933277894"><img
-											src="./res/btn_detailview.gif"></a></td>
-								</tr>
+								<%}else{ %>
+									<%for(Orders orders : orderList){ %>
+									<tr>
+										<td colspan="1"><%=orders.getOrders_no() %></td>
+										<td colspan="3"><%=orders.getOrders_desc() %></td>
+										<td colspan="1"><%=format1.format(orders.getOrders_date()) %></td>
+										<td colspan="1"><%=orders.getOrders_price() %></td>
+									</tr>
+								<%}
+									}%>
 							</tbody>
 						</table>
 					</form>
@@ -354,8 +340,8 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th colspan="3">카드이름</th>
-								<th colspan="2">번호</th>
+								<th colspan="2">카드이름</th>
+								<th colspan="3">카드번호</th>
 							</tr>
 							<%if(cardList==null){ %>
 							<tr>
@@ -371,13 +357,13 @@
 										stringBuffer.insert(14,"-");
 								%>
 							<tr>
-								<td colspan="3"><%=card.getCard_name()%></td>
-								<td colspan="2"><%=stringBuffer%></td>
+								<td colspan="2"><%=card.getCard_name()%></td>
+								<td colspan="3"><%=stringBuffer%></td>
 							</tr>
 								<%}else{%>
 							<tr>
-								<td colspan="3"><%=card.getCard_name()%></td>
-								<td colspan="2"><%=card.getCard_number()%></td>
+								<td colspan="2"><%=card.getCard_name()%></td>
+								<td colspan="3"><%=card.getCard_number()%></td>
 							</tr>
 							<%}
 								}
@@ -407,8 +393,8 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>번호</th>
-								<th>질문유형</th>
+								<th colspan="2">주소명</th>
+								<th colspan="3">상세주소</th>
 							</tr>
 							<%if(addressList==null){ %>
 							<tr>
@@ -417,7 +403,8 @@
 							<%}else{%>
 							<%for(Address address:addressList){ %>
 								<tr>
-									<td></td>
+									<td colspan="2"><%=address.getAddress_name() %></td>
+									<td colspan="3"><%=address.getAddress_detail() %></td>
 								</tr>
 							<%}
 								}%>

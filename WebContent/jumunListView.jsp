@@ -23,10 +23,8 @@
 	<%
 
 	OrdersService ordersService = new OrdersService();
-	MembersService membersService = new MembersService();
 
 	List<Orders> orderList = ordersService.findOrderListById((int)session.getAttribute("members_no"));
-	System.out.println((int)session.getAttribute("members_no"));
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 	%>
 

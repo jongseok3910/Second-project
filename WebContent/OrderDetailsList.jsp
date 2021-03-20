@@ -23,21 +23,7 @@ OrdersService ordersService = new OrdersService();
 MembersService membersService = new MembersService();
 
 List<Orders> orderList = ordersService.findOrderListById(sMemberNo);
-int max = 0;
-for(Orders orders:orderList){
-	if(max < orders.getOrders_no()){
-		max = orders.getOrders_no();
-	}
-}
-
-HashMap<String,Object> orderMap=new HashMap<String,Object>();
-orderMap.put("members_no", sMemberNo);
-orderMap.put("orders_no", max);
-
-Orders orders = ordersService.findOrderByOne(orderMap);
-Members members= membersService.findMembersByNo(sMemberNo);
-SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-String order_time = format1.format (orders.getOrders_date()); 
+SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 %>
 
 
@@ -297,7 +283,7 @@ String order_time = format1.format (orders.getOrders_date());
 									<em class="star"> * </em>
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1> <%= order_time%> </td>
+								<td width=145 height=26 align=center class=t1>  </td>
 
 							</tr>
 							<tr>
@@ -306,7 +292,7 @@ String order_time = format1.format (orders.getOrders_date());
 									<em class="star">*</em>
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1> <%=orders.getOrders_no() %> </td>
+								<td width=145 height=26 align=center class=t1>  </td>
 
 							</tr>
 							<tr>
@@ -324,7 +310,7 @@ String order_time = format1.format (orders.getOrders_date());
 									<em class="star">*</em>
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1> <%=new DecimalFormat("#,###").format(orders.getOrders_price()) %>원 </td>
+								<td width=145 height=26 align=center class=t1> 원 </td>
 
 							</tr>
 							<tr>
@@ -334,7 +320,7 @@ String order_time = format1.format (orders.getOrders_date());
 								</th>
 								<!--(상세주소를 불러온다)-->
 
-								<td width=145 height=26 align=center class=t1><%=address.getAddress_detail()%></td>
+								<td width=145 height=26 align=center class=t1></td>
 
 							</tr>
 						</tbody>
