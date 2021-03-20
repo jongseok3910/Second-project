@@ -1,3 +1,16 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.domain.Orders"%>
+<%@page import="com.itwill.shop.service.MembersService"%>
+<%@page import="com.itwill.shop.service.OrdersService"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.domain.Members" %>
+<%@ include file="login_check.jspf" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
@@ -6,6 +19,31 @@
 	function location() {
 		location.href="memberMypage.do";
 	}
+	
+	<%
+
+	OrdersService ordersService = new OrdersService();
+	MembersService membersService = new MembersService();
+
+	List<Orders> orderList = ordersService.findOrderListById((int)session.getAttribute("members_no"));
+	int max = 0;
+	for(Orders orders:orderList){
+	    if(max < orders.getOrders_no()){
+	        max = orders.getOrders_no();
+	    }
+	}
+
+	HashMap<String,Object> orderMap=new HashMap<String,Object>();
+	orderMap.put("members_no", sMemberNo);
+	orderMap.put("orders_no", max);
+
+	Orders orders = ordersService.findOrderByOne(orderMap);
+	Members members= membersService.findMembersByNo(sMemberNo);
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+	String order_time = format1.format (orders.getOrders_date()); 
+	%>
+
+
 </script>
 	<style rel="stylesheet" type="text/css">
 .mypagediv .bold {
@@ -236,132 +274,75 @@
 		<div class="mypagediv">
 			<!-- 상단이미지 || 현재위치 -->
 			<div class="atit">
-				<p>마이페이지</p>
+				<p>주문기록</p>
 				<span class="path"><img src="./res/ico_home.gif" alt="HOME"
-					style="cursor: pointer;"> <b>마이페이지</b>
+					style="cursor: pointer;"> <b>주문기록</b>
 					</span>
 			</div>
+<%for(Orders order:orderList){ %>
+			<!-- 여기서 부터 내가 복붙해옴 -->
+			<div style="height: 30px"></div>
+				<div
+					style="border-bottom: 1px solid #ccc; padding-bottom: 65px; margin-bottom: 40px;">
+					<p class="h4">
+						주문정보
+					</p>
 
-			<!-- 회원 정보 수정 버튼 -->
-			<div>
-				<button type="button" onclick="location.href=&quot;/zipbanchan/memberModifyForm.do&quot;"
-									class="w93" style="cursor: pointer;">회원 정보 수정</button>
-				<br><br>
-			</div>
-			
-			<!-- 회원 탈퇴 버튼 -->
-			<div>
-				<button type="button" onclick="location.href=&quot;/zipbanchan/memberDeleteAction.do&quot;"
-									class="w93" style="cursor: pointer;">회원 탈퇴</button>
-				<br><br>
-			</div>
-			
-			
-			<!-- 최근 주문 정보 -->
-			<div class="mplist">
-				<div class="ordtitle">
-					<span class="ordment"><span class="b_cate">최근 주문 정보</span></span> 
-						<span class="ordlink">
-							<button type="button" onclick="location.href=&quot;/shop/mypage/mypage_orderlist.php?&amp;&quot;"
-									class="w93" style="cursor: pointer;">전체 주문 보기</button></span>
-				</div>
-				<div class="ordlistdiv" style="margin-bottom: 30px;">
-					<form name="frmOrderList" method="post">
-						<input type="hidden" name="mode"> <input type="hidden"
-							name="ordno">
-						<table class="ordlatelytbl" cellpadding="0" cellspacing="0"
-							summary="최근 3건의 주문 정보">
-							<caption>최근 3건의 주문 정보</caption>
-							<colgroup>
-								<col width="*">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-								<col width="10%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="col">주문일시</th>
-									<th scope="col">주문번호</th>
-									<th scope="col">결제방법</th>
-									<th scope="col">주문금액</th>
-									<th scope="col">취소금액</th>
-									<th scope="col">상세보기</th>
-								</tr>
-								<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td scope="row">2019-08-07 17:23:49</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1565165608840"
-										style="color: #777;">1565165608840</a></td>
-									<td>가상계좌</td>
-									<td class="right">31,700</td>
-									<td class="right">0</td>
-									<td><a
-										href="http://www.zipbanchan.co.kr/shop/mypage/mypage_orderview.php?&amp;ordno=1565165608840"><img
-											src="./res/btn_detailview.gif"></a></td>
-								</tr>
-								<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td scope="row">2019-08-05 00:42:00</td>
-									<td><a
-										href="http://localhost:8081/2nd-project-team2-Mac2ja/OrderDetailsList.jsp"
-										style="color: #777;">1564933277894</a></td>
-									<td>가상계좌</td>
-									<td class="right">18,900</td>
-									<td class="right">0</td>
-									<td><a
-										href="http://localhost:8081/2nd-project-team2-Mac2ja/OrderDetailsList.jsp"><img
-											src="./res/btn_detailview.gif"></a></td>
-								</tr>
-							</tbody>
-						</table>
-					</form>
-				</div>
-			</div>
-			<!-- 최근 주문 정보 -->
-
-			<!-- 1:1 문의내역 -->
-			<div class="mplist">
-				<div class="ordtitle">
-					<span class="ordment"><span class="b_cate">1:1 문의내역</span></span> <span
-						class="ordlink"><button type="button"
-							onclick="http://localhost:8081/2nd-project-team2-Mac2ja/;"
-							class="w93" style="cursor: pointer;">1:1 문의게시판</button></span>
-				</div>
-				<div class="ordlistdiv" style="margin-bottom: 30px;">
-					<input type="hidden" name="cntqna" id="cntqna" value="0">
-					<table class="ordlatelytbl" cellpadding="0" cellspacing="0"
-						summary="최근 3건의 1:1문의">
-						<caption>최근 3건의 1:1문의</caption>
-						<colgroup>
-							<col width="10%">
-							<col width="15%">
-							<col width="*">
-							<col width="12%">
-							<col width="12%">
-						</colgroup>
+					<table width="35%" cellpadding="0" cellspacing="0" border="0"
+						class="intable">
 						<tbody>
 							<tr>
-								<th>번호</th>
-								<th>질문유형</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">날짜
+									<em class="star">*</em>
+								</th>
+								<!--(날짜를 불러온다)-->
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_date() %></td>
+
 							</tr>
 							<tr>
-								<td colspan="5" class="nodata">1:1 문의 내역이 없습니다.</td>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문번호 
+									<em class="star">*</em>
+								</th>
+								<!--(주문번호를 불러온다)-->
+
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_no() %></td>
+
 							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">금액 
+									<em class="star">*</em>
+								</th>
+								<!--(금액을 불러온다)-->
+
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_price() %></td>
+
+							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">상세보기
+									<em class="star">*</em>
+								</th>
+								<!--(상세보기버튼 추가)-->
+
+								<td width=145 height=26 align=center class=t1>		<button type="button"
+							onclick="location.href='OrderDetailsList.jsp'"
+							class="w93" style="cursor: pointer;">상세보기</button></span></td>
+						
+
+							</tr>
+							
+							
 						</tbody>
 					</table>
+
 				</div>
-			</div>
+			
+<%} %>
+			
+		
 			<!-- 1:1 문의내역 -->
 		</div>
 	</div>
