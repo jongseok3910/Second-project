@@ -1,14 +1,10 @@
 package com.itwill.shop.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.itwill.shop.dao.MembersDao;
 import com.itwill.shop.dao.MembersDaoImpl;
 import com.itwill.shop.domain.Members;
-import com.itwill.shop.domain.exception.ExistedMembersException;
-import com.itwill.shop.domain.exception.MembersNotFoundException;
-import com.itwill.shop.domain.exception.PaswordMismatchException;
 
 
 /*
@@ -41,6 +37,9 @@ public class MembersService {
 		return memberDao.findMembersByPassWord(members_password);
 	}
 	
+	public Members findMembersByPhone(String members_phone) throws Exception{
+		return memberDao.findMembersByPhone(members_phone);
+	}
 	
 	public int createMembers(Members members) throws Exception{
 		if(memberDao.findMembersById(members.getMembers_email())!=null) {

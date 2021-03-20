@@ -75,6 +75,16 @@ public class MembersDaoImpl implements MembersDao {
 	}
 	
 	@Override
+	public Members findMembersByPhone(String members_phone) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		Members members = membersMapper.findMembersByPhone(members_phone);
+		sqlSession.commit();
+		sqlSession.close();
+		return members;
+	}
+	
+	@Override
 	public int createMembers(Members members) throws Exception{
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);

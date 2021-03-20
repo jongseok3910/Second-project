@@ -1,3 +1,4 @@
+<%@page import="com.itwill.shop.domain.Members"%>
 <%@page import="com.itwill.shop.service.MembersService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -6,51 +7,33 @@
     request.setCharacterEncoding("UTF-8");
    
     MembersService membersService = new MembersService();
-   
+    Members members=null;
     
+    if(request.getParameter("findHandleId")!=null){
+    	members = membersService.findMembersByPhone(request.getParameter("memberId"));
+    }	
     
+   	if(request.getParameter("findHandlePassword")!=null){
+    	members = membersService.findMembersById(request.getParameter("memberPassWord"));
+   	}
     
+    if(members==null){
+    	request.setAttribute("msg", "존재하지 않는 유저입니다.");
+    	RequestDispatcher rd = request.getRequestDispatcher("memberIdPwFind.jsp");
+    	rd.forward(request, response);
+    }
     
-    
-    
-  /*
-  <script>
-function 폼_submit(form){
-form.phone.value = form.phone.value.trim();
-
-if (form.phone.value.length == 0) {
-alert('핸드폰번호를 입력해주세요.');
-form.phone.focus();
-return;
-}
-</script>
-form.submit();
-}
-
----이메일----
-
-form.email.value = form.email.valus.frim();
-
-if(form.email.value.length == 0) {
-alert('이메일을 입력하세요.');
-form.email.focus();
-returnl;
-
-
-
-----비밀번호 찾기 이메일 입력안할 시 메시지----
-
-<div class="form-row">
-<div class="label">이메일</div>
-<div class="input">
-<input name="email" type="email" placeholder="이메일을 입력하세요."/>
-</div>
-</div>
-
-
-  
-  */
-  
+    if(request.getParameter("findHandleId")!=null&&members!=null){
+    	request.setAttribute("findId", members.getMembers_email());
+    	RequestDispatcher rd = request.getRequestDispatcher("memberIdPwFind.jsp");
+    	rd.forward(request, response); 
+    }
+    if(request.getParameter("findHandlePassword")!=null&&members!=null){
+    	System.out.println("1");
+    	request.setAttribute("findPassword", members.getMembers_password());
+    	RequestDispatcher rd = request.getRequestDispatcher("memberIdPwFind.jsp");
+    	rd.forward(request, response);
+    }
  %>
 
 
