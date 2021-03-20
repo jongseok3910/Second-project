@@ -2,6 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+	Members fmember=(Members)request.getAttribute("fmember");
+	if(fmember==null){
+		fmember=new Members(0,"","","","");
+	}
+	
 	String message=request.getParameter("message");
 	if(message==null){
 		message="";
@@ -28,7 +33,7 @@
 	} 
 	*/
 	
-	function memberCreate(){
+	function membersCreate(){
 		if (document.f.name.value=="") {
 			alert("사용자 이름을 입력하세요");
 			f.name.focus();
@@ -59,12 +64,12 @@
 		document.f.method = 'POST';
 		document.f.submit();
 	}
-	/*
-	function memberList(){
-		f.action="memberLoginAction.jsp";
-		f.summit;	
+	
+	function mac_main(){
+		f.action="mac_main.jsp";
+		f.submit;	
 	}
-	*/
+	
 	/*
 	// 이메일 중복체크 화면 open
 
@@ -341,7 +346,7 @@ input[type=text] {
 }
 </style>
 
-			<form id="form" name="frmMember" method="post"
+			<form id="f"  method="post"
 				action="memberWriteAction.jsp" onsubmit="return chkForm2(this)">
 				<input type="hidden" name="mode" value="createMembers"> <input
 					type="hidden" name="rncheck" value=""> <input type="hidden"
@@ -371,7 +376,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="member_name" value=""
+								<td><input type="text" name="name" value="<%=fmember.getMembers_name() %>"
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름" ></td>
 							</tr>
@@ -381,7 +386,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이메일
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="email" value="" required=""
+								<td><input type="text" name="email" value="<%=fmember.getMembers_email() %>" required=""
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									&nbsp;
 									<!-- 
@@ -399,12 +404,12 @@ input[type=text] {
 									style="vertical-align: top; padding-top: 23px; padding-left: 20px; color: #717071; font-weight: bold;">비밀번호
 									<em class="star" style="vertical-align: top;">*</em>									
 								</th>
-								<td><input type="password" name="newPassword" value="" required=""
+								<td><input type="password" name="password" value="<%=fmember.getMembers_password() %>" required=""
 									fld_esssential="" option="regPass" label="비밀번호"
 									onfocus="checkPassword(this)" onkeyup="checkPassword(this)"
 									onblur="emptyPwState()"
 									style="width: 217px; height: 30px; padding-left: 10px;">
-									
+									<!-- 
 									<div class="passwordStrenth"
 										id="el-password-strength-indicator">
 										<dl>
@@ -413,6 +418,7 @@ input[type=text] {
 										</dl>
 										<p id="el-password-strength-indicator-msg"></p>
 									</div> 
+									 -->
 										<span style="display: block; width: 525px; height: 40px; padding-left: 10px; line-height: 40px; background: #f5f5f5; margin-top: 8px;">
 											영문 대소문자, 숫자를 조합하여 최소 10 ~ 16자리 이하</span></td>
 							</tr>
@@ -422,7 +428,7 @@ input[type=text] {
 									<em class="star">*</em>
 								</th>
 								<td class="memberCols2"><input type="password"
-									name="memberPassword2" value="" required="" fld_esssential="" option="regPass"
+									name="password2" value="<%=fmember.getMembers_password() %>" required="" fld_esssential="" option="regPass"
 									label="비밀번호"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									
@@ -447,7 +453,7 @@ input[type=text] {
 									<em class="star" style="vertical-align: top;">*</em>
 								</th>
 								<td class="memberPhone"><input type="phone"
-									name="member_phone" value="" required="" fld_esssential="" option="regPass"
+									name="phone" value="<%=fmember.getMembers_phone() %>" required="" fld_esssential="" option="regPass"
 									label="휴대폰"
 									style="width: 217px; height: 30px; padding-left: 10px;">
 									<span style="display: block; width: 525px; height: 40px; padding-left: 10px; line-height: 40px; background: #f5f5f5; margin-top: 8px;">
