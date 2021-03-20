@@ -283,7 +283,7 @@ input[type=text] {
 								</th>
 								<td width=490 align="left" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 150" name="address_no"></td>
+									style="width: 150" name="address_name"></td>
 							</tr>
 							<tr>
 								<th
@@ -292,7 +292,7 @@ input[type=text] {
 								</th>
 								<td width=490 align="left" bgcolor="ffffff"
 									style="padding-left: 10px"><input type="text"
-									style="width: 150" name="address_name"></td>
+									style="width: 150" name="address_detail"></td>
 							</tr>
 							
 							

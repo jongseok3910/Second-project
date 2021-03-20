@@ -9,7 +9,8 @@ public class MemberServiceTestMain {
 		
 		MembersService memberService=new MembersService();
 		
-		System.out.println(memberService.findMembersById("test@email.com"));
+		//System.out.println(memberService.findMembersById("test@email.com"));
+		System.out.println(memberService.findMembersByNo(1));
 
 	}
 

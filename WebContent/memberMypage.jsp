@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<%@ include file="login_check.jspf"%>
 <%@ include file="../include/head.jsp"%>
-<script type="text/javascript">
-	function location() {
-		location.href="memberMypage.jsp";
+<script type="text/javascript">	
+	function memberModifyForm() {
+		document.modify.action="memberModifyForm.jsp";
+		document.modify.method="POST";
+		document.modify.submit();
 	}
 </script>
 	<style rel="stylesheet" type="text/css">
@@ -232,6 +234,7 @@
 </style>
 <body style="">
 	<%@ include file="../include/MyPagetop.jsp"%>
+	<form name="modify"><input type="hidden" name="members_no" value="<%=sMemberNo%>"></form>
 	<div id="content">
 		<div class="mypagediv">
 			<!-- 상단이미지 || 현재위치 -->
@@ -242,19 +245,7 @@
 					</span>
 			</div>
 
-			<!-- 회원 정보 수정 버튼 -->
-			<div>
-				<button type="button" onclick=""
-									class="w93" style="cursor: pointer;">회원 정보 수정</button>
-				<br><br>
-			</div>
-			
-			<!-- 회원 탈퇴 버튼 -->
-			<div>
-				<button type="button" onclick=""
-									class="w93" style="cursor: pointer;">회원 탈퇴</button>
-				<br><br>
-			</div>
+			<hr>
 			
 			
 			<!-- 최근 주문 정보 -->
@@ -361,10 +352,19 @@
 						</tbody>
 					</table>
 				</div>
+					<!-- 회원 정보 수정 및 탈퇴 버튼 -->
+				<div>
+					<input type="button" onclick=""
+						style="width: 180px; background: #344336; color: #fff; display: inline-block; line-height: 20px; text-align: center; font-size: 20px; margin-right: 10px; cursor: pointer; float: right"
+						value="회원 탈퇴">
+					<input type="button" onclick="memberModifyForm();"
+						style="width: 180px; background: #344336; color: #fff; display: inline-block; line-height: 20px; text-align: center; font-size: 20px; margin-right: 10px; cursor: pointer; float: right;"
+					 	value="회원 정보 수정">
+				</div>
 			</div>
-			<!-- 1:1 문의내역 -->
 		</div>
 	</div>
+	
 	<%@ include file="../include/bottom.jsp"%>
 </body>
 </html>

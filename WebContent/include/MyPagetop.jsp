@@ -32,20 +32,20 @@
 					<li>
 						<a href="memberLoginOut.jsp">로그아웃</a>	
 					</li>
-					<%}else{ %>
-					<li>
-						<a href="memberLoginForm.jsp">로그인</a>	
-					</li>
-					<%} %>
-					<li>
-						<a href="memberWriteForm.jsp">회원가입</a>
-					</li>
 					<li>
 						<a href="memberMypage.jsp">마이페이지</a>
 					</li>
 					<li>
 						 <a href="cartForm.jsp">장바구니</a>
 					</li>
+					<%}else{ %>
+					<li>
+						<a href="memberLoginForm.jsp">로그인</a>	
+					</li>
+					<li>
+						<a href="memberWriteForm.jsp">회원가입</a>
+					</li>
+					<%} %>
 				</ul>
 			</div>
 		</div>

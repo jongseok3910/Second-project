@@ -45,10 +45,10 @@ public class MembersDaoImpl implements MembersDao {
 	}
 
 	@Override
-	public Members findMembersByNo(int no) throws Exception {
+	public Members findMembersByNo(int members_no) throws Exception {
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
-		Members members = membersMapper.findMembersByNo(no);
+		Members members = membersMapper.findMembersByNo(members_no);
 		sqlSession.commit();
 		sqlSession.close();
 		return members;

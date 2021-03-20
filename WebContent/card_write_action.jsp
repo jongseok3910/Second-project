@@ -13,10 +13,11 @@
 	try{
 		request.setCharacterEncoding("UTF-8");	
 		int no=0;
-		String number=request.getParameter("card_number");
+		String number=request.getParameter("card_no");
 		String name=request.getParameter("card_name");
 		String type=request.getParameter("card_type");
 		String mNo=request.getParameter("members_no");
+		System.out.println(number+""+name+""+type+""+mNo);
 		Card card=new Card(0,number,name,Integer.parseInt(type) ,Integer.parseInt(mNo));
 		CardService cardService=new CardService();
 		int rowCount=cardService.createCard(card);
