@@ -10,7 +10,10 @@ public class MemberServiceTestMain {
 		MembersService memberService=new MembersService();
 		
 		//System.out.println(memberService.findMembersById("test@email.com"));
-		System.out.println(memberService.findMembersByNo(1));
+		//System.out.println(memberService.findMembersByNo(1));
+		String x= "4444";
+		System.out.println(memberService.findMembersByPassWord(x));
+		
 
 	}
 

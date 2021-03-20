@@ -8,6 +8,16 @@
 		document.modify.method="POST";
 		document.modify.submit();
 	}
+	
+	function memberDeleteAction() {
+		var delete_confirm=confirm("정말로 탈퇴 하시겠습니까?");
+		
+		if(delete_confirm==true){
+			document.modify.action="memberDeleteAction.jsp";
+			document.modify.method="POST";
+			document.modify.submit();
+		}
+	}
 </script>
 	<style rel="stylesheet" type="text/css">
 .mypagediv .bold {
@@ -354,7 +364,7 @@
 				</div>
 					<!-- 회원 정보 수정 및 탈퇴 버튼 -->
 				<div>
-					<input type="button" onclick=""
+					<input type="button" onclick="memberDeleteAction()"
 						style="width: 180px; background: #344336; color: #fff; display: inline-block; line-height: 20px; text-align: center; font-size: 20px; margin-right: 10px; cursor: pointer; float: right"
 						value="회원 탈퇴">
 					<input type="button" onclick="memberModifyForm();"

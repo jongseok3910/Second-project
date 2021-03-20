@@ -38,7 +38,7 @@ public class MembersService {
 	}
 	
 	public Members findMembersByPassWord(String members_password) throws Exception{
-		return memberDao.findMembersById(members_password);
+		return memberDao.findMembersByPassWord(members_password);
 	}
 	
 	

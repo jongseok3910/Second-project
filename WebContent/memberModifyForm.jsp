@@ -7,6 +7,11 @@
 	if(request.getMethod().equalsIgnoreCase("get")){
 		response.sendRedirect("mac_main.jsp");
 	}
+	if(request.getAttribute("members_no")==null||request.getAttribute("members_no").equals("")){
+		if(request.getParameter("members_no")==null||request.getParameter("members_no").equals("")){
+			response.sendRedirect("memberMypage.jsp");
+		}
+	}
 	int members_no=Integer.parseInt(request.getParameter("members_no"));	
 	
 	MembersService membersService = new MembersService();
@@ -14,18 +19,13 @@
 %>
 <script type="text/javascript">	
 	function modifyAction() {
-		var password=<%=members.getMembers_password()%>;
-		if(password==document.getElementById("members_password").value){
+		var password='<%=members.getMembers_password()%>';
+		if( (password==document.getElementById("members_password").value) && (document.getElementById("members_password").value==document.getElementById("members_password_check").value)){
 			document.frmMember.submit();
 		}else{
 			alert("비밀번호가 일치하지 않습니다");
 		}
 		
-		if(document.getElementById("members_password").value==document.getElementById("members_password_check").value){
-			document.frmMember.submit();			
-		}else{
-			alert("비밀번호가 일치하지 않습니다");
-		}
 	}
 </script>
 <style type="text/css">
@@ -301,7 +301,7 @@ input[type=text] {
 									style="padding-left: 20px; color: #717071; font-weight: bold;">이름
 									<em class="star">*</em>
 								</th>
-								<td><input type="text" name="memberName" value="<%=members.getMembers_name() %>"
+								<td><input type="text" name="members_name" value="<%=members.getMembers_name() %>"
 									style="width: 217px; height: 30px; padding-left: 10px;"
 									required="" fld_esssential="" label="이름"></td>
 							</tr>

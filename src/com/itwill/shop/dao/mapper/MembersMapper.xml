@@ -48,8 +48,6 @@
 	
 	<update id="updateMembers" parameterType="Members">
 		update members set Members_name=#{members_name},
-		Members_email=#{members_email},
-		Members_password=#{members_password},
 		Members_phone=#{members_phone}
         where members_no=#{members_no}
 	</update>

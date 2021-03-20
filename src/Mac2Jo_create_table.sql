@@ -58,7 +58,7 @@ CREATE TABLE Cart(
 		Cart_qty NUMBER(10),
 		Members_no NUMBER(10),
 		Food_no NUMBER(10),
-  FOREIGN KEY (Members_no) REFERENCES Members (Members_no),
+  FOREIGN KEY (Members_no) REFERENCES Members (Members_no) ON DELETE CASCADE,
   FOREIGN KEY (Food_no) REFERENCES Food (Food_no)
 );
 
@@ -75,7 +75,7 @@ CREATE TABLE Orders(
 		Orders_price NUMBER(10),
         Address_name varchar2(100),
 		Members_no NUMBER(10),
-  FOREIGN KEY (Members_no) REFERENCES Members (Members_no)
+  FOREIGN KEY (Members_no) REFERENCES Members (Members_no) ON DELETE CASCADE
 );
 
 DROP SEQUENCE Orders_no_SEQ;
@@ -111,7 +111,7 @@ CREATE TABLE Card(
 		Card_name VARCHAR2(100),
 		Card_type NUMBER(10) DEFAULT 0,
 		Members_no NUMBER(10),
-  FOREIGN KEY (Members_no) REFERENCES Members (Members_no)
+  FOREIGN KEY (Members_no) REFERENCES Members (Members_no) ON DELETE CASCADE
 );
 
 DROP SEQUENCE Card_no_SEQ;
@@ -126,7 +126,7 @@ CREATE TABLE Address(
 		Address_detail VARCHAR2(100),
 		Address_type NUMBER(10) DEFAULT 0,
 		Members_no NUMBER(10),
-  FOREIGN KEY (Members_no) REFERENCES Members (Members_no)
+  FOREIGN KEY (Members_no) REFERENCES Members (Members_no) ON DELETE CASCADE
 );
 
 DROP SEQUENCE Address_no_SEQ;
@@ -140,7 +140,7 @@ CREATE TABLE Orders_detail(
 		Orders_detail_qty NUMBER(10),
 		Orders_no NUMBER(10),
 		Food_no NUMBER(10),
-  FOREIGN KEY (Orders_no) REFERENCES Orders (Orders_no),
+  FOREIGN KEY (Orders_no) REFERENCES Orders (Orders_no) ON DELETE CASCADE,
   FOREIGN KEY (Food_no) REFERENCES Food (Food_no)
 );
 
