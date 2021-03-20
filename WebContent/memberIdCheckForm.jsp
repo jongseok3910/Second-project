@@ -5,9 +5,11 @@
 <%
 	MembersService membersService = new MembersService();	
 	Members members = membersService.findMembersById(request.getParameter("email"));
-	String checkId="+";
+	String checkId="nun";
 	if(members==null){
 		checkId="";
+	}else{
+		checkId=members.getMembers_email();
 	}
 %>
 <html>
@@ -43,14 +45,17 @@
 		
 		// 이메일 아이디 중복체크
 		function emailCheck(){
-			var email = document.getElementById("memberId").value;	
-			var checkEmail = '<%=checkId%>';
-			if (!email) {
-				alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
-				return false;
-			}
-			if(checkEmail!=email){
-				alert("사용가능한 이메일 입니다.");
+				var email = document.getElementById("memberId").value;	
+				var checkEmail = '<%=checkId%>';
+				if (!email) {
+					alert("검색할 이메일을 입력하시고 중복체크를 하세요.");
+					return false;
+				}
+				if(checkEmail!=email){
+					alert("사용가능한 이메일 입니다.");
+				}else{
+					alert("존재하는 아이디 입니다.");
+					document.getElementById("memberId").value="";
 				}
 			}
 		
@@ -82,7 +87,7 @@
 				<input type="text" name="memberId" id="memberId" value="<%=request.getParameter("email")%>"> <input
 					type="button" value="중복확인" onclick="emailCheck()">
 			</form>
-			<div id="msg">msg</div>
+			<div id="msg"></div>
 			
 			<br> <input id="cancelBtn" type="button" value="취소" onclick="window.close()">
 				<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
