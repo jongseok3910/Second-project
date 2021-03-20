@@ -111,4 +111,13 @@ public class FoodDaoImpl implements FoodDao {
 	}
 
 
+	@Override
+	public List<Food> foodListByNameOrder(Integer categoryNo) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		FoodMapper foodMapper = sqlSession.getMapper(FoodMapper.class);
+		List<Food> foodListByName = foodMapper.foodListByNameOrder(categoryNo);
+		return foodListByName;
+	}
+
+
 }

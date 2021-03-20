@@ -26,5 +26,7 @@ public interface FoodMapper {
 	
 	public List<Food> foodListByPriceOrderDesc(Integer categoryNo);
 	
+	public List<Food> foodListByNameOrder(Integer categoryNo);
+	
 	
 }

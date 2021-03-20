@@ -5,17 +5,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+
+String priceOrder = request.getParameter("price_order");
+String categoryNoStr = request.getParameter("category_no");
+int categoryNo = Integer.parseInt(categoryNoStr);
+List<Food> foodList = null;
+
 FoodService foodService = new FoodService();
-int categoryno = Integer.parseInt(request.getParameter("category_no"));
-List<Food> foodList = foodService.findCategoryNo(categoryno);
-List<Food> foodList1 = foodService.foodListByPriceOrderAsc(categoryno);
-List<Food> foodList2 = foodService.foodListByPriceOrderDesc(categoryno);
+
+if(priceOrder==null || priceOrder.equals("name")){
+	foodList = foodService.foodListByNameOrder(categoryNo);
+}else if(priceOrder.equals("desc")){
+	foodList = foodService.foodListByPriceOrderDesc(categoryNo);
+}else if(priceOrder.equals("asc")){
+	foodList = foodService.foodListByPriceOrderAsc(categoryNo);
+}
+
 %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <%@ include file="../include/head.jsp"%>
 <body style="">
+
+	<script type="text/javascript">
+		function priceOrderDesc() {
+			
+			price_order_desc.action = 'productListView.jsp';
+			price_order_desc.method = 'POST';
+			price_order_desc.submit();
+		}
+		function priceOrderAsc() {
+			
+			price_order_asc.action = 'productListView.jsp';
+			price_order_asc.method = 'POST';
+			price_order_asc.submit();
+		}
+		function priceOrderName() {
+			
+			price_order_name.action = 'productListView.jsp';
+			price_order_name.method = 'POST';
+			price_order_name.submit();
+		}
+		
+	</script>
+	
+	
+	<form name="price_order_desc">
+		<input type="hidden" name="price_order" value="desc">
+		<input type="hidden" name="category_no" value="<%= categoryNo%>">
+	</form>
+	<form name="price_order_asc">
+		<input type="hidden" name="price_order" value="asc">
+		<input type="hidden" name="category_no" value="<%= categoryNo%>">
+	</form>
+	<form name="price_order_name">
+		<input type="hidden" name="price_order" value="name">
+		<input type="hidden" name="category_no" value="<%= categoryNo%>">
+	</form>
+	
+
+
 	<%@ include file="../include/top.jsp"%>
 	<div id="main">
 		<div id="content">
@@ -45,7 +95,7 @@ List<Food> foodList2 = foodService.foodListByPriceOrderDesc(categoryno);
 				
 			</script>
 
-			<div class="listTopImg">
+	<div class="listTopImg">
 				<img src="./res/c2627f04d18ceede.jpg">
 			</div>
 
@@ -170,8 +220,10 @@ body .pprice, body .pprice:hover {
 								총 <b><%=foodList.size() %>개의 상품이 있습니다. 
 							</p>
 							<div>
-
-								<a href="">낮은가격순</a> <a href="">높은가격순</a> <a href="">상품명순</a>
+								<a href="javascript:priceOrderAsc();">낮은 가격순</a> 
+								<a href="javascript:priceOrderDesc();">높은 가격순</a> 
+								<a href="javascript:priceOrderName();">상품명순</a>
+								
 							</div>
 						</div>
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
