@@ -1,7 +1,18 @@
+<%@page import="com.itwill.shop.domain.Address"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.shop.domain.Card"%>
+<%@page import="com.itwill.shop.service.AddressService"%>
+<%@page import="com.itwill.shop.service.CardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="login_check.jspf"%>
 <%@ include file="../include/head.jsp"%>
+<%
+	CardService cardService = new CardService();
+	AddressService addressService = new AddressService();
+	List<Card> cardList = cardService.findCardByMembersNo(sMemberNo);
+	List<Address> addressList = addressService.findAddressByNo(sMemberNo);
+%>
 <script type="text/javascript">	
 	function memberModifyForm() {
 		document.modify.action="memberModifyForm.jsp";
@@ -254,17 +265,12 @@
 					style="cursor: pointer;"> <b>마이페이지</b>
 					</span>
 			</div>
-
-			<hr>
-			
-			
+		
 			<!-- 최근 주문 정보 -->
 			<div class="mplist">
 				<div class="ordtitle">
 					<span class="ordment"><span class="b_cate">최근 주문 정보</span></span> 
-						<span class="ordlink">
-							<button type="button" onclick="location.href=&quot;/shop/mypage/mypage_orderlist.php?&amp;&quot;"
-									class="w93" style="cursor: pointer;">전체 주문 보기</button></span>
+						<span class="ordlink"></span>
 				</div>
 				<div class="ordlistdiv" style="margin-bottom: 30px;">
 					<form name="frmOrderList" method="post">
@@ -328,13 +334,64 @@
 			</div>
 			<!-- 최근 주문 정보 -->
 
-			<!-- 1:1 문의내역 -->
+			<!-- 등록된 카드 -->
 			<div class="mplist">
 				<div class="ordtitle">
-					<span class="ordment"><span class="b_cate">1:1 문의내역</span></span> <span
-						class="ordlink"><button type="button"
-							onclick="location.href=&quot;https://www.zipbanchan.co.kr:14027/shop/mypage/mypage_qna.php?&amp;&quot;"
-							class="w93" style="cursor: pointer;">1:1 문의게시판</button></span>
+					<span class="ordment"><span class="b_cate">등록된 카드</span></span> <span
+						class="ordlink"></span>
+				</div>
+				<div class="ordlistdiv" style="margin-bottom: 30px;">
+					<input type="hidden" name="cntqna" id="cntqna" value="0">
+					<table class="ordlatelytbl" cellpadding="0" cellspacing="0"
+						summary="최근 3건의 1:1문의">
+						<caption>최근 3건의 1:1문의</caption>
+						<colgroup>
+							<col width="10%">
+							<col width="15%">
+							<col width="*">
+							<col width="12%">
+							<col width="12%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th colspan="3">카드이름</th>
+								<th colspan="2">번호</th>
+							</tr>
+							<%if(cardList==null){ %>
+							<tr>
+								<td colspan="5" class="nodata">등록된 카드가 없습니다.</td>
+							</tr>
+							<%}else{ %>
+								<%for(Card card : cardList){
+									if(card.getCard_number().length()>=15){
+										StringBuffer stringBuffer = new StringBuffer();
+										stringBuffer.append(card.getCard_number());
+										stringBuffer.insert(4,"-");
+										stringBuffer.insert(9,"-");
+										stringBuffer.insert(14,"-");
+								%>
+							<tr>
+								<td colspan="3"><%=card.getCard_name()%></td>
+								<td colspan="2"><%=stringBuffer%></td>
+							</tr>
+								<%}else{%>
+							<tr>
+								<td colspan="3"><%=card.getCard_name()%></td>
+								<td colspan="2"><%=card.getCard_number()%></td>
+							</tr>
+							<%}
+								}
+								  } %>
+						</tbody>
+					</table>
+				</div>
+				<!-- 등록된 카드끝 -->
+				
+				<!-- 등록된 주소 -->
+			<div class="mplist">
+				<div class="ordtitle">
+					<span class="ordment"><span class="b_cate">등록된 카드</span></span> <span
+						class="ordlink"></span>
 				</div>
 				<div class="ordlistdiv" style="margin-bottom: 30px;">
 					<input type="hidden" name="cntqna" id="cntqna" value="0">
@@ -352,16 +409,23 @@
 							<tr>
 								<th>번호</th>
 								<th>질문유형</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
 							</tr>
+							<%if(addressList==null){ %>
 							<tr>
-								<td colspan="5" class="nodata">1:1 문의 내역이 없습니다.</td>
+								<td colspan="5" class="nodata">등록된 주소가 없습니다.</td>
 							</tr>
+							<%}else{%>
+							<%for(Address address:addressList){ %>
+								<tr>
+									<td></td>
+								</tr>
+							<%}
+								}%>
 						</tbody>
 					</table>
 				</div>
+				<!-- 등록된 주소끝 -->
+				
 					<!-- 회원 정보 수정 및 탈퇴 버튼 -->
 				<div>
 					<input type="button" onclick="memberDeleteAction()"

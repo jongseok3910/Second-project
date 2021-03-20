@@ -26,21 +26,8 @@
 	MembersService membersService = new MembersService();
 
 	List<Orders> orderList = ordersService.findOrderListById((int)session.getAttribute("members_no"));
-	int max = 0;
-	for(Orders orders:orderList){
-	    if(max < orders.getOrders_no()){
-	        max = orders.getOrders_no();
-	    }
-	}
-
-	HashMap<String,Object> orderMap=new HashMap<String,Object>();
-	orderMap.put("members_no", sMemberNo);
-	orderMap.put("orders_no", max);
-
-	Orders orders = ordersService.findOrderByOne(orderMap);
-	Members members= membersService.findMembersByNo(sMemberNo);
-	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-	String order_time = format1.format (orders.getOrders_date()); 
+	System.out.println((int)session.getAttribute("members_no"));
+	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 	%>
 
 
@@ -279,7 +266,7 @@
 					style="cursor: pointer;"> <b>주문기록</b>
 					</span>
 			</div>
-<%for(Orders order:orderList){ %>
+<%for(Orders orders:orderList){ %>
 			<!-- 여기서 부터 내가 복붙해옴 -->
 			<div style="height: 30px"></div>
 				<div
@@ -297,7 +284,7 @@
 									<em class="star">*</em>
 								</th>
 								<!--(날짜를 불러온다)-->
-								<td width=145 height=26 align=center class=t1><%=orders.getOrders_date() %></td>
+								<td width=145 height=26 align=center class=t1><%=format1.format(orders.getOrders_date())%></td>
 
 							</tr>
 							<tr>
