@@ -2,7 +2,49 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
+<%@page import="java.util.List"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.shop.domain.Orders"%>
+<%@page import="com.itwill.shop.service.MembersService"%>
+<%@page import="com.itwill.shop.service.OrdersService"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+<%@page import="com.itwill.shop.domain.Address" %>
+<%@page import="com.itwill.shop.service.AddressService" %>
+<%@ include file="login_check.jspf" %>
 <script type="text/javascript">
+<%
+
+OrdersService ordersService = new OrdersService();
+MembersService membersService = new MembersService();
+
+List<Orders> orderList = ordersService.findOrderListById(sMemberNo);
+int max = 0;
+for(Orders orders:orderList){
+	if(max < orders.getOrders_no()){
+		max = orders.getOrders_no();
+	}
+}
+
+HashMap<String,Object> orderMap=new HashMap<String,Object>();
+orderMap.put("members_no", sMemberNo);
+orderMap.put("orders_no", max);
+
+Orders orders = ordersService.findOrderByOne(orderMap);
+Members members= membersService.findMembersByNo(sMemberNo);
+SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+String order_time = format1.format (orders.getOrders_date()); 
+%>
+
+
+<%
+	AddressService addressService = new AddressService();	
+	List<Address> addressList=addressService.findAddressByNo((int)session.getAttribute("members_no"));
+%>
 	function location() {
 		location.href="memberMypage.do";
 	}
@@ -232,65 +274,74 @@
 </style>
 <body style="">
 	<%@ include file="../include/MyPagetop.jsp"%>
-			&nbsp;
-			&nbsp;
+		<div id="content">
+		<!-- 상단이미지 || 현재위치 -->
+		<div class="atit">
+			<p>주문 상세정보</p>
+			<span class="path"><img src="./res/ico_home.gif" alt="HOME"
+				style="cursor: pointer;"> <b>주문 상세정보</b></span>
+		</div>
+<%for(Address address:addressList){ %>
+		<div style="border-bottom: 1px solid #ccc; padding-bottom: 65px; margin-bottom: 40px;">
+					<p class="h4">
+						주문정보확인 
+					</p>
+					
+					<div style="height: 30px"></div>
+					<table width="20%" cellpadding="0" cellspacing="0" border="0"
+						class="intable">
+						<tbody>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문날자
+									<em class="star"> * </em>
+								</th>
+								<!--(주소명을 불러온다)-->
+								<td width=145 height=26 align=center class=t1> <%= order_time%> </td>
 
+							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문번호
+									<em class="star">*</em>
+								</th>
+								<!--(주소명을 불러온다)-->
+								<td width=145 height=26 align=center class=t1> <%=orders.getOrders_no() %> </td>
 
-<div class="mplist">
-			&nbsp;
-			
-				<div class="ordlistdiv" style="margin-bottom: 30px;">
-					<form name="frmOrderList" method="post">
-						<input type="hidden" name="mode"> <input type="hidden"
-							name="ordno">
-						<table class="ordlatelytbl" cellpadding="0" cellspacing="0"
-							summary="주문 상세 내역">
-							
-							<tbody>
-								<tr>
-									<th scope="col">주문일시</th>
-									<th scope="col">주문번호</th>
-									<th scope="col">결제방법</th>
-									<th scope="col">주문금액</th>
-									<th scope="col">취소금액</th>
-								</tr>
-								<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td scope="row">2019-08-07 17:23:49</td>
-									<td><a
-										href="ordno=1565165608840"
-										style="color: #777;">1565165608840</a></td>
-									<td>가상계좌</td>
-									<td class="right">31,700</td>
-									<td class="right">0</td>
-									
-								</tr>
-									<tbody>
-									<tr>
-										<th scope="col">주문자 정보</th>
-										<th scope="col">주소</th>
-										<th scope="col">연락처</th>
-										<th scope="col">요청사항</th>
-										
-									</tr>
-									
-									<tr onmouseover="this.style.background=&quot;#F7F7F7&quot;"
-									onmouseout="this.style.background=&quot;#fff&quot;"
-									style="background: rgb(255, 255, 255);">
-									<td>아무개</td>
-									<td>서울특별시 강남구 테헤란로 124 4층</td>
-									<td class="right">01012345678 </td>
-									<td class="right">(없음)</td>
-									
-									</tbody>
-								
-								
-							</tbody>
-						</table>
-					</form>
-				</div>
+							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문내역
+									<em class="star">*</em>
+								</th>
+								<!--(주소명을 불러온다)-->
+								<td width=145 height=26 align=center class=t1>  </td>
+
+							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">금액
+									<em class="star">*</em>
+								</th>
+								<!--(주소명을 불러온다)-->
+								<td width=145 height=26 align=center class=t1> <%=new DecimalFormat("#,###").format(orders.getOrders_price()) %>원 </td>
+
+							</tr>
+							<tr>
+								<th
+									style="padding-left: 20px; color: #717071; font-weight: bold;">상세주소 
+									<em class="star">*</em>
+								</th>
+								<!--(상세주소를 불러온다)-->
+
+								<td width=145 height=26 align=center class=t1><%=address.getAddress_detail()%></td>
+
+							</tr>
+						</tbody>
+			</table>
 			</div>
+			<%} %>
+		</div>
 	<%@ include file="../include/bottom.jsp"%>
 </body>
 </html>
