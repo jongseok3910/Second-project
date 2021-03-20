@@ -1,35 +1,25 @@
+<%@page import="com.itwill.shop.domain.Food"%>
+<%@page import="com.itwill.shop.service.FoodService"%>
+<%@page import="com.itwill.shop.domain.OrdersDetail"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
-<%@page import="java.util.List"%>
-<%@page import="java.text.DecimalFormat"%>
-<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="java.util.Collections"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.shop.domain.Orders"%>
-<%@page import="com.itwill.shop.service.MembersService"%>
 <%@page import="com.itwill.shop.service.OrdersService"%>
-<%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
-<%@page import="com.itwill.shop.domain.Address" %>
-<%@page import="com.itwill.shop.service.AddressService" %>
 <%@ include file="login_check.jspf" %>
 <script type="text/javascript">
 <%
 
 OrdersService ordersService = new OrdersService();
-MembersService membersService = new MembersService();
 
-List<Orders> orderList = ordersService.findOrderListById(sMemberNo);
+HashMap<String,Object> order_map= new HashMap<>();
+order_map.put("members_no", sMemberNo);
+order_map.put("orders_no", request.getParameter("orders_no"));
+Orders orders = ordersService.findOrderByOne(order_map);
 SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-%>
-
-
-<%
-	AddressService addressService = new AddressService();	
-	List<Address> addressList=addressService.findAddressByNo((int)session.getAttribute("members_no"));
 %>
 	function location() {
 		location.href="memberMypage.do";
@@ -267,66 +257,64 @@ SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 			<span class="path"><img src="./res/ico_home.gif" alt="HOME"
 				style="cursor: pointer;"> <b>주문 상세정보</b></span>
 		</div>
-<%for(Address address:addressList){ %>
 		<div style="border-bottom: 1px solid #ccc; padding-bottom: 65px; margin-bottom: 40px;">
 					<p class="h4">
 						주문정보확인 
 					</p>
 					
 					<div style="height: 30px"></div>
-					<table width="20%" cellpadding="0" cellspacing="0" border="0"
+					<table width="50%" cellpadding="0" cellspacing="0" border="0"
 						class="intable">
 						<tbody>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">주문날자
-									<em class="star"> * </em>
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문번호
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1>  </td>
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_no() %></td>
 
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">주문번호
-									<em class="star">*</em>
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문날자				
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1>  </td>
+								<td width=145 height=26 align=center class=t1><%=format1.format(orders.getOrders_date()) %></td>
 
 							</tr>
 							<tr>
 								<th
 									style="padding-left: 20px; color: #717071; font-weight: bold;">주문내역
-									<em class="star">*</em>
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1>  </td>
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_desc() %></td>
 
 							</tr>
 							<tr>
 								<th
 									style="padding-left: 20px; color: #717071; font-weight: bold;">금액
-									<em class="star">*</em>
 								</th>
 								<!--(주소명을 불러온다)-->
-								<td width=145 height=26 align=center class=t1> 원 </td>
+								<td width=145 height=26 align=center class=t1><%=orders.getOrders_price()%>원 </td>
 
 							</tr>
 							<tr>
 								<th
-									style="padding-left: 20px; color: #717071; font-weight: bold;">상세주소 
-									<em class="star">*</em>
+									style="padding-left: 20px; color: #717071; font-weight: bold;">주문상품
 								</th>
-								<!--(상세주소를 불러온다)-->
-
-								<td width=145 height=26 align=center class=t1></td>
-
 							</tr>
+							<%for(OrdersDetail ordersDetail : orders.getOrdersdetailList()){ %>
+							<% FoodService foodService = new FoodService();
+							   Food food = foodService.findFoodByNo(ordersDetail.getFood_no());
+							%>
+							<tr>
+								<th style="padding-left: 20px; color: #717071; font-weight: bold;">상품명 : <%=food.getFoodName() %></th>
+								<th style="padding-left: 20px; color: #717071; font-weight: bold;">수량 : <%=ordersDetail.getOrders_detail_qty() %></th>
+							</tr>
+							<%} %>
 						</tbody>
 			</table>
 			</div>
-			<%} %>
 		</div>
 	<%@ include file="../include/bottom.jsp"%>
 </body>

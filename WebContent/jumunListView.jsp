@@ -15,19 +15,17 @@
 	pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
 <%@ include file="../include/head.jsp"%>
-<script type="text/javascript">
-	function location() {
-		location.href="memberMypage.do";
-	}
-	
-	<%
-
+<%
 	OrdersService ordersService = new OrdersService();
 
 	List<Orders> orderList = ordersService.findOrderListById((int)session.getAttribute("members_no"));
 	SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-	%>
-
+%>
+<script type="text/javascript">
+	function orderDeatilList(orders_no) {
+		document.getElementById("orders_no").value=orders_no;
+		document.ordList.submit();
+	}
 
 </script>
 	<style rel="stylesheet" type="text/css">
@@ -255,6 +253,9 @@
 </style>
 <body style="">
 	<%@ include file="../include/MyPagetop.jsp"%>
+	<form name="ordList" action="OrderDetailsList.jsp" method="POST">
+		<input type="hidden" id="orders_no" name="orders_no" value="">
+	</form>
 	<div id="content">
 		<div class="mypagediv">
 			<!-- 상단이미지 || 현재위치 -->
@@ -313,7 +314,7 @@
 								<!--(상세보기버튼 추가)-->
 
 								<td width=145 height=26 align=center class=t1>		<button type="button"
-							onclick="location.href='OrderDetailsList.jsp'"
+							onclick="orderDeatilList(<%=orders.getOrders_no()%>)"
 							class="w93" style="cursor: pointer;">상세보기</button></span></td>
 						
 
