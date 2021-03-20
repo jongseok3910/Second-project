@@ -47,6 +47,10 @@
 	    select * from food where category_no=#{categoryNo} order by food_Price asc
 	</select>
 	
+	<select id="foodListByNameOrder" parameterType="int" resultMap="foodResultMap">
+	    select * from food where category_no=#{categoryNo} order by food_name asc
+	</select>
+	
 	<!-- insert -->
 	<insert id="insertFood" parameterType="com.itwill.shop.domain.Food">
 		INSERT INTO FOOD (food_no, food_name, food_price, food_image, food_desc, food_star,food_kcal,category_no)

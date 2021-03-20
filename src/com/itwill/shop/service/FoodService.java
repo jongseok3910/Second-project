@@ -53,6 +53,10 @@ public class FoodService {
 	public List<Food> foodListByPriceOrderAsc(Integer categoryNo) throws Exception {
 		return foodDao.foodListByPriceOrderAsc(categoryNo);
 	}
+	
+	public List<Food> foodListByNameOrder(Integer categoryNo) throws Exception {
+		return foodDao.foodListByNameOrder(categoryNo);
+	}
 
 }
 
