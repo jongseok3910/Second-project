@@ -11,8 +11,19 @@
 <%
 	AddressService addressService = new AddressService();	
 	List<Address> addressList=addressService.findAddressByNo((int)session.getAttribute("members_no"));
-		
+	String msg="";
+	if(request.getAttribute("msg")!=null){
+		msg=(String)request.getAttribute("msg");
+	}
 %>
+<script type="text/javascript">
+	window.onload = function() {
+		var msg ='<%=msg%>';
+		if(msg!=""){
+			alert(msg);
+		}
+	}
+</script>
 <style type="text/css">
 div.passwordStrenth {
 	background-color: #FFFFFF;

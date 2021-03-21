@@ -29,7 +29,12 @@ AddressService addressService = new AddressService();
 List<Cart> cartList = cartService.findCartByMembersNo(sMemberNo);
 Members members = membersService.findMembersByNo(sMemberNo);
 List<Address> addressList = addressService.findAddressByNo(sMemberNo);
-
+System.out.println(addressList);
+if(addressList.isEmpty()){
+	request.setAttribute("msg", "주소를 먼저 등록 후 주문해주세요!");
+	RequestDispatcher rd = request.getRequestDispatcher("memberAddressForm.jsp");
+	rd.forward(request, response);
+}
 
 %>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
