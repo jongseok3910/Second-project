@@ -51,7 +51,7 @@
 	</div>
 	<div id="header_main_2">
 		<div class="inner">
-		<%if(!(Integer.parseInt(format_time) >= 6 && Integer.parseInt(format_time) <= 10)){ %>
+		<%if(!(Integer.parseInt(format_time) >= 6 && Integer.parseInt(format_time) <= 9)){ %>
 			<ul>
 				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
 				
