@@ -61,7 +61,7 @@
 				
 			</div>
 			<form method="post" action="memberIdPwFindAction.jsp" id="form" name="findIdM">
-				<input type="hidden" name="findHandleId" value="findId">
+				<input type="hidden" name="findHandle" value="findId">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
 						<input type="text" id="memberId" name="memberId" onfocus="this.value='';" value="" placeholder="핸드폰번호를 입력하세요." class="txtborder">	
@@ -85,7 +85,7 @@
 			<p>비밀번호 찾기</p>
 			</div>
 			<form method="post" action="memberIdPwFindAction.jsp" id="form" name="findPassM">
-				<input type="hidden" name="findHandlePassword" value="findpass">
+				<input type="hidden" name="findHandle" value="findpass">
 				<div class="idsave">
 					<p style="margin-bottom: 7px;">
 						<input type="text" name="memberPassWord" onfocus="this.value='';" value="" placeholder="이메일을 입력하세요." class="txtborder">		

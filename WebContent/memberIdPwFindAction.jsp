@@ -9,11 +9,11 @@
     MembersService membersService = new MembersService();
     Members members=null;
     
-    if(request.getParameter("findHandleId")!=null){
+    if(request.getParameter("findHandle").equals("findId")){
     	members = membersService.findMembersByPhone(request.getParameter("memberId"));
     }	
     
-   	if(request.getParameter("findHandlePassword")!=null){
+   	if(request.getParameter("findHandle").equals("findpass")){
     	members = membersService.findMembersById(request.getParameter("memberPassWord"));
    	}
     
@@ -23,12 +23,11 @@
     	rd.forward(request, response);
     }
     
-    if(request.getParameter("findHandleId")!=null&&members!=null){
+    if(request.getParameter("findHandle").equals("findId")&&members!=null){
     	request.setAttribute("findId", members.getMembers_email());
     	RequestDispatcher rd = request.getRequestDispatcher("memberIdPwFind.jsp");
     	rd.forward(request, response); 
-    }
-    if(request.getParameter("findHandlePassword")!=null&&members!=null){
+    }else if(request.getParameter("findHandle").equals("findpass")&&members!=null){
     	System.out.println("1");
     	request.setAttribute("findPassword", members.getMembers_password());
     	RequestDispatcher rd = request.getRequestDispatcher("memberIdPwFind.jsp");

@@ -29,9 +29,16 @@
 		document.jumun_form.action='jumunForm.jsp';
 		document.jumun_form.submit();
 	}
+	function deleteCartItem(cartNo) {
+		document.deleteItemform.cart_no.value=cartNo;
+		document.deleteItemform.submit();
+	}
 </script>
 <body style="">
 	
+	<form name="deleteItemform" action="cart_delete_item_action.jsp" method="post">
+	<input type="hidden" name="cart_no" value="">
+	</form>
 	<form name="delete_cart_form"></form>
 	<form name="jumun_form"></form>
 
@@ -515,10 +522,7 @@ table.orderitem-list tfoot tr td table td {
 								</td>
 								
 								<td align="center">
-									<form action="cart_delete_item_action.jsp" method="post">
-									<input type="hidden" name="cart_no"
-										value="<%=cart.getCartNo()%>"> <input type="submit"
-										value="삭제">
+								 <input type="button" onclick="deleteCartItem('<%=cart.getCartNo() %>');" value="삭제">
 								</form>
 								</td>
 
