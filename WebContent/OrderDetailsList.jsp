@@ -310,6 +310,7 @@ SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 							<tr>
 								<th style="padding-left: 20px; color: #717071; font-weight: bold;">상품명 : <%=food.getFoodName() %></th>
 								<th style="padding-left: 20px; color: #717071; font-weight: bold;">수량 : <%=ordersDetail.getOrders_detail_qty() %></th>
+								<th style="padding-left: 20px; color: #717071; font-weight: bold;">금액 : <%=food.getFoodPrice() %></th>
 							</tr>
 							<%} %>
 						</tbody>
