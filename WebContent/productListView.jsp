@@ -20,6 +20,9 @@ if(priceOrder==null || priceOrder.equals("name")){
 }else if(priceOrder.equals("asc")){
 	foodList = foodService.foodListByPriceOrderAsc(categoryNo);
 }
+if(foodList.isEmpty()){
+	response.sendRedirect("mac_main.jsp");
+}
 
 %>
 

@@ -5,6 +5,7 @@
 <%@ include file="../include/head.jsp"%>
 <% 
 
+
 FoodService foodService = new FoodService();
 String food_noStr = request.getParameter("Food_no");
 if(food_noStr==null){

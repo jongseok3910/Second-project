@@ -53,7 +53,7 @@
 		<div class="inner">
 		<%if(!(Integer.parseInt(format_time) >= 6 && Integer.parseInt(format_time) <= 9)){ %>
 			<ul>
-				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
+				<li class="sm11"><a href="productListView.jsp?category_no=20">추천메뉴</a></li>
 				
 				<li class="sm12"><a href="productListView.jsp?category_no=30">버거/세트</a></li>
 				
@@ -63,13 +63,13 @@
 			</ul>
 		<%}else{ %>
 			<ul>
-				<li class="sm11"><a href="productListView.jsp">추천메뉴</a></li>
+				<li class="sm11"><a href="productListView.jsp?category_no=11">아침 추천메뉴</a></li>
 				
-				<li class="sm12"><a href="productListView.jsp">아침 버거/세트</a></li>
+				<li class="sm12"><a href="productListView.jsp?category_no=80">아침 버거/세트</a></li>
 				
-				<li class="sm13"><a href="productListView.jsp">아침 스낵/사이드</a></li>
+				<li class="sm13"><a href="productListView.jsp?category_no=90">아침 스낵/사이드</a></li>
 				
-				<li class="sm14"><a href="productListView.jsp">음료</a></li>
+				<li class="sm14"><a href="productListView.jsp?category_no=50">음료</a></li>
 			</ul>
 		<%} %>
 		</div>

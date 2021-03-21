@@ -299,7 +299,7 @@
 									<th colspan="1">주문일시</th>
 									<th colspan="1">주문금액</th>
 								</tr>
-								<%if(cardList.isEmpty()){ %>
+								<%if(orderList.isEmpty()){ %>
 								<tr>
 									<td colspan="6" class="nodata">최근 주문한 내역이 없습니다.</td>
 								</tr>
