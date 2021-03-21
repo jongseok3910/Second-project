@@ -53,6 +53,7 @@
 				}
 				if(checkEmail!=email){
 					alert("사용가능한 이메일 입니다.");
+					document.getElementById("useBtn").disabled=false;
 				}else{
 					alert("존재하는 아이디 입니다.");
 					document.getElementById("memberId").value="";
@@ -67,6 +68,7 @@
 			//opener.document.form.idDuplication.value ="idCheck";
 			// 회원가입 화면의 ID입력란에 값을 전달
 			opener.document.f.email.value = document.getElementById("memberId").value;
+			opener.document.f.idCheck.value = document.getElementById("idCheck").value;
 			if (opener != null) {
             	opener.chkForm = null;
             	self.close();
@@ -84,13 +86,14 @@
 		<br>
 		<div id="chk">
 			<form id="checkForm">
-				<input type="text" name="memberId" id="memberId" value="<%=request.getParameter("email")%>"> <input
-					type="button" value="중복확인" onclick="emailCheck()">
+				<input type="text" name="memberId" id="memberId" value="<%=request.getParameter("email")%>"> 
+				<input type="hidden" name="idCheck" id="idCheck" value="<%=request.getParameter("email")%>">
+				<input type="button" value="중복확인" onclick="emailCheck()">
 			</form>
 			<div id="msg"></div>
 			
-			<br> <input id="cancelBtn" type="button" value="취소" onclick="window.close()">
-				<input id="useBtn" type="button" value="사용하기" onclick="sendCheckValue()">
+			<br><input id="useBtn"  disabled='disabled' type="button" value="사용하기" onclick="sendCheckValue()">
+			 <input id="cancelBtn" type="button" value="취소" onclick="window.close()">
 		</div>
 	</div>
 </body>

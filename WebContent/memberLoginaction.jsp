@@ -1,4 +1,5 @@
 
+<%@page import="java.util.HashMap"%>
 <%@page import="com.itwill.shop.domain.exception.PaswordMismatchException"%>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="com.itwill.shop.domain.exception.MembersNotFoundException"%>
@@ -19,16 +20,18 @@
 	try{	
 		email = request.getParameter("members_email");
 		password = request.getParameter("members_password");
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("members_email", email);
+		map.put("members_password", password);
+		
 		Members member = new Members();
 		
 		MembersService memberService = new MembersService();
-		member=memberService.findMembersById(email);
+		member=memberService.findMembersLogin(map);
 		if(member!=null){
-	 		if(memberService.findMembersByPassWord(password)!=null){
 	 			session.setAttribute("members_email", member.getMembers_email());
 	 			session.setAttribute("members_no", member.getMembers_no());
-	 			response.sendRedirect("mac_main.jsp");
-	 		}	
+	 			response.sendRedirect("mac_main.jsp");	
 		}else{
 				response.sendRedirect("memberLoginForm.jsp");
 		}

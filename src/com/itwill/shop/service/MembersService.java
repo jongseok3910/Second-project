@@ -1,5 +1,6 @@
 package com.itwill.shop.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.itwill.shop.dao.MembersDao;
@@ -39,6 +40,10 @@ public class MembersService {
 	
 	public Members findMembersByPhone(String members_phone) throws Exception{
 		return memberDao.findMembersByPhone(members_phone);
+	}
+	
+	public Members findMembersLogin(HashMap<String, Object> map) throws Exception{
+		return memberDao.findMembersLogin(map);
 	}
 	
 	public int createMembers(Members members) throws Exception{

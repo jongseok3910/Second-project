@@ -49,6 +49,10 @@ if(addressList.isEmpty()){
 		<script type="text/javascript">
 		function jumunComplete() {
 			//window.location.href = 'jumunComplete.jsp';
+			if(frmOrder.receiver_address.value==""){
+				alert("배송지를 선택해주세요.");
+				return;
+			}
 			frmOrder.action = 'jumun_create_action.jsp';
 			frmOrder.method = 'POST';
 			frmOrder.submit();

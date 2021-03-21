@@ -2,6 +2,7 @@ package com.itwill.shop.dao;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -79,6 +80,16 @@ public class MembersDaoImpl implements MembersDao {
 		SqlSession sqlSession=sqlSessionFactory.openSession();
 		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
 		Members members = membersMapper.findMembersByPhone(members_phone);
+		sqlSession.commit();
+		sqlSession.close();
+		return members;
+	}
+	
+	@Override
+	public Members findMembersLogin(HashMap<String, Object> map) throws Exception {
+		SqlSession sqlSession=sqlSessionFactory.openSession();
+		MembersMapper membersMapper=sqlSession.getMapper(MembersMapper.class);
+		Members members = membersMapper.findMembersLogin(map);
 		sqlSession.commit();
 		sqlSession.close();
 		return members;

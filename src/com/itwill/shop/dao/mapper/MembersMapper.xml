@@ -37,6 +37,10 @@
 		select * from members where members_password = #{members_password}
 	</select>
 	
+	<select id="findMembersLogin" parameterType="Map" resultType="Members">
+		select * from members where members_email = #{members_email} and members_password = #{members_password}
+	</select>
+	
 	<select id="findMembersByPhone" parameterType="String" resultType="Members">
 		select * from members where members_phone = #{members_phone}
 	</select>

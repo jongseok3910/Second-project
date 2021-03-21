@@ -20,6 +20,7 @@
 	*/
 	
 	function membersCreate(){
+
 		if (document.f.name.value=="") {
 			alert("사용자 이름을 입력하세요");
 			f.name.focus();
@@ -40,12 +41,22 @@
 			f.password2.focus();
 			return false;			
 		}
-		if (f.password.value != f.password2.value) {
+		if (f.password.value != f.password2.value) {http://localhost/2nd-project-team2-Mac2ja/memberLoginOut.jsp
 			alert("비밀번호와 비밀번호확인은 일치하여야 합니다");
 			f.password.focus();
 			f.password.select();
 			return false;			
 		}
+		if (document.f.phone.value=="") {
+			alert("휴대폰 번호를 입력하세요");
+			f.phone.focus();
+			return false;			
+		}		
+		if(document.f.idCheck.value==""){
+			alert("이메일 중복체크를 해주세요!");
+			return;
+		}
+		
 		document.f.action = "memberWriteAction.jsp";		
 		document.f.method = 'POST';
 		document.f.submit();
@@ -65,7 +76,7 @@
 			document.f.email.focus();
 			return false;
 		}
-		var param="?email="+document.f.email.value;
+		var param="?email="+document.f.email.value+"&idCheck="+document.f.idCheck.value;
 		window.name = "parentForm";
 		window.open("memberIdCheckForm.jsp"+param,"chkForm", "width=500, height=300, resizable = no,scrollbars = no");	
 
@@ -333,8 +344,9 @@ input[type=text] {
 
 			<form id="f" name="f"  method="post"
 				action="memberWriteAction.jsp" onsubmit="return chkForm2(this)">
-				<input type="hidden" name="mode" value="createMembers"> <input
-					type="hidden" name="rncheck" value=""> <input type="hidden"
+				<input type="hidden" name="mode" value="createMembers"> 
+				<input type="hidden" id="idCheck" name="idCheck" value=""> 
+				<input type="hidden" name="rncheck" value=""> <input type="hidden"
 					name="dupeinfo" value=""> <input type="hidden" name="pakey"
 					value=""> <input type="hidden" name="foreigner" value="">
 				<input type="hidden" name="passwordSkin" value="Y">
@@ -490,7 +502,7 @@ input[type=text] {
 
 				<div id="avoidDbl"
 					style="padding: 70px 0 100px 0; margin-top: 20px; text-align: center;">
-					<input type="submit"
+					<input type="button" onclick="membersCreate();"
 						style="width: 230px; background: #344336; color: #fff; display: inline-block; line-height: 65px; text-align: center; font-size: 20px; margin-right: 10px; cursor: pointer;"
 						value="회원가입"> 
 						<input type="button" 
