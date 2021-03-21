@@ -95,8 +95,8 @@ if(priceOrder==null || priceOrder.equals("name")){
 				
 			</script>
 
-	<div class="listTopImg">
-				<img src="./res/c2627f04d18ceede.jpg">
+			<div class="listTopImg">
+				<img src="./res/mac_bg.jpg">
 			</div>
 
 

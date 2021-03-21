@@ -240,9 +240,8 @@ body #content {
 								<img src="./res/btn_cart.gif">
 							</a>
 
-						
 							<a href="" id="wishBtn" onclick="wishbtn()">
-								<img src="./res/btn_wish_m_un.gif">
+								<!--<img src="./res/Likeit.jpg">-->
 							</a>
 							
 						</div>
