@@ -299,9 +299,9 @@
 									<th colspan="1">주문일시</th>
 									<th colspan="1">주문금액</th>
 								</tr>
-								<%if(cardList==null){ %>
+								<%if(cardList.isEmpty()){ %>
 								<tr>
-									<td colspan="5" class="nodata">최근 주문한 내역이 없습니다.</td>
+									<td colspan="6" class="nodata">최근 주문한 내역이 없습니다.</td>
 								</tr>
 								<%}else{ %>
 									<%for(Orders orders : orderList){ %>
@@ -343,7 +343,7 @@
 								<th colspan="2">카드이름</th>
 								<th colspan="3">카드번호</th>
 							</tr>
-							<%if(cardList==null){ %>
+							<%if(cardList.isEmpty()){ %>
 							<tr>
 								<td colspan="5" class="nodata">등록된 카드가 없습니다.</td>
 							</tr>
@@ -376,7 +376,7 @@
 				<!-- 등록된 주소 -->
 			<div class="mplist">
 				<div class="ordtitle">
-					<span class="ordment"><span class="b_cate">등록된 카드</span></span> <span
+					<span class="ordment"><span class="b_cate">등록된 주소</span></span> <span
 						class="ordlink"></span>
 				</div>
 				<div class="ordlistdiv" style="margin-bottom: 30px;">
@@ -396,7 +396,7 @@
 								<th colspan="2">주소명</th>
 								<th colspan="3">상세주소</th>
 							</tr>
-							<%if(addressList==null){ %>
+							<%if(addressList.isEmpty()){ %>
 							<tr>
 								<td colspan="5" class="nodata">등록된 주소가 없습니다.</td>
 							</tr>
